@@ -31,6 +31,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var locationMarker: UIImageView!
     
     // MARK: View LifeCycle
     override func viewDidLoad() {
@@ -49,8 +50,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         
         addressLabel.text = defaultLocationText
+
         topLevelView.userInteractionEnabled = false
+        
         overlayView.hidden = false
+        
+        locationMarker.hidden = true
+        
+        mapView.showsUserLocation = false
+        
         loadingIndicator.hidden = false
         loadingIndicator.startAnimating()
     }
@@ -63,6 +71,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            updateLocation()
+            setInitialized()
+            mapView.showsUserLocation = true
+            
             locationManager.requestLocation()
         } else {
             locationManager.requestWhenInUseAuthorization()
@@ -77,6 +89,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // MARK: Location Manager Delegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
+            updateLocation()
+            setInitialized()
+            mapView.showsUserLocation = true
+            
             locationManager.requestLocation()
         }
     }
@@ -89,8 +105,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else {
             displayError("Unable to get your location")
         }
-        locationManager.stopUpdatingLocation()
-        setInitialized()
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -124,7 +138,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         
-        
         return true
     }
     
@@ -155,7 +168,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 }
                 let topPlace = places[0] as CLPlacemark
                 if let bldgNumber = topPlace.subThoroughfare {
-                    self.userAddress = bldgNumber + " "
+                    self.userAddress = bldgNumber + ", "
                 }
                 if let street = topPlace.thoroughfare {
                     if self.userAddress == nil {
@@ -172,15 +185,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
     }
     
+    func updateLocation() {
+        userLocation = locationManager.location
+        centerMapOnUserLocation()
+        updateAddress()
+    }
+    
     func setInitialized() {
         initialized = true;
         
         // Disable the loading overlay
         topLevelView.userInteractionEnabled = true
+        
         overlayView.hidden = true
+        
         loadingIndicator.hidden = true
         loadingIndicator.stopAnimating()
         
+        locationMarker.hidden = false
     }
 }
 

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class LoadingScreenViewController: UIViewController {
+class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
 
+    // MARK: Properties
+    
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        moveToMapScene()
+        loadContacts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,24 +24,32 @@ class LoadingScreenViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: CallBack
+    
+    func retreiveResult(result : ErrorTypes) {
+        switch result {
+        case .Error:
+            displayMessage("There was a problem retreiving your contacts")
+        case .Unauthorized,.None:
+            moveToMapScene()
+        }
+    }
+    
+    // MARK: Functions
+    
+    func loadContacts() {
+        let contactsModule = ContactsModule(delegate: self)
+        contactsModule.authorizeContacts()
     }
     
     func moveToMapScene() {
-        //let mapScene = self.storyboard?.instantiateViewControllerWithIdentifier("MapScreen") as! MapViewController
-        //self.navigationController?.pushViewController(mapScene, animated: true)
-        //self.navigationController?.navigationBarHidden = false
-        //self.navigationController?.popViewControllerAnimated(true)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("MapScreen") as UIViewController
-        presentViewController(viewController, animated: true, completion: nil)
+        performSegueWithIdentifier("DoneLoadingSegue", sender: nil)
+    }
+    
+    func displayMessage(message : String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
     }
 
 }
