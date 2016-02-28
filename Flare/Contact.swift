@@ -8,22 +8,31 @@
 
 import Foundation
 import Contacts
+import UIKit
 
 class Contact {
     var firstName : String
     var lastName : String
     var hasFlare : Bool
     var phoneNumbers : [PhoneNumber]
-    var image : NSData?
+    var image : UIImage?
+    var primaryPhone : PhoneNumber
+    var isSelected : Bool
     
     init(contact: CNContact) {
         firstName = contact.givenName
         lastName = contact.familyName
         hasFlare = false
-        image = contact.thumbnailImageData
+        isSelected = false
+        if let imageData = contact.thumbnailImageData {
+            image = UIImage(data: imageData)
+        } else {
+            image = UIImage(named: "defaultContactImage")
+        }
         phoneNumbers = [PhoneNumber]()
-        for phone: CNLabeledValue in contact.phoneNumbers {
+        for phone in contact.phoneNumbers {
             phoneNumbers.append(PhoneNumber(number: phone.value as! CNPhoneNumber))
         }
+        primaryPhone = phoneNumbers[0]
     }
 }

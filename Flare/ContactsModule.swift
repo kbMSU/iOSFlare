@@ -19,19 +19,21 @@ class ContactsModule {
 
     init(delegate : ContactModuleDelegate) {
         self.delegate = delegate
+    }    
+    func isAuthorized() -> Bool {
+        return CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized
     }
     
     func authorizeContacts() {
         dispatch_async(GCDModule.GlobalUtilityQueue) {
-            if CNContactStore.authorizationStatusForEntityType(.Contacts) !=
-                CNAuthorizationStatus.Authorized {
-                    self.contactsStore.requestAccessForEntityType(.Contacts, completionHandler: {(access,error) -> Void in
-                        if access {
-                            self.getContacts()
-                        } else {
-                            self.sendResponseToDelegate(ErrorTypes.Unauthorized)
-                        }
-                    })
+            if CNContactStore.authorizationStatusForEntityType(.Contacts) != .Authorized {
+                self.contactsStore.requestAccessForEntityType(.Contacts, completionHandler: {(access,error) -> Void in
+                    if access {
+                        self.getContacts()
+                    } else {
+                        self.sendResponseToDelegate(ErrorTypes.Unauthorized)
+                    }
+                })
             } else {
                 self.getContacts()
             }
@@ -47,11 +49,15 @@ class ContactsModule {
                 let containerResults = try contactsStore.unifiedContactsMatchingPredicate(fetchPredicate, keysToFetch: keys)
                 contacts.appendContentsOf(containerResults)
             }
-            for c in contacts {
-                DataModule.contacts.append(Contact(contact: c))
+            for contact in contacts {
+                if contact.phoneNumbers.isEmpty {
+                    continue
+                }
+                DataModule.contacts.append(Contact(contact: contact))
             }
             sendResponseToDelegate(ErrorTypes.None)
         } catch {
+            print(error)
             sendResponseToDelegate(ErrorTypes.Error)
         }
     }

@@ -9,14 +9,19 @@
 import UIKit
 
 class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
-
-    // MARK: Properties
+    
+    var contactsModule : ContactsModule?
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadContacts()
+        contactsModule = ContactsModule(delegate: self)
+        if contactsModule!.isAuthorized() {
+            loadContacts()
+        } else {
+            moveToMapScene()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,12 +29,13 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: CallBack
+    // MARK: ContactModuleDelegate
     
     func retreiveResult(result : ErrorTypes) {
         switch result {
         case .Error:
-            displayMessage("There was a problem retreiving your contacts")
+            displayMessage("There was a problem getting your contacts")
+            moveToMapScene()
         case .Unauthorized,.None:
             moveToMapScene()
         }
@@ -38,8 +44,7 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
     // MARK: Functions
     
     func loadContacts() {
-        let contactsModule = ContactsModule(delegate: self)
-        contactsModule.authorizeContacts()
+        contactsModule!.authorizeContacts()
     }
     
     func moveToMapScene() {

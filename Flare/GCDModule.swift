@@ -8,9 +8,7 @@
 
 import Foundation
 
-class GCDModule {
-    static let instance = GCDModule()
-    private init() {}
+struct GCDModule {
     
     static var GlobalMainQueue: dispatch_queue_t {
         return dispatch_get_main_queue()

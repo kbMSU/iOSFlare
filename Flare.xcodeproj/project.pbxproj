@@ -23,6 +23,8 @@
 		25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB5D1C77789900D90197 /* Flare.xcdatamodeld */; };
 		25C2DB611C77789900D90197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C2DB601C77789900D90197 /* Assets.xcassets */; };
 		25C2DB6F1C77789A00D90197 /* FlareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB6E1C77789A00D90197 /* FlareTests.swift */; };
+		25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818D91C82D9EA00176587 /* ConstantsModule.swift */; };
+		25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		25C2DB6A1C77789A00D90197 /* FlareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2DB6E1C77789A00D90197 /* FlareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareTests.swift; sourceTree = "<group>"; };
 		25C2DB701C77789A00D90197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25F818D91C82D9EA00176587 /* ConstantsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModule.swift; sourceTree = "<group>"; };
+		25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */,
 				25C2DB581C77789900D90197 /* MapViewController.swift */,
 				2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */,
+				25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 				2573142F1C8054D6003381E8 /* ContactsModule.swift */,
 				257314311C806EE4003381E8 /* DataModule.swift */,
 				257314451C80AB0E003381E8 /* GCDModule.swift */,
+				25F818D91C82D9EA00176587 /* ConstantsModule.swift */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
 				257314351C806F2E003381E8 /* PhoneNumber.swift in Sources */,
+				25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */,
+				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,
 				2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */,
 				257314321C806EE4003381E8 /* DataModule.swift in Sources */,
 				2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */,

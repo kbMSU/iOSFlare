@@ -19,7 +19,7 @@ class PhoneNumber {
         countryCode = nil
         digits = ""
         for c : Character in number.stringValue.characters {
-            if c > "0" && c < "9" {
+            if c >= "0" && c <= "9" {
                 digits.append(c)
             }
         }
