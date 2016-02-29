@@ -25,6 +25,7 @@
 		25C2DB6F1C77789A00D90197 /* FlareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB6E1C77789A00D90197 /* FlareTests.swift */; };
 		25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818D91C82D9EA00176587 /* ConstantsModule.swift */; };
 		25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */; };
+		25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		25C2DB701C77789A00D90197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25F818D91C82D9EA00176587 /* ConstantsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModule.swift; sourceTree = "<group>"; };
 		25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFlareViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				25C2DB581C77789900D90197 /* MapViewController.swift */,
 				2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */,
 				25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */,
+				25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				257314441C8095D5003381E8 /* ErrorTypes.swift in Sources */,
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
+				25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */,
 				257314351C806F2E003381E8 /* PhoneNumber.swift in Sources */,
 				25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */,
 				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,

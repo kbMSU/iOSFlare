@@ -94,6 +94,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: Location Manager Delegate
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse {
             updateLocation()
@@ -160,6 +161,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
         return true
+    }
+    
+    @IBAction func unwindBackToMapView(sender: UIStoryboardSegue) {
+        let source = sender.sourceViewController as? ConfirmFlareViewController
+        if source != nil {
+            for contact in DataModule.contacts where contact.isSelected {
+                contact.isSelected = false
+            }
+        }
     }
     
     // MARK: ContactModuleDelegate

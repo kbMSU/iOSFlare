@@ -18,6 +18,7 @@ class Contact {
     var image : UIImage?
     var primaryPhone : PhoneNumber
     var isSelected : Bool
+    var id: String
     
     init(contact: CNContact) {
         firstName = contact.givenName
@@ -34,5 +35,6 @@ class Contact {
             phoneNumbers.append(PhoneNumber(number: phone.value as! CNPhoneNumber))
         }
         primaryPhone = phoneNumbers[0]
+        id = contact.identifier
     }
 }

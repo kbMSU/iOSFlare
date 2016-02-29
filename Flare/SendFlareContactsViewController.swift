@@ -23,7 +23,8 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
     // MARK: Outlets
     @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var searchContactsTextField: UITextField!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var doneSelectingButton: UIButton!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         contactsTableView.delegate = self
         
         searchContactsTextField.delegate = self
+        
+        searchContactsTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
         
         for contact in DataModule.contacts where contact.isSelected {
             contact.isSelected = false
@@ -46,7 +49,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         })
         contacts.appendContentsOf(unfilteredContacts)
         
-        doneButton.enabled = false
+        noContactsSelected()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +64,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         return true
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textFieldDidChange(textField: UITextField) {
         contacts.removeAll()
         if let text = textField.text where text != "" {
             contacts.appendContentsOf(unfilteredContacts.filter({(current) -> Bool in
@@ -80,7 +83,6 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
             contacts.appendContentsOf(unfilteredContacts)
         }
         contactsTableView.reloadData()
-        return true
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
@@ -126,23 +128,51 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         if contactAtRow.isSelected {
             selectedContacts.append(contactAtRow)
         } else {
-            selectedContacts.removeAtIndex(indexPath.row)
+            let index = selectedContacts.indexOf({(selected) -> Bool in
+                return selected.id == contactAtRow.id
+            })
+            selectedContacts.removeAtIndex(index!)
         }
         
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
         
         if selectedContacts.isEmpty {
-            doneButton.enabled = false
+            noContactsSelected()
         } else {
-            doneButton.enabled = true
+            contactsSelected()
         }
     }
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destination = segue.destinationViewController as? ConfirmFlareViewController
+        if destination != nil {
+            destination!.contacts.appendContentsOf(selectedContacts)
+        }
+    }
+    
+    // MARK: Actions
+    @IBAction func clearButtonAction(sender: UIBarButtonItem) {
+        for contact in selectedContacts {
+            contact.isSelected = false
+        }
+        selectedContacts.removeAll()
+        noContactsSelected()
+        contactsTableView.reloadData()
+    }
+    
+    // MARK: Helper methods
+    
+    func contactsSelected() {
+        clearButton.enabled = true
+        doneSelectingButton.hidden = false
+        doneSelectingButton.enabled = true
+    }
+    
+    func noContactsSelected() {
+        clearButton.enabled = false
+        doneSelectingButton.hidden = true
+        doneSelectingButton.enabled = false
     }
 }
