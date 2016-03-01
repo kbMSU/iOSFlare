@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6A1C85A6A100EC9191 /* libz.tbd */; };
+		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
 		257314301C8054D6003381E8 /* ContactsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2573142F1C8054D6003381E8 /* ContactsModule.swift */; };
 		257314321C806EE4003381E8 /* DataModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257314311C806EE4003381E8 /* DataModule.swift */; };
 		257314351C806F2E003381E8 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257314341C806F2E003381E8 /* PhoneNumber.swift */; };
@@ -26,6 +28,7 @@
 		25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818D91C82D9EA00176587 /* ConstantsModule.swift */; };
 		25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */; };
 		25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */; };
+		83854F98330EC274576AE299 /* Pods_Flare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4621B2BE5640989D4FC4FE /* Pods_Flare.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04509DCC67271398EAF6607C /* Pods-Flare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flare/Pods-Flare.release.xcconfig"; sourceTree = "<group>"; };
+		252DFD6A1C85A6A100EC9191 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2573142F1C8054D6003381E8 /* ContactsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsModule.swift; sourceTree = "<group>"; };
 		257314311C806EE4003381E8 /* DataModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModule.swift; sourceTree = "<group>"; };
 		257314341C806F2E003381E8 /* PhoneNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
@@ -49,6 +55,7 @@
 		2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareContactsViewController.swift; sourceTree = "<group>"; };
 		2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
+		25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flare-Bridging-Header.h"; sourceTree = "<group>"; };
 		25C2DB531C77789900D90197 /* Flare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2DB561C77789900D90197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25C2DB581C77789900D90197 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +69,8 @@
 		25F818D91C82D9EA00176587 /* ConstantsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModule.swift; sourceTree = "<group>"; };
 		25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFlareViewController.swift; sourceTree = "<group>"; };
+		5C4621B2BE5640989D4FC4FE /* Pods_Flare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E193A30FDED2DE7C8A8BBB8 /* Pods-Flare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flare/Pods-Flare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */,
+				252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */,
+				83854F98330EC274576AE299 /* Pods_Flare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		104CF256FE1FA4378471936F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */,
+				252DFD6A1C85A6A100EC9191 /* libz.tbd */,
+				5C4621B2BE5640989D4FC4FE /* Pods_Flare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		257314331C806F21003381E8 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +167,9 @@
 				25C2DB551C77789900D90197 /* Flare */,
 				25C2DB6D1C77789A00D90197 /* FlareTests */,
 				25C2DB541C77789900D90197 /* Products */,
+				BC449833C790EE905523486B /* Pods */,
+				104CF256FE1FA4378471936F /* Frameworks */,
+				25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +206,15 @@
 				25C2DB701C77789A00D90197 /* Info.plist */,
 			);
 			path = FlareTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		BC449833C790EE905523486B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E193A30FDED2DE7C8A8BBB8 /* Pods-Flare.debug.xcconfig */,
+				04509DCC67271398EAF6607C /* Pods-Flare.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25C2DB731C77789A00D90197 /* Build configuration list for PBXNativeTarget "Flare" */;
 			buildPhases = (
+				73CC7BAF3B0AA1BD3B4458C4 /* Check Pods Manifest.lock */,
 				25C2DB4F1C77789900D90197 /* Sources */,
 				25C2DB501C77789900D90197 /* Frameworks */,
 				25C2DB511C77789900D90197 /* Resources */,
+				5D4A819F932A74DC12C8DE71 /* Embed Pods Frameworks */,
+				B5DC0FD98E02DDC4083AE025 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -279,6 +316,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D4A819F932A74DC12C8DE71 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flare/Pods-Flare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73CC7BAF3B0AA1BD3B4458C4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B5DC0FD98E02DDC4083AE025 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flare/Pods-Flare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25C2DB4F1C77789900D90197 /* Sources */ = {
@@ -417,25 +502,32 @@
 		};
 		25C2DB741C77789A00D90197 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E193A30FDED2DE7C8A8BBB8 /* Pods-Flare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Flare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ShoreSideApps.Flare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		25C2DB751C77789A00D90197 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04509DCC67271398EAF6607C /* Pods-Flare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Flare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ShoreSideApps.Flare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flare-Bridging-Header.h";
 			};
 			name = Release;
 		};

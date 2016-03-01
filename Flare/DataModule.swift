@@ -11,6 +11,55 @@ import Foundation
 class DataModule {
     static let instance = DataModule()
     private init() {}
-
-    static var contacts : [Contact] = [Contact]()
+    
+    static func setup() {
+        
+    }
+    
+    static var contacts = [Contact]()
+    
+    private static var askedToAllowFriendsToFind = false
+    static var haveAskedToAllowFriendsToFind : Bool {
+        get {
+            return askedToAllowFriendsToFind
+        }
+        set {
+            askedToAllowFriendsToFind = newValue
+            // save locally
+        }
+    }
+    
+    private static var allowFriendsToFind = false
+    static var canAllowFriendsToFind : Bool {
+        get {
+            return allowFriendsToFind
+        }
+        set {
+            allowFriendsToFind = newValue
+            // save locally
+        }
+    }
+    
+    private static var askedToFindFriendsWithFlare = false
+    static var haveAskedToFindFriendsWithFlare : Bool {
+        get {
+            return askedToFindFriendsWithFlare
+        }
+        set {
+            askedToFindFriendsWithFlare = newValue
+            // save locally
+        }
+    }
+    
+    private static var verifiedPhoneNumber = false
+    static var haveVerifiedPhoneNumber : Bool {
+        get {
+            return verifiedPhoneNumber
+        }
+        set {
+            verifiedPhoneNumber = newValue
+            // save locally
+        }
+    }
+    
 }

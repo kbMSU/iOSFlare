@@ -16,6 +16,8 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        DataModule.setup()
+        
         contactsModule = ContactsModule(delegate: self)
         if contactsModule!.isAuthorized() {
             loadContacts()
