@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -16,6 +16,8 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Variables
     var contacts = [Contact]()
     var selectedContacts = [Contact]()
+    var location : CLLocation?
+    var backendModule : BackendModule?
     
     // MARK: Outlets
     @IBOutlet weak var contactTableView: UITableView!
@@ -36,6 +38,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         }
         selectedContacts.appendContentsOf(contacts)
         
+        backendModule = BackendModule(delegate: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,7 +100,12 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Actions
     
     @IBAction func sendClickAction(sender: UIButton) {
-        // todo
+        var numbers = [PhoneNumber]()
+        for contact in selectedContacts {
+            numbers.append(contact.primaryPhone)
+        }
+        let message = messageTextField.text ?? "Flare"
+        backendModule!.sendFlare(numbers, message: message, location: location!)
     }
     
     // MARK: Helper functions

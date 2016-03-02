@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.enableLocalDatastore()
         Parse.setApplicationId("INoehKZFskuQ6nJ383gzDshdhFHSre9lv5MQrZ7g", clientKey: "9y6Dx6hqc28c4uyULtzOWrwb0Pmfi0Up3GXDzjpA")
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFInstallation.currentInstallation().saveInBackground()
         
         return true
     }

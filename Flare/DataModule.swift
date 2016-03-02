@@ -18,6 +18,17 @@ class DataModule {
     
     static var contacts = [Contact]()
     
+    private static var myNumber = "8147486472" // change default to nil
+    static var myPhoneNumber : String {
+        get {
+            return myNumber
+        }
+        set {
+            myNumber = newValue
+            // save locally
+        }
+    }
+    
     private static var askedToAllowFriendsToFind = false
     static var haveAskedToAllowFriendsToFind : Bool {
         get {
@@ -51,6 +62,17 @@ class DataModule {
         }
     }
     
+    private static var findFriendsWithFlare = false
+    static var canFindFriendsWithFlare : Bool {
+        get {
+            return findFriendsWithFlare
+        }
+        set {
+            findFriendsWithFlare = newValue
+            // save locally
+        }
+    }
+    
     private static var verifiedPhoneNumber = false
     static var haveVerifiedPhoneNumber : Bool {
         get {
@@ -62,4 +84,13 @@ class DataModule {
         }
     }
     
+    private static var sendCloudMessage = true // Change default to false
+    static var canSendCloudMessage : Bool {
+        get {
+            return sendCloudMessage
+        } set {
+            sendCloudMessage = newValue
+            // save locally
+        }
+    }
 }

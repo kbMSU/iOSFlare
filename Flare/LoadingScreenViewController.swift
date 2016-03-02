@@ -22,7 +22,7 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         if contactsModule!.isAuthorized() {
             loadContacts()
         } else {
-            moveToMapScene()
+            verifyPhoneNumber()
         }
     }
 
@@ -37,8 +37,10 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         switch result {
         case .Error:
             displayMessage("There was a problem getting your contacts")
+            //findFriendsWithFlare()
             moveToMapScene()
         case .Unauthorized,.None:
+            //findFriendsWithFlare()
             moveToMapScene()
         }
     }
@@ -47,6 +49,39 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
     
     func loadContacts() {
         contactsModule!.authorizeContacts()
+    }
+    
+    func findFriendsWithFlare() {
+        if !DataModule.canFindFriendsWithFlare {
+            verifyPhoneNumber()
+            return
+        }
+        
+        // Find friends with flare
+        
+        // Then verify phone number
+    }
+    
+    func verifyPhoneNumber() {
+        if DataModule.haveVerifiedPhoneNumber {
+            allowFriendsToFindYou()
+            return
+        }
+        
+        // Verify phone number
+        
+        // Then allow friends to find you ( register )
+    }
+    
+    func allowFriendsToFindYou() {
+        if !DataModule.canAllowFriendsToFind {
+            moveToMapScene()
+            return
+        }
+        
+        // Allow friends to find you
+        
+        // Then move to map scene
     }
     
     func moveToMapScene() {

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, BackendModuleDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -19,12 +19,16 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
     var unfilteredContacts = [Contact]()
     var contacts = [Contact]()
     var selectedContacts = [Contact]()
+    var backendModule : BackendModule?
+    var initialized = false
+    var timer : NSTimer?
     
     // MARK: Outlets
     @IBOutlet weak var contactsTableView: UITableView!
     @IBOutlet weak var searchContactsTextField: UITextField!
     @IBOutlet weak var doneSelectingButton: UIButton!
     @IBOutlet weak var clearButton: UIBarButtonItem!
+    @IBOutlet weak var overlayView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +40,16 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         
         searchContactsTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
         
-        for contact in DataModule.contacts where contact.isSelected {
-            contact.isSelected = false
+        loadContacts()
+        
+        backendModule = BackendModule(delegate: self)
+        
+        initialized = true
+        
+        if !DataModule.haveAskedToFindFriendsWithFlare {
+            timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "askToFindFriendsWithFlare", userInfo: nil, repeats: false)
         }
-        
-        unfilteredContacts.removeAll()
-        contacts.removeAll()
-        selectedContacts.removeAll()
-        
-        unfilteredContacts.appendContentsOf(DataModule.contacts.sort {
-            return $0.firstName + " " + $0.lastName < $1.firstName + " " + $1.lastName
-        })
-        contacts.appendContentsOf(unfilteredContacts)
-        
-        noContactsSelected()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,13 +143,38 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
+    // MARK: Backend module delegate
+    
+    func findFriendsWithFlareSuccess() {
+        loadContacts()
+        doneBeingBusy()
+    }
+    
+    func findFriendsWithFlareError(error: ErrorType) {
+        doneBeingBusy()
+        let alert = UIAlertController(title: "", message: "We had a problem finding your friends on the cloud", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        presentViewController(alert, animated: false, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destination = segue.destinationViewController as? ConfirmFlareViewController
         if destination != nil {
             destination!.contacts.appendContentsOf(selectedContacts)
+            destination!.location = userLocation
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "ConfirmFlareSegue" {
+            if !DataModule.haveAskedToFindFriendsWithFlare {
+                timer!.fire()
+                return false
+            }
+        }
+        return true
     }
     
     // MARK: Actions
@@ -164,6 +189,42 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
     
     // MARK: Helper methods
     
+    func loadContacts() {
+        for contact in DataModule.contacts where contact.isSelected {
+            contact.isSelected = false
+        }
+        
+        unfilteredContacts.removeAll()
+        contacts.removeAll()
+        selectedContacts.removeAll()
+        
+        unfilteredContacts.appendContentsOf(DataModule.contacts.sort {
+            return $0.firstName + " " + $0.lastName < $1.firstName + " " + $1.lastName
+        })
+        contacts.appendContentsOf(unfilteredContacts)
+        
+        noContactsSelected()
+        
+        if initialized {
+            contactsTableView.reloadData()
+        }
+    }
+    
+    func askToFindFriendsWithFlare() {
+        let alert = UIAlertController(title: "Find friends", message: "We can check if any of your friends have flare. This involves checking if your friends numbers are on our cloud. Do you mind if we do that ? You can still flare without this", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: {(action) -> Void in
+            self.isBusy()
+            self.backendModule!.findFriendsWithFlare()
+            DataModule.haveAskedToFindFriendsWithFlare = true
+            DataModule.canFindFriendsWithFlare = true
+        }))
+        alert.addAction(UIAlertAction(title: "Decline", style: .Default, handler: {(action) -> Void in
+            DataModule.haveAskedToFindFriendsWithFlare = true
+            DataModule.canFindFriendsWithFlare = false
+        }))
+        presentViewController(alert, animated: false, completion: nil)
+    }
+    
     func contactsSelected() {
         clearButton.enabled = true
         doneSelectingButton.hidden = false
@@ -174,5 +235,15 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         clearButton.enabled = false
         doneSelectingButton.hidden = true
         doneSelectingButton.enabled = false
+    }
+    
+    func isBusy() {
+        doneSelectingButton.enabled = false
+        overlayView.hidden = false
+    }
+    
+    func doneBeingBusy() {
+        doneSelectingButton.enabled = true
+        overlayView.hidden = true
     }
 }

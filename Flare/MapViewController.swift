@@ -47,13 +47,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         addressLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
         addressLabel.layer.shadowColor = UIColor.grayColor().CGColor
         
-        /*
-        sendFlareButton.layer.shadowRadius = 3
-        sendFlareButton.layer.shadowOpacity = 0.6
-        sendFlareButton.layer.shadowOffset = CGSize(width: 3, height: 3)
-        sendFlareButton.layer.shadowColor = UIColor.grayColor().CGColor
-        */
-        
         locationManager.desiredAccuracy = locationAccuracy
         locationManager.delegate = self
         
