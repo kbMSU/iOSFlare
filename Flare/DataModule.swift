@@ -18,6 +18,8 @@ class DataModule {
     
     static var contacts = [Contact]()
     
+    // LOOK INTO didSet FOR VAR
+    
     private static var myNumber = "8147486472" // change default to nil
     static var myPhoneNumber : String {
         get {

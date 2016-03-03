@@ -11,6 +11,9 @@ import Foundation
 protocol BackendModuleDelegate {
     func findFriendsWithFlareSuccess()
     func findFriendsWithFlareError(error: ErrorType)
+    
+    func sendTwilioMessageSuccess()
+    func sendTwilioMessageError(error: ErrorType)
 }
 
 /*
@@ -23,4 +26,8 @@ default implementations of the methods that are optional.
 extension BackendModuleDelegate {
     func findFriendsWithFlareSuccess() {}
     func findFriendsWithFlareError(error: ErrorType) {}
+    
+    func sendTwilioMessageSuccess() {}
+    func sendTwilioMessageError(error: ErrorType) {}
+
 }

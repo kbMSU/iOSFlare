@@ -80,8 +80,14 @@ class BackendModule {
                     params["message"] = message
                     try PFCloud.callFunction("SendTwilioMessage", withParameters: params)
                 } catch {
+                    dispatch_async(GCDModule.GlobalMainQueue) {
+                        self.delegate.sendTwilioMessageError(error)
+                    }
                     continue
                 }
+            }
+            dispatch_async(GCDModule.GlobalMainQueue) {
+                self.delegate.sendTwilioMessageSuccess()
             }
         }
     }
@@ -121,7 +127,7 @@ class BackendModule {
         if DataModule.canSendCloudMessage {
             sendTwilioMessage(numbersWithoutFlare, message: body)
         } else {
-            
+            // send sms
         }
     }
 }

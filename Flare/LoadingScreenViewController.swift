@@ -8,8 +8,9 @@
 
 import UIKit
 
-class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
+class LoadingScreenViewController: UIViewController, ContactModuleDelegate, BackendModuleDelegate {
     
+    var backendModule : BackendModule?
     var contactsModule : ContactsModule?
     
     // MARK: UIViewController
@@ -17,6 +18,8 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         super.viewDidLoad()
 
         DataModule.setup()
+        
+        backendModule = BackendModule(delegate: self)
         
         contactsModule = ContactsModule(delegate: self)
         if contactsModule!.isAuthorized() {
@@ -37,11 +40,9 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         switch result {
         case .Error:
             displayMessage("There was a problem getting your contacts")
-            //findFriendsWithFlare()
-            moveToMapScene()
+            verifyPhoneNumber()
         case .Unauthorized,.None:
-            //findFriendsWithFlare()
-            moveToMapScene()
+            findFriendsWithFlare()
         }
     }
     
@@ -58,8 +59,10 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
         }
         
         // Find friends with flare
+        backendModule!.findFriendsWithFlare()
         
         // Then verify phone number
+        verifyPhoneNumber()
     }
     
     func verifyPhoneNumber() {
@@ -68,9 +71,8 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate {
             return
         }
         
-        // Verify phone number
-        
-        // Then allow friends to find you ( register )
+        // Verify phone number, then register
+        performSegueWithIdentifier("VerifyPhoneNumberSegue", sender: nil)
     }
     
     func allowFriendsToFindYou() {
