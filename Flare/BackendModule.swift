@@ -18,7 +18,53 @@ class BackendModule {
     }
     
     func register() {
-        
+        dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
+            do {
+                let fullPhone = DataModule.myCountryCode + DataModule.myPhoneNumber
+                let installation = PFInstallation.currentInstallation()
+                
+                // Are there already installations with this phone number
+                let oldInstallations = try PFInstallation.query()!.whereKey("FullPhone", equalTo: fullPhone).findObjects()
+                if !oldInstallations.isEmpty {
+                    let old = oldInstallations[0]
+                    // Is this installation a different object than this phone's installation ?
+                    if installation.objectId != old.objectId {
+                        // If it is, that means either we moved this phone number to a different phone or 
+                        // we reinstalled on this phone. Either way, we have to delete the old installation
+                        try old.delete()
+                    }
+                }
+                
+                // Save this installation
+                installation.setObject(DataModule.myCountryCode, forKey: "CountryCode")
+                installation.setObject(DataModule.myPhoneNumber, forKey: "Number")
+                installation.setObject(fullPhone, forKey: "FullPhone")
+                try installation.save()
+                
+                // Is a device already saved for this phone number 
+                let query = PFQuery(className: "Device").whereKey("FullPhone", equalTo: DataModule.myCountryCode + DataModule.myPhoneNumber)
+                let results = try query.findObjects()
+                if results.isEmpty {
+                    // If not, then we need to save this device
+                    let newDevice = PFObject(className: "Device")
+                    newDevice.setObject("iOS", forKey: "DeviceType")
+                    newDevice.setObject(DataModule.myCountryCode, forKey: "CountryCode")
+                    newDevice.setObject(DataModule.myPhoneNumber, forKey: "Number")
+                    newDevice.setObject(fullPhone, forKey: "FullPhone")
+                    try newDevice.save()
+                } else {
+                    let device = results[0]
+                    if let type = device.objectForKey("DeviceType") as? String where type != "iOS" {
+                        device.setObject("iOS", forKey: "DeviceType")
+                        try device.save()
+                    }
+                }
+                
+                self.delegate.registrationSuccess()
+            } catch {
+                self.delegate.registrationError(error)
+            }
+        }
     }
     
     func findFriendsWithFlare() {

@@ -222,7 +222,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
             DataModule.haveAskedToFindFriendsWithFlare = true
             DataModule.canFindFriendsWithFlare = false
         }))
-        presentViewController(alert, animated: false, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func contactsSelected() {

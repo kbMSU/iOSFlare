@@ -29,6 +29,8 @@
 		25C2DB6F1C77789A00D90197 /* FlareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB6E1C77789A00D90197 /* FlareTests.swift */; };
 		25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */; };
 		25D6AB171C885EFA001A9C11 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */; };
+		25D6AB191C894DDB001A9C11 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */; };
+		25D6AB1B1C899186001A9C11 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */; };
 		25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818D91C82D9EA00176587 /* ConstantsModule.swift */; };
 		25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */; };
 		25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */; };
@@ -74,6 +76,8 @@
 		25C2DB701C77789A00D90197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
+		25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
+		25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		25F818D91C82D9EA00176587 /* ConstantsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModule.swift; sourceTree = "<group>"; };
 		25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFlareViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */,
 				25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */,
 				25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */,
+				25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */,
+				25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -390,11 +396,13 @@
 				25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */,
 				257314351C806F2E003381E8 /* PhoneNumber.swift in Sources */,
 				25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */,
+				25D6AB191C894DDB001A9C11 /* ConfirmCodeViewController.swift in Sources */,
 				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,
 				2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */,
 				257314321C806EE4003381E8 /* DataModule.swift in Sources */,
 				2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */,
 				25590F471C85CFEC00B4096E /* BackendModuleDelegate.swift in Sources */,
+				25D6AB1B1C899186001A9C11 /* RegistrationViewController.swift in Sources */,
 				257314301C8054D6003381E8 /* ContactsModule.swift in Sources */,
 				2573143E1C8086A1003381E8 /* ContactModuleDelegate.swift in Sources */,
 				25590F451C85CF7700B4096E /* BackendModule.swift in Sources */,

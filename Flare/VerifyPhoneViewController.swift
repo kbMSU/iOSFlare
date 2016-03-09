@@ -75,7 +75,17 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
         doneBeingBusy()
         let alertView = UIAlertController(title: "Error", message: "There was an issue in verifying your phone number. Please try again", preferredStyle: .Alert)
         alertView.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-        presentViewController(alertView, animated: false, completion: nil)
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SentCodeSegue" {
+            let destination = segue.destinationViewController as! ConfirmCodeViewController
+            destination.countryCode = selectedCountry[1]
+            destination.phoneNumber = phoneNumberTextField.text
+        }
     }
     
     // MARK: Helper functions

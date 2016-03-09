@@ -18,81 +18,51 @@ class DataModule {
     
     static var contacts = [Contact]()
     
-    // LOOK INTO didSet FOR VAR
-    
-    private static var myNumber = "8147486472" // change default to nil
-    static var myPhoneNumber : String {
-        get {
-            return myNumber
-        }
-        set {
-            myNumber = newValue
-            // save locally
+    static var myCountryCode : String = "" {
+        didSet {
+            
         }
     }
     
-    private static var askedToAllowFriendsToFind = false
-    static var haveAskedToAllowFriendsToFind : Bool {
-        get {
-            return askedToAllowFriendsToFind
-        }
-        set {
-            askedToAllowFriendsToFind = newValue
-            // save locally
+    static var myPhoneNumber : String = "" {
+        didSet {
+            
         }
     }
     
-    private static var allowFriendsToFind = false
-    static var canAllowFriendsToFind : Bool {
-        get {
-            return allowFriendsToFind
-        }
-        set {
-            allowFriendsToFind = newValue
-            // save locally
+    static var haveAskedToAllowFriendsToFind : Bool = false {
+        didSet {
+            
         }
     }
     
-    private static var askedToFindFriendsWithFlare = false
-    static var haveAskedToFindFriendsWithFlare : Bool {
-        get {
-            return askedToFindFriendsWithFlare
-        }
-        set {
-            askedToFindFriendsWithFlare = newValue
-            // save locally
+    static var canAllowFriendsToFind : Bool = false {
+        didSet {
+            
         }
     }
     
-    private static var findFriendsWithFlare = false
-    static var canFindFriendsWithFlare : Bool {
-        get {
-            return findFriendsWithFlare
-        }
-        set {
-            findFriendsWithFlare = newValue
-            // save locally
+    static var haveAskedToFindFriendsWithFlare : Bool = false {
+        didSet {
+            
         }
     }
     
-    private static var verifiedPhoneNumber = false
-    static var haveVerifiedPhoneNumber : Bool {
-        get {
-            return verifiedPhoneNumber
-        }
-        set {
-            verifiedPhoneNumber = newValue
-            // save locally
+    static var canFindFriendsWithFlare : Bool = false {
+        didSet {
+            
         }
     }
     
-    private static var sendCloudMessage = true // Change default to false
-    static var canSendCloudMessage : Bool {
-        get {
-            return sendCloudMessage
-        } set {
-            sendCloudMessage = newValue
-            // save locally
+    static var haveVerifiedPhoneNumber : Bool = false {
+        didSet {
+            
+        }
+    }
+    
+    static var canSendCloudMessage : Bool = false {
+        didSet {
+            
         }
     }
 }

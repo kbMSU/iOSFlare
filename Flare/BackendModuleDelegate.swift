@@ -14,6 +14,9 @@ protocol BackendModuleDelegate {
     
     func sendTwilioMessageSuccess()
     func sendTwilioMessageError(error: ErrorType)
+    
+    func registrationSuccess()
+    func registrationError(error: ErrorType)
 }
 
 /*
@@ -30,4 +33,6 @@ extension BackendModuleDelegate {
     func sendTwilioMessageSuccess() {}
     func sendTwilioMessageError(error: ErrorType) {}
 
+    func registrationSuccess() {}
+    func registrationError(error: ErrorType) {}
 }
