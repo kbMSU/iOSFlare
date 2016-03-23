@@ -21,8 +21,6 @@ class AlternateFlareViewController: UIViewController {
         
         smsSwitch.addTarget(self, action: "smsSwitchChanged:", forControlEvents: .ValueChanged)
         cloudSwitch.addTarget(self, action: "cloudSwitchChanged:", forControlEvents: .ValueChanged)
-        
-        configureFinishButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +29,7 @@ class AlternateFlareViewController: UIViewController {
     }
     
     // MARK: Transition
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if smsSwitch.on {
             DataModule.canSendCloudMessage = false
@@ -42,26 +41,25 @@ class AlternateFlareViewController: UIViewController {
     // MARK: Helper methods
     
     func smsSwitchChanged() {
-        if smsSwitch.on && cloudSwitch.on {
-            cloudSwitch.setOn(false, animated: true)
+        if smsSwitch.on {
+            if cloudSwitch.on {
+                cloudSwitch.setOn(false, animated: true)
+            }
+        } else {
+            if !cloudSwitch.on {
+                cloudSwitch.setOn(true, animated: true)
+            }
         }
-        
-        configureFinishButton()
     }
     
     func cloudSwitchChanged() {
-        if cloudSwitch.on && smsSwitch.on {
-            smsSwitch.setOn(false, animated: true)
-        }
-        
-        configureFinishButton()
-    }
-    
-    func configureFinishButton() {
-        if !smsSwitch.enabled && !cloudSwitch.enabled {
-            finishButton.enabled = false
+        if cloudSwitch.on {
+            if smsSwitch.on {
+                smsSwitch.setOn(false, animated: true)
+            }
         } else {
-            finishButton.enabled = true
+            if !smsSwitch.on {
+                smsSwitch.setOn(true, animated: true)
+            }
         }
-    }
-}
+    }}

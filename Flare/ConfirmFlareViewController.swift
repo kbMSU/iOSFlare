@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate {
+class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -100,12 +101,71 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Actions
     
     @IBAction func sendClickAction(sender: UIButton) {
-        var numbers = [PhoneNumber]()
+        var numbersWithFlare = [String]()
+        var numbersWithoutFlare = [String]()
+        
         for contact in selectedContacts {
-            numbers.append(contact.primaryPhone)
+            if contact.primaryPhone.hasFlare {
+                numbersWithFlare.append(contact.primaryPhone.digits)
+            } else {
+                numbersWithoutFlare.append(contact.primaryPhone.digits)
+            }
         }
-        let message = messageTextField.text ?? "Flare"
-        backendModule!.sendFlare(numbers, message: message, location: location!)
+        
+        let latitude = "\(location!.coordinate.latitude)"
+        let longitude = "\(location!.coordinate.longitude)"
+        
+        let flareMessage = messageTextField.text ?? "Flare"
+        let noFlareMessage = flareMessage+" http://maps.google.com/?q="+latitude+","+longitude+"  "+"Sent from Flare"
+        
+        if numbersWithFlare.count != 0 {
+            backendModule!.sendFlare(numbersWithFlare, message: flareMessage, location: location!)
+        }
+        
+        if numbersWithoutFlare.count != 0 {
+            if DataModule.canSendCloudMessage {
+                backendModule!.sendTwilioMessage(numbersWithoutFlare, message: noFlareMessage)
+            } else {
+                let messageViewController = MFMessageComposeViewController()
+                messageViewController.body = noFlareMessage
+                messageViewController.recipients = numbersWithoutFlare
+                messageViewController.messageComposeDelegate = self
+                presentViewController(messageViewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: BackendModule Delegate
+    
+    func sendFlareSuccess() {
+        
+    }
+    
+    func sendFlareError(error: ErrorType) {
+        
+    }
+    
+    func sendTwilioMessageSuccess() {
+        
+    }
+    
+    func sendTwilioMessageError(error: ErrorType) {
+        
+    }
+    
+    // MARK: Message Delegate
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        switch result {
+        case MessageComposeResultSent:
+            break
+        case MessageComposeResultCancelled:
+            break
+        case MessageComposeResultFailed:
+            break
+        default:
+            break
+        }
     }
     
     // MARK: Helper functions

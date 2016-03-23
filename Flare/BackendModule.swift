@@ -138,23 +138,12 @@ class BackendModule {
         }
     }
     
-    func sendFlare(numbers : [PhoneNumber], message : String, location : CLLocation) {
-        var numbersWithFlare = [String]()
-        var numbersWithoutFlare = [String]()
-        
-        for number in numbers {
-            if number.hasFlare {
-                numbersWithFlare.append(number.digits)
-            } else {
-                numbersWithoutFlare.append(number.digits)
-            }
-        }
-        
+    func sendFlare(numbers : [String], message : String, location : CLLocation) {
         let latitude = "\(location.coordinate.latitude)"
         let longitude = "\(location.coordinate.longitude)"
         
         dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
-            for number in numbersWithFlare {
+            for number in numbers {
                 do {
                     var params = [String : String]()
                     params["text"] = message
@@ -164,16 +153,14 @@ class BackendModule {
                     params["to"] = number
                     try PFCloud.callFunction("SendFlare", withParameters: params)
                 } catch {
-                    continue
+                    dispatch_async(GCDModule.GlobalMainQueue) {
+                        self.delegate.sendFlareError(error)
+                    }
                 }
             }
-        }
-        
-        let body = message+" http://maps.google.com/?q="+latitude+","+longitude+"  "+"Sent from Flare"
-        if DataModule.canSendCloudMessage {
-            sendTwilioMessage(numbersWithoutFlare, message: body)
-        } else {
-            // send sms
+            dispatch_async(GCDModule.GlobalMainQueue) {
+                self.delegate.sendFlareSuccess()
+            }
         }
     }
 }
