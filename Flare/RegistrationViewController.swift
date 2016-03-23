@@ -43,11 +43,7 @@ class RegistrationViewController: UIViewController, BackendModuleDelegate {
     
     func registrationError(error: ErrorType) {
         doneBeingBusy()
-        let alert = UIAlertController(title: "Error", message: "There was a problem registering with the cloud. But don't worry about it, we will keep trying", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { _ -> Void in
-            self.performSegueWithIdentifier("RegistrationCompleteSegue", sender: nil)
-        }))
-        presentViewController(alert, animated: true, completion: nil)
+        performSegueWithIdentifier("RegistrationCompleteSegue", sender: nil)
     }
     
     // MARK: Actions

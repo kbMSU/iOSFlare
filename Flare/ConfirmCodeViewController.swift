@@ -32,7 +32,7 @@ class ConfirmCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidChange(textField: UITextField) {
-        if let _ = textField.text {
+        if let code = textField.text where code != "" {
             confirmButton.enabled = true
         } else {
             confirmButton.enabled = false

@@ -31,19 +31,29 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // MARK: ContactModuleDelegate
+    // MARK: ContactModule delegate
     
     func retreiveResult(result : ErrorTypes) {
         switch result {
         case .Error:
+            // If could not find contacts then no point trying to check for friends with flare
             displayMessage("There was a problem getting your contacts")
             verifyPhoneNumber()
         case .Unauthorized,.None:
             findFriendsWithFlare()
         }
+    }
+    
+    // MARK: BackendModule delegate
+    
+    func registrationError(error: ErrorType) {
+        moveToMapScene()
+    }
+    
+    func registrationSuccess() {
+        moveToMapScene()
     }
     
     // MARK: Functions
@@ -53,6 +63,7 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
     }
     
     func findFriendsWithFlare() {
+        // If not allowed to find friends with flare then just verify phone number
         if !DataModule.canFindFriendsWithFlare {
             verifyPhoneNumber()
             return
@@ -66,6 +77,7 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
     }
     
     func verifyPhoneNumber() {
+        // If phone number is already verified then register with the cloud
         if DataModule.haveVerifiedPhoneNumber {
             allowFriendsToFindYou()
             return
@@ -76,14 +88,14 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
     }
     
     func allowFriendsToFindYou() {
+        // If we are not allowed to register with the cloud then just move to the map scene
         if !DataModule.canAllowFriendsToFind {
             moveToMapScene()
             return
         }
         
         // Allow friends to find you
-        
-        // Then move to map scene
+        backendModule!.register()
     }
     
     func moveToMapScene() {

@@ -46,8 +46,8 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     
     // MARK: TextField delegate
     
-    func textFieldDidChange(textField: TextField) {
-        if let phone = textField.text, phone != "" {
+    func textFieldDidChange(textField: UITextField) {
+        if let phone = textField.text where phone != "" {
             verifyButton.enabled = true
         } else {
             verifyButton.enabled = false
@@ -59,7 +59,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     @IBAction func verifyClickAction(sender: UIButton) {
         let code = generateCode()
         isBusy()
-        let numbers = [selectedCountry[1]+textField.text]
+        let numbers = [selectedCountry!.1+phoneNumberTextField.text!]
         let message = "Your flare verification code is "+code
         backendModule!.sendTwilioMessage(numbers, message: message)
     }
@@ -83,17 +83,17 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SentCodeSegue" {
             let destination = segue.destinationViewController as! ConfirmCodeViewController
-            destination.countryCode = selectedCountry[1]
+            destination.countryCode = selectedCountry!.1
             destination.phoneNumber = phoneNumberTextField.text
         }
     }
     
     // MARK: Helper functions
     
-    func generateCode() : String {
+    func generateCode() -> String {
         let random = Int(arc4random_uniform(9000))
         let code = random + 1000
-        return code
+        return String(code)
     }
     
     func isBusy() {
