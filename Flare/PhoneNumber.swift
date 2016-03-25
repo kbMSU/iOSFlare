@@ -16,11 +16,7 @@ class PhoneNumber {
     
     init(number: CNPhoneNumber) {
         hasFlare = false
-        //countryCode = number.valueForKey("countryCode") as? String
         digits = ""
-        
-        //let phoneNumber = number.valueForKey("digits") as? String
-        //if phoneNumber != nil { digits = phoneNumber! }
         
         for c : Character in number.stringValue.characters {
             if c >= "0" && c <= "9" {

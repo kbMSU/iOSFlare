@@ -186,7 +186,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func authorizeContacts() {
-        let authorizeAlert = UIAlertController(title: "Permission Needed", message: "Can we access your contacts ? We need to do this to enable you to flare to them", preferredStyle: .Alert)
+        let authorizeAlert = UIAlertController(title: "Permission Needed", message: "Can we access your contacts ? We need to do this to enable you to flare to them", preferredStyle: .ActionSheet)
         authorizeAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(UIAlertAction) -> Void in
             self.isBusy()
             self.contactsModule!.authorizeContacts()

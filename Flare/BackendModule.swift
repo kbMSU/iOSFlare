@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import MessageUI
 
 class BackendModule {
     
@@ -138,28 +139,66 @@ class BackendModule {
         }
     }
     
-    func sendFlare(numbers : [String], message : String, location : CLLocation) {
+    func sendFlare(numbers : [PhoneNumber], message : String, location : CLLocation, sender : UIViewController) {
+        let result = SendFlareResult()
+        
+        var numbersWithFlare = [String]()
+        var numbersWithoutFlare = [String]()
+        
+        for number in numbers {
+            if number.hasFlare {
+                numbersWithFlare.append(number.digits)
+            } else {
+                numbersWithoutFlare.append(number.digits)
+            }
+        }
+
         let latitude = "\(location.coordinate.latitude)"
         let longitude = "\(location.coordinate.longitude)"
         
+        let noFlareMessage = message+" http://maps.google.com/?q="+latitude+","+longitude+"  "+"Sent from Flare"
+        
         dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
-            for number in numbers {
-                do {
-                    var params = [String : String]()
-                    params["text"] = message
-                    params["phone"] = DataModule.myPhoneNumber
-                    params["latitude"] = latitude
-                    params["longitude"] = longitude
-                    params["to"] = number
-                    try PFCloud.callFunction("SendFlare", withParameters: params)
-                } catch {
-                    dispatch_async(GCDModule.GlobalMainQueue) {
-                        self.delegate.sendFlareError(error)
+            if !numbersWithFlare.isEmpty {
+                for number in numbersWithFlare {
+                    do {
+                        var params = [String : String]()
+                        params["text"] = message
+                        params["phone"] = DataModule.myPhoneNumber
+                        params["latitude"] = latitude
+                        params["longitude"] = longitude
+                        params["to"] = number
+                        try PFCloud.callFunction("SendFlare", withParameters: params)
+                    } catch {
+                        result.failed = true
+                        result.numbersFailedToSend.append(number)
+                        continue
                     }
                 }
             }
+            
+            if !numbersWithoutFlare.isEmpty {
+                if DataModule.canSendCloudMessage {
+                    for number in numbersWithoutFlare {
+                        do {
+                            var params = [String : String]()
+                            params["to"] = number
+                            params["message"] = noFlareMessage
+                            try PFCloud.callFunction("SendTwilioMessage", withParameters: params)
+                        } catch {
+                            result.failed = true
+                            result.numbersFailedToSend.append(number)
+                            continue
+                        }
+                    }
+                } else {
+                    result.message = noFlareMessage
+                    result.numbersToIMessage.appendContentsOf(numbersWithoutFlare)
+                }
+            }
+            
             dispatch_async(GCDModule.GlobalMainQueue) {
-                self.delegate.sendFlareSuccess()
+                self.delegate.sendFlareResult(result)
             }
         }
     }

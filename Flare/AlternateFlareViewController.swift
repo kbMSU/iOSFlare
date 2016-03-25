@@ -19,8 +19,8 @@ class AlternateFlareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        smsSwitch.addTarget(self, action: "smsSwitchChanged:", forControlEvents: .ValueChanged)
-        cloudSwitch.addTarget(self, action: "cloudSwitchChanged:", forControlEvents: .ValueChanged)
+        smsSwitch.addTarget(self, action: "smsSwitchChanged", forControlEvents: .ValueChanged)
+        cloudSwitch.addTarget(self, action: "cloudSwitchChanged", forControlEvents: .ValueChanged)
     }
 
     override func didReceiveMemoryWarning() {

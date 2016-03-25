@@ -211,7 +211,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
     }
     
     func askToFindFriendsWithFlare() {
-        let alert = UIAlertController(title: "Find friends", message: "We can check if any of your friends have flare. This involves checking if your friends numbers are on our cloud. Do you mind if we do that ? You can still flare without this", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Find friends", message: "We can check if any of your friends have flare. This involves checking if your friends numbers are on our cloud. Do you mind if we do that ? You can still flare without this", preferredStyle: .ActionSheet)
         alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: {(action) -> Void in
             self.isBusy()
             self.backendModule!.findFriendsWithFlare()

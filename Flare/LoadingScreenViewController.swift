@@ -102,8 +102,8 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
         performSegueWithIdentifier("DoneLoadingSegue", sender: nil)
     }
     
-    func displayMessage(message : String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+    func displayMessage(message : String, title : String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
     }

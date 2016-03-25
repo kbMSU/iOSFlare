@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6A1C85A6A100EC9191 /* libz.tbd */; };
 		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
+		252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F98181CA530E30083E240 /* SendFlareResult.swift */; };
 		253E5DD51C9B1532000895E9 /* AlternateFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */; };
 		25590F451C85CF7700B4096E /* BackendModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25590F441C85CF7700B4096E /* BackendModule.swift */; };
 		25590F471C85CFEC00B4096E /* BackendModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25590F461C85CFEC00B4096E /* BackendModuleDelegate.swift */; };
@@ -52,6 +53,7 @@
 		04509DCC67271398EAF6607C /* Pods-Flare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flare/Pods-Flare.release.xcconfig"; sourceTree = "<group>"; };
 		252DFD6A1C85A6A100EC9191 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		252F98181CA530E30083E240 /* SendFlareResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareResult.swift; sourceTree = "<group>"; };
 		253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateFlareViewController.swift; sourceTree = "<group>"; };
 		25590F441C85CF7700B4096E /* BackendModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendModule.swift; sourceTree = "<group>"; };
 		25590F461C85CFEC00B4096E /* BackendModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendModuleDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				257314341C806F2E003381E8 /* PhoneNumber.swift */,
 				257314361C806F64003381E8 /* Contact.swift */,
 				257314431C8095D5003381E8 /* ErrorTypes.swift */,
+				252F98181CA530E30083E240 /* SendFlareResult.swift */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				25C2DB591C77789900D90197 /* MapViewController.swift in Sources */,
 				257314441C8095D5003381E8 /* ErrorTypes.swift in Sources */,
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
+				252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
 				25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */,
 				25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */,

@@ -267,6 +267,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Select Contacts" id="TbL-Uh-7Mq">
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="t8O-iP-dbl">
+                            <color key="tintColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="clearButtonAction:" destination="JeJ-b0-fRb" id="Ivk-K4-DU4"/>
                             </connections>
@@ -305,7 +306,7 @@
                                 <color key="textColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-92-gn4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-92-gn4">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -413,38 +414,55 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNp-90-YeN" userLabel="OverlayView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="37" placeholderIntrinsicHeight="37" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="e2k-xu-M9C" userLabel="MapLoadingIndicator">
+                                        <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rde-Af-uph" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" id="2lR-ud-gVS"/>
                             <constraint firstItem="E5E-02-Kxp" firstAttribute="top" secondItem="hhM-92-gn4" secondAttribute="bottom" id="80r-FU-MM6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hhM-92-gn4" secondAttribute="trailing" constant="-20" id="9AC-eg-Irr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nNp-90-YeN" secondAttribute="trailing" constant="-20" id="9dp-ec-hY0"/>
                             <constraint firstItem="Rde-Af-uph" firstAttribute="trailing" secondItem="oiI-fC-Bho" secondAttribute="trailingMargin" id="AC7-fM-tnk"/>
                             <constraint firstItem="BqU-z5-da4" firstAttribute="trailing" secondItem="oiI-fC-Bho" secondAttribute="trailingMargin" id="CMW-sp-Qp8"/>
                             <constraint firstItem="c7E-Yk-6GY" firstAttribute="top" secondItem="SQE-1n-uSM" secondAttribute="bottom" constant="8" id="En3-a8-elf"/>
                             <constraint firstItem="BqU-z5-da4" firstAttribute="top" secondItem="Rde-Af-uph" secondAttribute="bottom" constant="20" id="HJ0-Yb-CUp"/>
                             <constraint firstItem="hhM-92-gn4" firstAttribute="top" secondItem="Xjq-hL-iXV" secondAttribute="bottom" constant="20" id="JlX-Qu-JEh"/>
                             <constraint firstItem="hhM-92-gn4" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" constant="-20" id="MjF-TP-8Mz"/>
+                            <constraint firstItem="E5E-02-Kxp" firstAttribute="top" secondItem="nNp-90-YeN" secondAttribute="bottom" id="Rfq-sk-ezi"/>
                             <constraint firstItem="BqU-z5-da4" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" id="T6r-ht-QJh"/>
                             <constraint firstItem="Xjq-hL-iXV" firstAttribute="top" secondItem="BqU-z5-da4" secondAttribute="bottom" constant="8" id="d8m-Lw-BAJ"/>
                             <constraint firstItem="Xjq-hL-iXV" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" id="dS6-Is-8lW"/>
                             <constraint firstItem="Xjq-hL-iXV" firstAttribute="trailing" secondItem="oiI-fC-Bho" secondAttribute="trailingMargin" id="g1d-Q5-I1W"/>
                             <constraint firstItem="c7E-Yk-6GY" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" id="i4S-Po-PAf"/>
                             <constraint firstItem="Rde-Af-uph" firstAttribute="top" secondItem="c7E-Yk-6GY" secondAttribute="bottom" constant="8" id="lMu-dc-xzf"/>
+                            <constraint firstItem="nNp-90-YeN" firstAttribute="leading" secondItem="oiI-fC-Bho" secondAttribute="leadingMargin" constant="-20" id="rv4-EP-F5A"/>
+                            <constraint firstItem="nNp-90-YeN" firstAttribute="top" secondItem="oiI-fC-Bho" secondAttribute="topMargin" id="ugA-Wp-xqn"/>
                             <constraint firstItem="c7E-Yk-6GY" firstAttribute="trailing" secondItem="oiI-fC-Bho" secondAttribute="trailingMargin" id="xLC-xp-j6y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Confirm" id="FAg-kt-NYz">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="2Zk-Nw-mVr">
+                            <color key="tintColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="BcV-2j-R2A" kind="unwind" unwindAction="unwindBackToMapView:" id="Ef2-f1-VUL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="2Zk-Nw-mVr" id="syh-o2-KYS"/>
                         <outlet property="contactTableView" destination="Xjq-hL-iXV" id="H4x-H1-4TF"/>
                         <outlet property="messageTextField" destination="Rde-Af-uph" id="tEU-n0-uUc"/>
+                        <outlet property="overlayView" destination="nNp-90-YeN" id="eNK-oU-2LB"/>
                         <outlet property="sendButton" destination="hhM-92-gn4" id="wUe-8o-Env"/>
+                        <outlet property="topLevelView" destination="oiI-fC-Bho" id="hiT-rp-0Sz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knj-if-wA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
