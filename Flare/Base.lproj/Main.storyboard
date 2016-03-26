@@ -312,7 +312,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bY2-Kf-nmX"/>
                                 </constraints>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="Send" image="sendFlare">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1269,6 +1269,7 @@
         <image name="loadingScreen" width="512" height="250"/>
         <image name="locationMarker" width="24" height="62"/>
         <image name="selectedContacts" width="16" height="16"/>
+        <image name="sendFlare" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Sf7-12-UHj"/>
