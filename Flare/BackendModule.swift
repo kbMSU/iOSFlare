@@ -53,14 +53,15 @@ class BackendModule {
                 if results.isEmpty {
                     // If not, then we need to save this device
                     let newDevice = PFObject(className: "Device")
-                    newDevice.setObject("iOS", forKey: "DeviceType")
-                    newDevice.setObject(DataModule.myCountryCode, forKey: "CountryCode")
-                    newDevice.setObject(DataModule.myPhoneNumber, forKey: "Number")
-                    newDevice.setObject(fullPhone, forKey: "FullPhone")
+                    newDevice["DeviceType"] = "iOS"
+                    newDevice["CountryCode"] = DataModule.myCountryCode
+                    newDevice["Number"] = DataModule.myPhoneNumber
+                    newDevice["FullPhone"] = fullPhone
                     try newDevice.save()
                 } else {
                     let device = results[0]
-                    if let type = device.objectForKey("DeviceType") as? String where type != "iOS" {
+                    let type = device["DeviceType"] as! String
+                    if type != "iOS" {
                         device.setObject("iOS", forKey: "DeviceType")
                         try device.save()
                     }
