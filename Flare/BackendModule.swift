@@ -24,6 +24,10 @@ class BackendModule {
                 let fullPhone = DataModule.myCountryCode + DataModule.myPhoneNumber
                 let installation = PFInstallation.currentInstallation()
                 
+                /*
+                 
+                 Can't do this on clients, edit server code after finishing app
+                 
                 // Are there already installations with this phone number
                 let oldInstallations = try PFInstallation.query()!.whereKey("FullPhone", equalTo: fullPhone).findObjects()
                 if !oldInstallations.isEmpty {
@@ -35,6 +39,7 @@ class BackendModule {
                         try old.delete()
                     }
                 }
+                 */
                 
                 // Save this installation
                 installation.setObject(DataModule.myCountryCode, forKey: "CountryCode")
@@ -61,7 +66,9 @@ class BackendModule {
                     }
                 }
                 
-                self.delegate.registrationSuccess()
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.registrationSuccess()
+                }
             } catch {
                 self.delegate.registrationError(error)
             }
@@ -105,16 +112,17 @@ class BackendModule {
                     }
                     contact.hasFlare = hasFlare
                 }
-            }
-            catch {
+                
+                
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.findFriendsWithFlareSuccess()
+                }
+            } catch {
                 dispatch_async(GCDModule.GlobalMainQueue) {
                     self.delegate.findFriendsWithFlareError(error)
                 }
             }
-            
-            dispatch_async(GCDModule.GlobalMainQueue) {
-                self.delegate.findFriendsWithFlareSuccess()
-            }
+        
         }
     }
     
@@ -130,7 +138,7 @@ class BackendModule {
                     dispatch_async(GCDModule.GlobalMainQueue) {
                         self.delegate.sendTwilioMessageError(error)
                     }
-                    continue
+                    return
                 }
             }
             dispatch_async(GCDModule.GlobalMainQueue) {

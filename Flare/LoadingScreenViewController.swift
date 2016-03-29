@@ -40,7 +40,6 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
         case .Error:
             // If could not find contacts then no point trying to check for friends with flare
             displayMessage("There was a problem getting your contacts")
-            verifyPhoneNumber()
         case .Unauthorized,.None:
             findFriendsWithFlare()
         }
@@ -104,8 +103,9 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
     
     func displayMessage(message : String, title : String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: {(alert : UIAlertAction!) in
+            self.verifyPhoneNumber()
+        }))
         presentViewController(alert, animated: true, completion: nil)
     }
-
 }

@@ -22,8 +22,9 @@ class ConfirmCodeViewController: UIViewController, UITextFieldDelegate {
         
         enterCodeTextField.delegate = self
         
-        confirmButton.enabled = false
+        enterCodeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         
+        confirmButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {

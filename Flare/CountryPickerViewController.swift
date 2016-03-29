@@ -40,7 +40,7 @@ class CountryPickerViewController: UIViewController, UIPickerViewDataSource, UIP
     // MARK: PickerView delegate
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCountry = countriesArray[0]
+        selectedCountry = countriesArray[row]
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

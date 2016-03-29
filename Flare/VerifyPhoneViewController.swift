@@ -12,6 +12,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     
     var selectedCountry : (String,String)?
     var backendModule : BackendModule?
+    var code : String?
 
     // MARK: Outlets
     
@@ -27,6 +28,8 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
         countryLabel.text = selectedCountry!.0
         
         phoneNumberTextField.delegate = self
+        
+        phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         
         verifyButton.enabled = false
         
@@ -56,14 +59,13 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     
     // MARK: Actions
     
-    @IBAction func verifyClickAction(sender: UIButton) {
-        let code = generateCode()
+    @IBAction func verifyAction(sender: UIButton) {
+        code = generateCode()
         isBusy()
-        let numbers = [selectedCountry!.1+phoneNumberTextField.text!]
-        let message = "Your flare verification code is "+code
+        let numbers = ["+"+selectedCountry!.1+phoneNumberTextField.text!]
+        let message = "Your flare verification code is "+code!
         backendModule!.sendTwilioMessage(numbers, message: message)
     }
-    
     // MARK: BackendModule delegate
     
     func sendTwilioMessageSuccess() {
@@ -85,6 +87,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
             let destination = segue.destinationViewController as! ConfirmCodeViewController
             destination.countryCode = selectedCountry!.1
             destination.phoneNumber = phoneNumberTextField.text
+            destination.verificationCode = code
         }
     }
     

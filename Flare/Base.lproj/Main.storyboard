@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EkT-ph-YqO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EkT-ph-YqO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -674,11 +674,8 @@
                                     <action selector="yesClickAction:" destination="9xH-fE-FaM" eventType="touchUpInside" id="PWF-6b-kOd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome ! We confirmed your phone number" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-ZZ-Imr">
-                                <rect key="frame" x="20" y="28" width="560" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="EYQ-nz-DYL"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome ! We confirmed your phone number. Just a couple more questions and you will be all done" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-ZZ-Imr">
+                                <rect key="frame" x="20" y="28" width="560" height="214"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -699,31 +696,12 @@
                                 <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just a couple more questions and you will be all done" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ty-iY-U7d">
-                                <rect key="frame" x="20" y="86" width="560" height="156"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bau-8y-8u6">
                                 <rect key="frame" x="280" y="358" width="40" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="G1R-3z-M6E"/>
                                     <constraint firstAttribute="height" constant="40" id="cto-MD-m0h"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqx-qu-jtO" userLabel="OverlayView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="37" placeholderIntrinsicHeight="37" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6WS-Pd-BfD" userLabel="MapLoadingIndicator">
-                                        <rect key="frame" x="282" y="282" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="6WS-Pd-BfD" firstAttribute="centerY" secondItem="qqx-qu-jtO" secondAttribute="centerY" id="Ei9-dW-Vqx"/>
-                                    <constraint firstItem="6WS-Pd-BfD" firstAttribute="centerX" secondItem="qqx-qu-jtO" secondAttribute="centerX" id="fOi-6L-keQ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2b-zD-pXL">
@@ -740,6 +718,19 @@
                                     <action selector="yesClickAction:" destination="9xH-fE-FaM" eventType="touchUpInside" id="0qd-eU-cpR"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqx-qu-jtO" userLabel="OverlayView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="37" placeholderIntrinsicHeight="37" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6WS-Pd-BfD" userLabel="MapLoadingIndicator">
+                                        <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6WS-Pd-BfD" firstAttribute="centerY" secondItem="qqx-qu-jtO" secondAttribute="centerY" id="Ei9-dW-Vqx"/>
+                                    <constraint firstItem="6WS-Pd-BfD" firstAttribute="centerX" secondItem="qqx-qu-jtO" secondAttribute="centerX" id="fOi-6L-keQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -751,25 +742,22 @@
                             <constraint firstItem="RaQ-dC-hTm" firstAttribute="top" secondItem="9fb-vM-lH3" secondAttribute="bottom" constant="8" id="5Oh-Ub-ZWK"/>
                             <constraint firstItem="9fb-vM-lH3" firstAttribute="centerY" secondItem="gCj-PB-sbU" secondAttribute="centerY" id="ERy-2u-Aoh"/>
                             <constraint firstItem="QEi-XV-4QR" firstAttribute="top" secondItem="Tuh-ec-0Cs" secondAttribute="bottom" constant="8" id="FfF-iR-pOM"/>
-                            <constraint firstItem="9fb-vM-lH3" firstAttribute="top" secondItem="8ty-iY-U7d" secondAttribute="bottom" constant="8" id="Ibx-rW-i5f"/>
-                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="JcN-px-R2F"/>
                             <constraint firstItem="bau-8y-8u6" firstAttribute="leading" secondItem="g2b-zD-pXL" secondAttribute="trailing" constant="8" id="Mg8-ps-gLR"/>
                             <constraint firstItem="9fb-vM-lH3" firstAttribute="trailing" secondItem="gCj-PB-sbU" secondAttribute="trailingMargin" id="OyM-cM-DXv"/>
-                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="trailing" secondItem="gCj-PB-sbU" secondAttribute="trailingMargin" id="Qn7-bV-C8Z"/>
                             <constraint firstItem="bau-8y-8u6" firstAttribute="top" secondItem="9fb-vM-lH3" secondAttribute="bottom" constant="8" id="Sq0-Zh-edH"/>
                             <constraint firstItem="Tuh-ec-0Cs" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="TBl-a3-Flv"/>
                             <constraint firstItem="g2b-zD-pXL" firstAttribute="top" secondItem="9fb-vM-lH3" secondAttribute="bottom" constant="8" id="U28-85-L88"/>
                             <constraint firstItem="9fb-vM-lH3" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="WQV-Gu-rTV"/>
                             <constraint firstItem="hnn-JO-vak" firstAttribute="top" secondItem="qqx-qu-jtO" secondAttribute="bottom" id="b4O-g6-4rP"/>
-                            <constraint firstItem="8ty-iY-U7d" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="cvu-qV-KPx"/>
-                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="top" secondItem="smd-er-MsN" secondAttribute="bottom" constant="8" id="dCa-Pg-Ad6"/>
+                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="trailing" secondItem="gCj-PB-sbU" secondAttribute="trailingMargin" id="cVY-Qi-CIl"/>
+                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="top" secondItem="smd-er-MsN" secondAttribute="bottom" constant="8" id="d8C-ip-ahF"/>
+                            <constraint firstItem="9fb-vM-lH3" firstAttribute="top" secondItem="fTY-ZZ-Imr" secondAttribute="bottom" constant="8" id="lK0-El-jMX"/>
+                            <constraint firstItem="fTY-ZZ-Imr" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="mrY-hn-s2Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qqx-qu-jtO" secondAttribute="trailing" constant="-20" id="oZH-sl-6su"/>
-                            <constraint firstItem="8ty-iY-U7d" firstAttribute="trailing" secondItem="gCj-PB-sbU" secondAttribute="trailingMargin" id="ov7-rI-bYu"/>
                             <constraint firstItem="QEi-XV-4QR" firstAttribute="trailing" secondItem="gCj-PB-sbU" secondAttribute="trailingMargin" id="rp9-kX-uaG"/>
                             <constraint firstItem="bau-8y-8u6" firstAttribute="centerX" secondItem="gCj-PB-sbU" secondAttribute="centerX" id="stD-73-0bE"/>
                             <constraint firstItem="QEi-XV-4QR" firstAttribute="leading" secondItem="gCj-PB-sbU" secondAttribute="leadingMargin" id="vub-wA-865"/>
                             <constraint firstItem="RaQ-dC-hTm" firstAttribute="leading" secondItem="bau-8y-8u6" secondAttribute="trailing" constant="8" id="wOr-V2-9MO"/>
-                            <constraint firstItem="8ty-iY-U7d" firstAttribute="top" secondItem="fTY-ZZ-Imr" secondAttribute="bottom" constant="8" id="xA0-to-b6a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uzC-SN-2ee"/>
@@ -910,7 +898,6 @@
                                     <color key="titleColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="finishClickAction:" destination="Vfq-Ij-Y4z" eventType="touchUpInside" id="WGJ-yq-Aaa"/>
                                     <segue destination="ER2-7P-TME" kind="presentation" modalTransitionStyle="flipHorizontal" id="Sf7-12-UHj"/>
                                 </connections>
                             </button>
@@ -1015,7 +1002,7 @@
                                     <color key="titleColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="verifyClickAction:" destination="nNY-MQ-ex1" eventType="touchUpInside" id="BNw-qW-gYM"/>
+                                    <action selector="verifyAction:" destination="nNY-MQ-ex1" eventType="touchUpInside" id="pix-rO-6jJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you flare your friends, we need to show them who sent the flare. We need your phone number to do this" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8h-fF-VUx">
@@ -1070,8 +1057,7 @@
                         <outlet property="phoneNumberTextField" destination="rFK-iQ-rmi" id="oqI-k8-ia1"/>
                         <outlet property="topLevelView" destination="kWB-yg-Yjk" id="3z3-MZ-Xua"/>
                         <outlet property="verifyButton" destination="DpN-xH-PMS" id="jOl-w9-05t"/>
-                        <outlet property="verifyClickAction" destination="DpN-xH-PMS" id="SRQ-jV-eoU"/>
-                        <segue destination="5dJ-ca-8hh" kind="show" identifier="SendCodeSegue" id="gOa-UG-DyB"/>
+                        <segue destination="5dJ-ca-8hh" kind="show" identifier="SentCodeSegue" id="gOa-UG-DyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRS-OM-PnN" userLabel="First Responder" sceneMemberID="firstResponder"/>

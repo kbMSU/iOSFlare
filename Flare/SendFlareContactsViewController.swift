@@ -38,7 +38,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         
         searchContactsTextField.delegate = self
         
-        searchContactsTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
+        searchContactsTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         
         loadContacts()
         
@@ -47,7 +47,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         initialized = true
         
         if !DataModule.haveAskedToFindFriendsWithFlare {
-            timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "askToFindFriendsWithFlare", userInfo: nil, repeats: false)
+            timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(askToFindFriendsWithFlare), userInfo: nil, repeats: false)
         }
 
     }

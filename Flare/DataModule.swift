@@ -15,6 +15,9 @@ class DataModule {
     static var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     static func setup() {
+        
+        //defaults.setBool(false, forKey: "haveVerifiedPhoneNumber")
+        
         myCountryCode = defaults.stringForKey("myCountryCode") ?? ""
         myPhoneNumber = defaults.stringForKey("myPhoneNumber") ?? ""
         canAllowFriendsToFind = defaults.boolForKey("canAllowFriendsToFind")

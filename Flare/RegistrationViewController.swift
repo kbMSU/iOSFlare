@@ -23,10 +23,12 @@ class RegistrationViewController: UIViewController, BackendModuleDelegate {
         backendModule = BackendModule(delegate: self)
         
         overlayView.hidden = true
+        
+        navigationController?.navigationBarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +64,6 @@ class RegistrationViewController: UIViewController, BackendModuleDelegate {
     func registerForFlare() {
         isBusy()
         backendModule!.register()
-        doneBeingBusy()
     }
     
     func isBusy() {
