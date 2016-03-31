@@ -109,7 +109,13 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         cell.selectedSwitch.on = contactAtRow.isSelected
         cell.contactNameLabel.text = contactAtRow.firstName + " " + contactAtRow.lastName
         cell.contactPrimaryPhoneLabel.text = contactAtRow.primaryPhone.digits
-        cell.hasFlareImageView.hidden = !contactAtRow.hasFlare
+        if !contactAtRow.hasFlare {
+            cell.hasFlareImageView.hidden = true
+            cell.hasFlareImageWidthConstraint.constant = 0
+        } else {
+            cell.hasFlareImageView.hidden = false
+            cell.hasFlareImageWidthConstraint.constant = CGFloat(cell.hasFlareImageDimension)
+        }
         cell.contactImageView.image = contactAtRow.image
         
         return cell
@@ -123,15 +129,39 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
         let contactAtRow = contacts[indexPath.row]
         
-        contactAtRow.isSelected = !contactAtRow.isSelected
-        cell.selectedSwitch.on = contactAtRow.isSelected
         if contactAtRow.isSelected {
-            selectedContacts.append(contactAtRow)
-        } else {
             let index = selectedContacts.indexOf({(selected) -> Bool in
                 return selected.id == contactAtRow.id
             })
             selectedContacts.removeAtIndex(index!)
+            
+            contactAtRow.isSelected = false
+            cell.selectedSwitch.on = false
+        } else {
+            if contactAtRow.phoneNumbers.count > 1 {
+                let alert = UIAlertController(title: "Choose number", message: "This contact has multiple phone numbers, please choose a number to flare to", preferredStyle: .ActionSheet)
+                let image = UIImage(named: "fireRedIcon")
+                for number in contactAtRow.phoneNumbers {
+                    let action = UIAlertAction(title: number.digits, style: .Default, handler: {(action) -> Void in
+                        contactAtRow.primaryPhone = number
+                        contactAtRow.isSelected = true
+                        cell.selectedSwitch.on = true
+                        self.selectedContacts.append(contactAtRow)
+                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                    })
+                    if number.hasFlare {
+                        action.setValue(image, forKey: "image")
+                    }
+                    alert.addAction(action)
+                }
+                alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+                alert.view.tintColor = Constants.flareRedColor
+                presentViewController(alert, animated: true, completion: nil)
+            } else {
+                contactAtRow.isSelected = true
+                cell.selectedSwitch.on = true
+                self.selectedContacts.append(contactAtRow)
+            }
         }
         
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)

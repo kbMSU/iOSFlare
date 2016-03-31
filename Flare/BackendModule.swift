@@ -191,7 +191,7 @@ class BackendModule {
                     for number in numbersWithoutFlare {
                         do {
                             var params = [String : String]()
-                            params["to"] = number
+                            params["to"] = "+"+number
                             params["message"] = noFlareMessage
                             try PFCloud.callFunction("SendTwilioMessage", withParameters: params)
                         } catch {

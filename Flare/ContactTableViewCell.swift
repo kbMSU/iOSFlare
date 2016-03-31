@@ -10,11 +10,15 @@ import UIKit
 
 class ContactTableViewCell: UITableViewCell {
 
+    let hasFlareImageDimension = 32
+    
     @IBOutlet weak var selectedSwitch: UISwitch!
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var contactPrimaryPhoneLabel: UILabel!
     @IBOutlet weak var hasFlareImageView: UIImageView!
+    
+    @IBOutlet weak var hasFlareImageWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
