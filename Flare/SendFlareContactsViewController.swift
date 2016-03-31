@@ -148,6 +148,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
                         cell.selectedSwitch.on = true
                         self.selectedContacts.append(contactAtRow)
                         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                        self.contactsSelected()
                     })
                     if number.hasFlare {
                         action.setValue(image, forKey: "image")

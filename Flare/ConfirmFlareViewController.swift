@@ -27,6 +27,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet var topLevelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

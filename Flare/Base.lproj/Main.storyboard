@@ -233,8 +233,8 @@
                                     <segue destination="RSd-PI-x7U" kind="show" identifier="ConfirmFlareSegue" id="YyI-lC-adQ"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-C1-aJc" userLabel="OverlayView">
-                                <rect key="frame" x="0.0" y="325" width="600" height="536"/>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-C1-aJc" userLabel="OverlayView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="37" placeholderIntrinsicHeight="37" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DKA-G9-doj" userLabel="MapLoadingIndicator">
                                         <rect key="frame" x="282" y="250" width="37" height="37"/>
@@ -293,7 +293,7 @@
                         <viewControllerLayoutGuide type="top" id="SQE-1n-uSM"/>
                         <viewControllerLayoutGuide type="bottom" id="E5E-02-Kxp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oiI-fC-Bho">
+                    <view key="view" contentMode="scaleToFill" id="oiI-fC-Bho" userLabel="Top Level View">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -462,7 +462,7 @@
                         <outlet property="messageTextField" destination="Rde-Af-uph" id="tEU-n0-uUc"/>
                         <outlet property="overlayView" destination="nNp-90-YeN" id="eNK-oU-2LB"/>
                         <outlet property="sendButton" destination="hhM-92-gn4" id="wUe-8o-Env"/>
-                        <outlet property="topLevelView" destination="oiI-fC-Bho" id="hiT-rp-0Sz"/>
+                        <outlet property="topLevelView" destination="oiI-fC-Bho" id="7Ho-JA-Ggd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knj-if-wA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
