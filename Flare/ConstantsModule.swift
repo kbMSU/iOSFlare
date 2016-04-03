@@ -11,4 +11,5 @@ import UIKit
 
 struct Constants {
     static let flareRedColor = UIColor(red: 1, green: 0.274, blue: 0.298, alpha: 1)
+    static let overlayAlpha = 0.5
 }

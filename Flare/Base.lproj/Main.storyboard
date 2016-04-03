@@ -87,6 +87,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ze5-Hl-2If" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4Fl-7z-ldh"/>
                             <constraint firstItem="8LJ-oH-Q2A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="50Q-oi-xnf"/>
@@ -110,20 +111,47 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Flare" id="DfB-MV-Lmt"/>
+                    <navigationItem key="navigationItem" title="Flare" id="xyo-m1-k7T">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="u0F-ud-832">
+                            <color key="tintColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="slideOutAction:" destination="BYZ-38-t0r" id="qac-dS-i6u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="ze5-Hl-2If" id="WCS-Mh-oXV"/>
-                        <outlet property="loadingIndicator" destination="HZR-8Q-kaT" id="WFv-Oc-lzQ"/>
+                        <outlet property="loadingIndicator" destination="HZR-8Q-kaT" id="yyX-bC-NxO"/>
                         <outlet property="locationMarker" destination="AhO-sG-zjN" id="x9Z-gR-rUv"/>
                         <outlet property="mapView" destination="Nts-VU-0ey" id="cfe-wj-or0"/>
                         <outlet property="overlayView" destination="8Dv-ER-deo" id="MgD-mQ-2hZ"/>
                         <outlet property="sendFlareButton" destination="8LJ-oH-Q2A" id="XaH-qj-lEe"/>
+                        <outlet property="slideOutNavigationButton" destination="u0F-ud-832" id="mrA-pA-DfM"/>
                         <outlet property="topLevelView" destination="8bC-Xf-vdC" id="Cry-Vb-nje"/>
+                        <segue destination="GDD-kc-aG2" kind="presentation" identifier="SlideOutSegue" id="O9a-Zq-81t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2869" y="1835"/>
+        </scene>
+        <!--Slide Out Bar-->
+        <scene sceneID="OTf-5O-mnE">
+            <objects>
+                <viewController id="GDD-kc-aG2" userLabel="Slide Out Bar" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lxV-gR-Yrf"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGj-av-PZ0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pel-qp-61d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9fL-aG-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="2619"/>
         </scene>
         <!--Select Contacts-->
         <scene sceneID="cXk-AV-BZD">
@@ -1267,6 +1295,7 @@
         <image name="fireRedIcon" width="32" height="32"/>
         <image name="loadingScreen" width="512" height="250"/>
         <image name="locationMarker" width="24" height="62"/>
+        <image name="menu" width="25" height="25"/>
         <image name="selectedContacts" width="16" height="16"/>
         <image name="sendFlare" width="16" height="16"/>
     </resources>

@@ -18,6 +18,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let geoCoder : CLGeocoder = CLGeocoder()
     let defaultLocationText = "Grabbing address ..."
     let geoCoderUserIntiatedCancelCode: Int = 10
+    let transitionController = SlideOutTransitionController()
     
     // MARK: Properties
     var userLocation : CLLocation?
@@ -33,6 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var locationMarker: UIImageView!
+    @IBOutlet weak var slideOutNavigationButton: UIBarButtonItem!
     
     // MARK: View LifeCycle
     override func viewDidLoad() {
@@ -129,6 +131,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             case "SendFlareClickSegue":
                 let nextSceneViewController = segue.destinationViewController as! SendFlareContactsViewController
                 nextSceneViewController.userLocation = userLocation
+            case "SlideOutSegue":
+                let slideOutViewController = segue.destinationViewController
+                slideOutViewController.transitioningDelegate = transitionController
             default:
                 return
             }
@@ -176,6 +181,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         case .Unauthorized:
             displayError("You did not authorize us to access your contacts. We need to do this to enable you to flare to them")
         }
+    }
+    
+    // MARK: Actions
+    @IBAction func slideOutAction(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("SlideOutSegue", sender: self)
     }
     
     // MARK: Helper Methods
@@ -257,7 +267,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         loadingIndicator.hidden = false
         loadingIndicator.startAnimating()
-
     }
     
     func doneBeingBusy() {

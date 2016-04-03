@@ -211,7 +211,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
             let notification = UILocalNotification()
             notification.alertBody = "The flare has been sent !"
             notification.alertAction = "clear"
-            notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+            notification.fireDate = NSDate(timeIntervalSinceNow: 1.5)
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.category = "Flare"
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
