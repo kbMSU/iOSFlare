@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flare/MapViewController.swift"
-            timestampString = "481374972.862529"
+            timestampString = "481389458.164958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "updateAddress()"
             landmarkType = "5">
          </BreakpointContent>

@@ -34,8 +34,8 @@ class SlideOutTransitionController: NSObject, UIViewControllerAnimatedTransition
         let toView = toViewController!.view
         
         let size = toView.frame.size
-        var offSetTransform = CGAffineTransformMakeTranslation(size.width - 120, 0)
-        offSetTransform = CGAffineTransformScale(offSetTransform, 0.6, 0.6)
+        var offSetTransform = CGAffineTransformMakeTranslation(size.width - 160, 0)
+        offSetTransform = CGAffineTransformScale(offSetTransform, 0.8, 0.8)
         
         snapshot = fromView.snapshotViewAfterScreenUpdates(true)
         

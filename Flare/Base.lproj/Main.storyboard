@@ -65,6 +65,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fIJ-h8-jcI"/>
                                 </constraints>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="-3" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Send a flare to a friend" image="fireIcon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -80,6 +82,7 @@
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="HZR-8Q-kaT" firstAttribute="centerX" secondItem="8Dv-ER-deo" secondAttribute="centerX" id="sen-y6-IoM"/>
                                     <constraint firstItem="HZR-8Q-kaT" firstAttribute="centerY" secondItem="8Dv-ER-deo" secondAttribute="centerY" id="y1U-5z-84L"/>
@@ -138,7 +141,7 @@
         <!--Slide Out Bar-->
         <scene sceneID="OTf-5O-mnE">
             <objects>
-                <viewController id="GDD-kc-aG2" userLabel="Slide Out Bar" sceneMemberID="viewController">
+                <viewController id="GDD-kc-aG2" userLabel="Slide Out Bar" customClass="SlideOutViewController" customModule="Flare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lxV-gR-Yrf"/>
                         <viewControllerLayoutGuide type="bottom" id="eGj-av-PZ0"/>
@@ -146,8 +149,87 @@
                     <view key="view" contentMode="scaleToFill" id="Pel-qp-61d">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-dk-6y5">
+                                <rect key="frame" x="20" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-6M-N5n">
+                                        <rect key="frame" x="0.0" y="8" width="300" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="SeY-lI-oDA"/>
+                                            <constraint firstAttribute="width" constant="300" id="ofL-mh-jg9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Button" image="profileImage"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dig-Qr-I6k">
+                                        <rect key="frame" x="0.0" y="88" width="300" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="NOx-7I-ivT"/>
+                                            <constraint firstAttribute="width" constant="300" id="YTb-Qc-rgg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="History" image="history"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUT-Bd-mQC">
+                                        <rect key="frame" x="0.0" y="135" width="300" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="FOI-eR-dZB"/>
+                                            <constraint firstAttribute="height" constant="32" id="hEn-2s-hYy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Groups" image="groups"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgb-FZ-Mia">
+                                        <rect key="frame" x="0.0" y="182" width="300" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Cfn-A1-VaK"/>
+                                            <constraint firstAttribute="height" constant="32" id="inB-Ik-EfD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Settings" image="settings"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-zJ-DPm">
+                                        <rect key="frame" x="0.0" y="229" width="300" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Yjr-l7-Ijv"/>
+                                            <constraint firstAttribute="width" constant="300" id="dAv-F2-dPD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="About" image="about"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dzM-zJ-DPm" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="1KZ-vF-XY5"/>
+                                    <constraint firstAttribute="height" constant="300" id="63A-Or-RPo"/>
+                                    <constraint firstAttribute="width" constant="300" id="AXU-r4-7KK"/>
+                                    <constraint firstItem="YUT-Bd-mQC" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="B9V-G3-WIt"/>
+                                    <constraint firstItem="k9u-6M-N5n" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="I5U-88-8eW"/>
+                                    <constraint firstItem="dig-Qr-I6k" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="TPN-jv-Deq"/>
+                                    <constraint firstItem="YUT-Bd-mQC" firstAttribute="top" secondItem="dig-Qr-I6k" secondAttribute="bottom" constant="15" id="aBC-DS-wQG"/>
+                                    <constraint firstItem="lgb-FZ-Mia" firstAttribute="top" secondItem="YUT-Bd-mQC" secondAttribute="bottom" constant="15" id="bxC-FP-XGK"/>
+                                    <constraint firstItem="lgb-FZ-Mia" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="ejL-Cc-FsD"/>
+                                    <constraint firstItem="dzM-zJ-DPm" firstAttribute="top" secondItem="lgb-FZ-Mia" secondAttribute="bottom" constant="15" id="faN-6b-rIv"/>
+                                    <constraint firstItem="dig-Qr-I6k" firstAttribute="top" secondItem="k9u-6M-N5n" secondAttribute="bottom" constant="30" id="hPc-Al-Uh1"/>
+                                    <constraint firstItem="k9u-6M-N5n" firstAttribute="top" secondItem="uOI-dk-6y5" secondAttribute="top" constant="8" id="kr5-eo-ORw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="uOI-dk-6y5" firstAttribute="centerY" secondItem="Pel-qp-61d" secondAttribute="centerY" id="4o9-6U-Pcz"/>
+                            <constraint firstItem="uOI-dk-6y5" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="Q5M-vE-KqK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileButton" destination="k9u-6M-N5n" id="zQc-LK-2Pa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fL-aG-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -254,6 +336,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="vC8-QN-KgH"/>
                                 </constraints>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Done selecting contacts" image="selectedContacts">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -340,6 +424,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bY2-Kf-nmX"/>
                                 </constraints>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Send" image="sendFlare">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1291,13 +1377,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="32" height="32"/>
         <image name="fireIcon" width="16" height="16"/>
         <image name="fireRedIcon" width="32" height="32"/>
+        <image name="groups" width="32" height="32"/>
+        <image name="history" width="32" height="32"/>
         <image name="loadingScreen" width="512" height="250"/>
         <image name="locationMarker" width="24" height="62"/>
         <image name="menu" width="25" height="25"/>
+        <image name="profileImage" width="50" height="50"/>
         <image name="selectedContacts" width="16" height="16"/>
         <image name="sendFlare" width="16" height="16"/>
+        <image name="settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FzA-NK-JPV"/>

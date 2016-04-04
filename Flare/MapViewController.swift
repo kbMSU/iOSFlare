@@ -188,6 +188,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         performSegueWithIdentifier("SlideOutSegue", sender: self)
     }
     
+    @IBAction func leftScreenEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+        performSegueWithIdentifier("SlideOutSegue", sender: self)
+    }
+    
     // MARK: Helper Methods
     func displayError(message : String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
