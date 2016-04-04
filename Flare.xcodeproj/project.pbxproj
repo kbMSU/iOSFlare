@@ -24,6 +24,7 @@
 		2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */; };
 		25947C211CB11B1600F949C5 /* SlideOutTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */; };
 		25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C221CB14AC000F949C5 /* SlideOutViewController.swift */; };
+		25947C251CB22BA500F949C5 /* StartRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */; };
 		2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */; };
 		25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB561C77789900D90197 /* AppDelegate.swift */; };
 		25C2DB591C77789900D90197 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB581C77789900D90197 /* MapViewController.swift */; };
@@ -70,6 +71,7 @@
 		2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutTransitionController.swift; sourceTree = "<group>"; };
 		25947C221CB14AC000F949C5 /* SlideOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutViewController.swift; sourceTree = "<group>"; };
+		25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRegistrationViewController.swift; sourceTree = "<group>"; };
 		2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
 		25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flare-Bridging-Header.h"; sourceTree = "<group>"; };
 		25C2DB531C77789900D90197 /* Flare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */,
 				253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */,
 				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
+				25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				25590F471C85CFEC00B4096E /* BackendModuleDelegate.swift in Sources */,
 				25D6AB1B1C899186001A9C11 /* RegistrationViewController.swift in Sources */,
 				253E5DD51C9B1532000895E9 /* AlternateFlareViewController.swift in Sources */,
+				25947C251CB22BA500F949C5 /* StartRegistrationViewController.swift in Sources */,
 				257314301C8054D6003381E8 /* ContactsModule.swift in Sources */,
 				2573143E1C8086A1003381E8 /* ContactModuleDelegate.swift in Sources */,
 				25590F451C85CF7700B4096E /* BackendModule.swift in Sources */,

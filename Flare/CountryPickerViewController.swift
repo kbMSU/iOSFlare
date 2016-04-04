@@ -26,10 +26,7 @@ class CountryPickerViewController: UIViewController, UIPickerViewDataSource, UIP
         
         selectedCountry = countriesArray[0]
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        navigationController?.navigationBarHidden = true
+        navigationController?.navigationBarHidden = false
     }
 
     override func didReceiveMemoryWarning() {
