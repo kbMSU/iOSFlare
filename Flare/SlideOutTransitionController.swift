@@ -11,6 +11,8 @@ import UIKit
 
 class SlideOutTransitionController: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     
+    var toViewController : UIViewController!
+    var toView : UIView!
     var snapshot : UIView!
     var isPresenting : Bool = true
     
@@ -30,8 +32,8 @@ class SlideOutTransitionController: NSObject, UIViewControllerAnimatedTransition
         let container = transitionContext.containerView()
         let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         let fromView = fromViewController!.view
-        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
-        let toView = toViewController!.view
+        toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        toView = toViewController!.view
         
         let size = toView.frame.size
         var offSetTransform = CGAffineTransformMakeTranslation(size.width - 160, 0)
@@ -39,14 +41,24 @@ class SlideOutTransitionController: NSObject, UIViewControllerAnimatedTransition
         
         snapshot = fromView.snapshotViewAfterScreenUpdates(true)
         
+        let leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe(_:)))
+        leftSwipeRecognizer.numberOfTouchesRequired = 1
+        leftSwipeRecognizer.direction = .Left
+        container!.addGestureRecognizer(leftSwipeRecognizer)
+        
+        /*let tapMainRecognizer = UITapGestureRecognizer(target: container!, action: #selector(tapMainView(_:)))
+        tapMainRecognizer.numberOfTouchesRequired = 1
+        tapMainRecognizer.numberOfTapsRequired = 1
+        snapshot.addGestureRecognizer(tapMainRecognizer)*/
+        
         container!.addSubview(toView)
         container!.addSubview(snapshot)
         
         let duration = transitionDuration(transitionContext)
         
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.TransitionNone,
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.TransitionNone,
             animations: {
-             self.snapshot.transform = offSetTransform
+                self.snapshot.transform = offSetTransform
             },
             completion: { finished in
                 transitionContext.completeTransition(true)
@@ -68,6 +80,29 @@ class SlideOutTransitionController: NSObject, UIViewControllerAnimatedTransition
             }
         )
     }
+    
+    func leftSwipe(sender : UISwipeGestureRecognizer) {
+        toViewController!.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /*func tapMainView(sender : UITapGestureRecognizer) {
+        let tapPosition = sender.locationInView(container!)
+        let x = tapPosition.x
+        let y = tapPosition.y
+        let size = toView.frame.size
+        
+        if x < size.width - 160 {
+            return
+        }
+        
+        let removeY = toView.frame.size.height * 0.1
+        
+        if y > size.height - removeY || y < removeY {
+            return
+        }
+        
+        toViewController!.dismissViewControllerAnimated(true, completion: nil)
+    }*/
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresenting = true

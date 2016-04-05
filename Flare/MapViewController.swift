@@ -18,7 +18,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let geoCoder : CLGeocoder = CLGeocoder()
     let defaultLocationText = "Grabbing address ..."
     let geoCoderUserIntiatedCancelCode: Int = 10
-    let transitionController = SlideOutTransitionController()
     
     // MARK: Properties
     var userLocation : CLLocation?
@@ -34,7 +33,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var locationMarker: UIImageView!
-    @IBOutlet weak var slideOutNavigationButton: UIBarButtonItem!
     
     // MARK: View LifeCycle
     override func viewDidLoad() {
@@ -117,6 +115,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: Map Delegate
+    
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinate = mapView.centerCoordinate
         let centerLocation = CLLocation(coordinate: centerCoordinate, altitude: mapViewRadius, horizontalAccuracy: locationAccuracy, verticalAccuracy: locationAccuracy, timestamp: NSDate())
@@ -125,15 +124,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "SendFlareClickSegue":
                 let nextSceneViewController = segue.destinationViewController as! SendFlareContactsViewController
                 nextSceneViewController.userLocation = userLocation
-            case "SlideOutSegue":
-                let slideOutViewController = segue.destinationViewController
-                slideOutViewController.transitioningDelegate = transitionController
             default:
                 return
             }
@@ -171,6 +168,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: ContactModuleDelegate
+    
     func retreiveResult(result: ErrorTypes) {
         doneBeingBusy()
         switch result {
@@ -184,15 +182,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: Actions
-    @IBAction func slideOutAction(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("SlideOutSegue", sender: self)
-    }
     
-    @IBAction func leftScreenEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
-        performSegueWithIdentifier("SlideOutSegue", sender: self)
-    }
+    
     
     // MARK: Helper Methods
+    
     func displayError(message : String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))

@@ -9,6 +9,8 @@
 import UIKit
 
 class SlideOutViewController: UIViewController {
+    
+    var leftSwipeRecognizer : UISwipeGestureRecognizer!
         
     // MARK: Outlets
     
@@ -25,8 +27,4 @@ class SlideOutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: Actions
-    
-    
 }
