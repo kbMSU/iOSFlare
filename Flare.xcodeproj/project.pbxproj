@@ -26,6 +26,7 @@
 		25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C221CB14AC000F949C5 /* SlideOutViewController.swift */; };
 		25947C251CB22BA500F949C5 /* StartRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */; };
 		25947C271CB28F6600F949C5 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C261CB28F6600F949C5 /* MainContainerViewController.swift */; };
+		25947C291CB408AC00F949C5 /* SlideOutModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C281CB408AC00F949C5 /* SlideOutModule.swift */; };
 		2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */; };
 		25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB561C77789900D90197 /* AppDelegate.swift */; };
 		25C2DB591C77789900D90197 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB581C77789900D90197 /* MapViewController.swift */; };
@@ -74,6 +75,7 @@
 		25947C221CB14AC000F949C5 /* SlideOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutViewController.swift; sourceTree = "<group>"; };
 		25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRegistrationViewController.swift; sourceTree = "<group>"; };
 		25947C261CB28F6600F949C5 /* MainContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
+		25947C281CB408AC00F949C5 /* SlideOutModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutModule.swift; sourceTree = "<group>"; };
 		2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
 		25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flare-Bridging-Header.h"; sourceTree = "<group>"; };
 		25C2DB531C77789900D90197 /* Flare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,16 +186,17 @@
 				257314451C80AB0E003381E8 /* GCDModule.swift */,
 				25F818D91C82D9EA00176587 /* ConstantsModule.swift */,
 				25590F441C85CF7700B4096E /* BackendModule.swift */,
+				25947C281CB408AC00F949C5 /* SlideOutModule.swift */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
 		};
-		25947C1F1CB11AD200F949C5 /* SlideOut Controller */ = {
+		25947C1F1CB11AD200F949C5 /* Slide */ = {
 			isa = PBXGroup;
 			children = (
 				25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */,
 			);
-			name = "SlideOut Controller";
+			name = Slide;
 			sourceTree = "<group>";
 		};
 		2596DE7E1C803B4200A7172C /* Controls */ = {
@@ -228,7 +231,7 @@
 		25C2DB551C77789900D90197 /* Flare */ = {
 			isa = PBXGroup;
 			children = (
-				25947C1F1CB11AD200F949C5 /* SlideOut Controller */,
+				25947C1F1CB11AD200F949C5 /* Slide */,
 				2573143A1C808675003381E8 /* Protocols */,
 				257314331C806F21003381E8 /* DataModels */,
 				2596DE7E1C803B4200A7172C /* Controls */,
@@ -442,6 +445,7 @@
 				25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */,
 				25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */,
 				257314461C80AB0E003381E8 /* GCDModule.swift in Sources */,
+				25947C291CB408AC00F949C5 /* SlideOutModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

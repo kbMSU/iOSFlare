@@ -183,7 +183,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     // MARK: Actions
     
-    
+    @IBAction func showSlideOutAction(sender: UIBarButtonItem) {
+        SlideOutModule.slideOut()
+    }
     
     // MARK: Helper Methods
     

@@ -108,6 +108,9 @@
                     <navigationItem key="navigationItem" title="Flare" id="xyo-m1-k7T">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="u0F-ud-832">
                             <color key="tintColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="showSlideOutAction:" destination="BYZ-38-t0r" id="afy-fy-Gzl"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -214,7 +217,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutButtonWidth" destination="dAv-F2-dPD" id="cuE-mx-ghL"/>
+                        <outlet property="groupsButtonWidth" destination="FOI-eR-dZB" id="uUc-xs-pkM"/>
+                        <outlet property="historyButtonWidth" destination="YTb-Qc-rgg" id="EBP-uv-Kmv"/>
                         <outlet property="profileButton" destination="k9u-6M-N5n" id="zQc-LK-2Pa"/>
+                        <outlet property="profileButtonWidth" destination="ofL-mh-jg9" id="Fsj-Ne-dzr"/>
+                        <outlet property="settingsButtonWidth" destination="Cfn-A1-VaK" id="dOf-Oh-2ci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fL-aG-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>

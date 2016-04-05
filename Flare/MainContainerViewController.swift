@@ -16,9 +16,10 @@ class MainContainerViewController: UIViewController {
     
     var mainViewTranslation : CGFloat!
     var showingSlideOut = false
+    var leftPanStartingPoint : CGPoint?
     
     var leftEdgePanRecognizer : UIScreenEdgePanGestureRecognizer!
-    var leftSwipeRecognizer : UISwipeGestureRecognizer!
+    var leftSwipeRecognizer : UIPanGestureRecognizer!
     var mainViewTapRecognizer : UITapGestureRecognizer!
     
     // MARK: Outlets
@@ -31,6 +32,8 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SlideOutModule.slideOutManager = self
+        
         let maxX = UIScreen.mainScreen().bounds.width
         mainViewTranslation = maxX - remainingAfterAnimation
         
@@ -39,7 +42,10 @@ class MainContainerViewController: UIViewController {
         leftEdgePanRecognizer.maximumNumberOfTouches = 1
         view.addGestureRecognizer(leftEdgePanRecognizer)
         
-        leftSwipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipeWhenSlideOutShowing(_:)))
+        leftSwipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(leftSwipeWhenSlideOutShowing(_:)))
+        leftSwipeRecognizer.minimumNumberOfTouches = 1
+        leftSwipeRecognizer.maximumNumberOfTouches = 1
+        view.addGestureRecognizer(leftSwipeRecognizer)
         
         mainViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapMainViewWhenSlideOutShowing(_:)))
         mainViewTapRecognizer.numberOfTouchesRequired = 1
@@ -102,8 +108,61 @@ class MainContainerViewController: UIViewController {
         }
     }
     
-    func leftSwipeWhenSlideOutShowing(sender : UISwipeGestureRecognizer) {
+    func leftSwipeWhenSlideOutShowing(sender : UIPanGestureRecognizer) {
+        let point = sender.locationInView(self.view)
         
+        if leftPanStartingPoint == nil {
+            if point.x < mainViewTranslation {
+                return
+            }
+            
+            leftPanStartingPoint = point
+        } else {
+            switch sender.state {
+            case .Ended,.Cancelled,.Failed:
+                if point.x > leftPanStartingPoint!.x {
+                    return
+                }
+                
+                let currentX = mainView.frame.origin.x
+                var destinationX = CGFloat(0)
+                let distance = currentX - destinationX
+                var time = animationDuration/Double(mainViewTranslation)*Double(distance)
+                if leftPanStartingPoint!.x - point.x < 50 {
+                    destinationX = mainViewTranslation
+                    time = 0.1
+                    showingSlideOut = true
+                } else {
+                    showingSlideOut = false
+                }
+                
+                UIView.animateWithDuration(time, animations: {
+                    self.mainView.frame.origin.x = destinationX
+                    }, completion: { (result: Bool) in
+                        if self.showingSlideOut {
+                            self.slideOutOpened()
+                        } else {
+                            self.slideOutClosed()
+                        }
+                    }
+                )
+                
+            default:
+                isSliding()
+                
+                if point.x <= 0 {
+                    mainView.frame.origin.x = 0
+                    return
+                }
+                
+                let distance = leftPanStartingPoint!.x - point.x
+                if distance > 0 {
+                    mainView.frame.origin.x = mainViewTranslation - distance
+                } else {
+                    mainView.frame.origin.x = mainViewTranslation
+                }
+            }
+        }
     }
     
     func tapMainViewWhenSlideOutShowing(sender : UITapGestureRecognizer) {
@@ -119,6 +178,16 @@ class MainContainerViewController: UIViewController {
                 }
             )
         }
+    }
+    
+    func slideOut() {
+        UIView.animateWithDuration(animationDuration, animations: {
+            self.mainView.frame.origin.x = self.mainViewTranslation
+            }, completion: { (result: Bool) in
+                self.showingSlideOut = true
+                self.slideOutOpened()
+            }
+        )
     }
     
     func isSliding() {
@@ -142,5 +211,7 @@ class MainContainerViewController: UIViewController {
         leftEdgePanRecognizer.enabled = false
         leftSwipeRecognizer.enabled = true
         mainViewTapRecognizer.enabled = true
+        
+        leftPanStartingPoint = nil
     }
 }
