@@ -22,7 +22,6 @@
 		257314461C80AB0E003381E8 /* GCDModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257314451C80AB0E003381E8 /* GCDModule.swift */; };
 		2592A30B1C7CD0A700563426 /* SendFlareContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */; };
 		2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */; };
-		25947C211CB11B1600F949C5 /* SlideOutTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */; };
 		25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C221CB14AC000F949C5 /* SlideOutViewController.swift */; };
 		25947C251CB22BA500F949C5 /* StartRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */; };
 		25947C271CB28F6600F949C5 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C261CB28F6600F949C5 /* MainContainerViewController.swift */; };
@@ -71,7 +70,6 @@
 		257314451C80AB0E003381E8 /* GCDModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDModule.swift; sourceTree = "<group>"; };
 		2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareContactsViewController.swift; sourceTree = "<group>"; };
 		2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
-		25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutTransitionController.swift; sourceTree = "<group>"; };
 		25947C221CB14AC000F949C5 /* SlideOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutViewController.swift; sourceTree = "<group>"; };
 		25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartRegistrationViewController.swift; sourceTree = "<group>"; };
 		25947C261CB28F6600F949C5 /* MainContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
@@ -191,14 +189,6 @@
 			name = Modules;
 			sourceTree = "<group>";
 		};
-		25947C1F1CB11AD200F949C5 /* Slide */ = {
-			isa = PBXGroup;
-			children = (
-				25947C201CB11B1600F949C5 /* SlideOutTransitionController.swift */,
-			);
-			name = Slide;
-			sourceTree = "<group>";
-		};
 		2596DE7E1C803B4200A7172C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +221,6 @@
 		25C2DB551C77789900D90197 /* Flare */ = {
 			isa = PBXGroup;
 			children = (
-				25947C1F1CB11AD200F949C5 /* Slide */,
 				2573143A1C808675003381E8 /* Protocols */,
 				257314331C806F21003381E8 /* DataModels */,
 				2596DE7E1C803B4200A7172C /* Controls */,
@@ -419,7 +408,6 @@
 			files = (
 				25C2DB591C77789900D90197 /* MapViewController.swift in Sources */,
 				257314441C8095D5003381E8 /* ErrorTypes.swift in Sources */,
-				25947C211CB11B1600F949C5 /* SlideOutTransitionController.swift in Sources */,
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,

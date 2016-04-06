@@ -73,11 +73,12 @@ class MainContainerViewController: UIViewController {
             }
             
             var finalPosition = mainViewTranslation
-            let remainingTranslation = finalPosition - mainViewX
+            var remainingTranslation = finalPosition - mainViewX
             var remainingTime = animationDuration/Double(mainViewTranslation)*Double(remainingTranslation)
-            if mainViewX < 50 {
+            if sender.velocityInView(self.view).x < 0 {
                 finalPosition = 0
-                remainingTime = 0.1
+                remainingTranslation = mainViewX
+                remainingTime = animationDuration/Double(mainViewTranslation)*Double(remainingTranslation)
                 showingSlideOut = false
             } else {
                 showingSlideOut = true
@@ -126,11 +127,12 @@ class MainContainerViewController: UIViewController {
                 
                 let currentX = mainView.frame.origin.x
                 var destinationX = CGFloat(0)
-                let distance = currentX - destinationX
+                var distance = currentX - destinationX
                 var time = animationDuration/Double(mainViewTranslation)*Double(distance)
-                if leftPanStartingPoint!.x - point.x < 50 {
+                if sender.velocityInView(self.view).x > 0 {
                     destinationX = mainViewTranslation
-                    time = 0.1
+                    distance = destinationX - currentX
+                    time = animationDuration/Double(mainViewTranslation)*Double(distance)
                     showingSlideOut = true
                 } else {
                     showingSlideOut = false
@@ -181,6 +183,8 @@ class MainContainerViewController: UIViewController {
     }
     
     func slideOut() {
+        isSliding()
+        
         UIView.animateWithDuration(animationDuration, animations: {
             self.mainView.frame.origin.x = self.mainViewTranslation
             }, completion: { (result: Bool) in
@@ -188,6 +192,11 @@ class MainContainerViewController: UIViewController {
                 self.slideOutOpened()
             }
         )
+    }
+    
+    func closeSlideOut() {
+        mainView.frame.origin.x = 0
+        slideOutClosed()
     }
     
     func isSliding() {
