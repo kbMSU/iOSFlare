@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2503C9B61CB7F78200F19F20 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */; };
 		252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6A1C85A6A100EC9191 /* libz.tbd */; };
 		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
 		252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F98181CA530E30083E240 /* SendFlareResult.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		04509DCC67271398EAF6607C /* Pods-Flare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flare.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flare/Pods-Flare.release.xcconfig"; sourceTree = "<group>"; };
+		2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
 		252DFD6A1C85A6A100EC9191 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		252F98181CA530E30083E240 /* SendFlareResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareResult.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 				5C4621B2BE5640989D4FC4FE /* Pods_Flare.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2503C9B41CB7F77400F19F20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		257314331C806F21003381E8 /* DataModels */ = {
@@ -221,6 +231,7 @@
 		25C2DB551C77789900D90197 /* Flare */ = {
 			isa = PBXGroup;
 			children = (
+				2503C9B41CB7F77400F19F20 /* Extensions */,
 				2573143A1C808675003381E8 /* Protocols */,
 				257314331C806F21003381E8 /* DataModels */,
 				2596DE7E1C803B4200A7172C /* Controls */,
@@ -306,7 +317,12 @@
 				TargetAttributes = {
 					25C2DB521C77789900D90197 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = YS3T2M3VV3;
+						DevelopmentTeam = 2E5KFHLJSP;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					25C2DB691C77789A00D90197 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -414,6 +430,7 @@
 				25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */,
 				25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */,
 				257314351C806F2E003381E8 /* PhoneNumber.swift in Sources */,
+				2503C9B61CB7F78200F19F20 /* NavigationControllerExtension.swift in Sources */,
 				25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */,
 				25D6AB191C894DDB001A9C11 /* ConfirmCodeViewController.swift in Sources */,
 				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,
@@ -554,10 +571,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Karthik Balasubramanian (6T8KASJFT7)";
 				INFOPLIST_FILE = Flare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ShoreSideApps.Flare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssa.flareapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -570,10 +587,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Karthik Balasubramanian (6T8KASJFT7)";
 				INFOPLIST_FILE = Flare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ShoreSideApps.Flare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssa.flareapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Flare-Bridging-Header.h";
 			};

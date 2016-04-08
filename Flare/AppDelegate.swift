@@ -22,7 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("INoehKZFskuQ6nJ383gzDshdhFHSre9lv5MQrZ7g", clientKey: "9y6Dx6hqc28c4uyULtzOWrwb0Pmfi0Up3GXDzjpA")
         PFInstallation.currentInstallation().saveInBackground()
         
+        let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.channels = ["global"]
+        installation.saveInBackground()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
     }
 
     func applicationWillResignActive(application: UIApplication) {

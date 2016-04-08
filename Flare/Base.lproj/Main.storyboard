@@ -36,13 +36,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="AhO-sG-zjN" firstAttribute="centerY" secondItem="DNo-Wx-Ut4" secondAttribute="centerY" id="5BO-vF-Asd"/>
                                     <constraint firstItem="AhO-sG-zjN" firstAttribute="centerY" secondItem="DNo-Wx-Ut4" secondAttribute="centerY" id="UcC-jD-3jk"/>
                                     <constraint firstItem="Nts-VU-0ey" firstAttribute="leading" secondItem="DNo-Wx-Ut4" secondAttribute="leading" id="WtZ-lL-kGp"/>
                                     <constraint firstItem="Nts-VU-0ey" firstAttribute="top" secondItem="DNo-Wx-Ut4" secondAttribute="top" id="dz6-6l-REv"/>
+                                    <constraint firstAttribute="bottom" secondItem="AhO-sG-zjN" secondAttribute="bottom" constant="8" id="g9w-mM-3eh"/>
                                     <constraint firstItem="AhO-sG-zjN" firstAttribute="centerX" secondItem="DNo-Wx-Ut4" secondAttribute="centerX" id="gTg-u1-6nl"/>
                                     <constraint firstAttribute="bottom" secondItem="Nts-VU-0ey" secondAttribute="bottom" id="odv-1L-QTY"/>
                                     <constraint firstAttribute="trailing" secondItem="Nts-VU-0ey" secondAttribute="trailing" id="xJv-rN-asq"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UcC-jD-3jk"/>
+                                        <exclude reference="g9w-mM-3eh"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ze5-Hl-2If" userLabel="AddressLabel" customClass="PaddedUILabel" customModule="Flare" customModuleProvider="target">
                                 <rect key="frame" x="40" y="84" width="520" height="40"/>
@@ -795,8 +803,8 @@
                                     <action selector="yesClickAction:" destination="9xH-fE-FaM" eventType="touchUpInside" id="PWF-6b-kOd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Awesome ! We confirmed your phone number. Just a couple more questions and you will be all done" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-ZZ-Imr">
-                                <rect key="frame" x="20" y="28" width="560" height="214"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome ! We confirmed your phone number. Just a couple more questions and you will be all done" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-ZZ-Imr">
+                                <rect key="frame" x="20" y="72" width="560" height="170"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1423,6 +1431,6 @@
         <image name="settings" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Elh-fb-OPj"/>
+        <segue reference="FiG-dG-RZq"/>
     </inferredMetricsTieBreakers>
 </document>
