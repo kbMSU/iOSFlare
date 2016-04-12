@@ -66,6 +66,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        if DataModule.didLoadFromNotification {
+            let destination = storyboard!.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+            destination.type = DataModule.notificationInfo?.type
+            destination.phoneNumber = DataModule.notificationInfo?.phoneNumber
+            destination.message = DataModule.notificationInfo?.message
+            presentViewController(destination, animated: true, completion: nil)
+            
+            DataModule.didLoadFromNotification = false
+            DataModule.notificationInfo = nil
+        }
+        
         if initialized {
             return
         }

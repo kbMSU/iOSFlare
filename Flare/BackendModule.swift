@@ -211,4 +211,42 @@ class BackendModule {
             }
         }
     }
+    
+    func acceptFlare(to: String, message: String) {
+        dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
+            do {
+                var params = [String : String]()
+                params["to"] = to
+                params["text"] = message
+                try PFCloud.callFunction("AcceptFlare", withParameters: params)
+            } catch {
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.sendFlareResponseError(error)
+                }
+            }
+            
+            dispatch_async(GCDModule.GlobalMainQueue) {
+                self.delegate.sendFlareResponseSuccess()
+            }
+        }
+    }
+    
+    func declineFlare(to: String, message: String) {
+        dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
+            do {
+                var params = [String : String]()
+                params["to"] = to
+                params["text"] = message
+                try PFCloud.callFunction("DeclineFlare", withParameters: params)
+            } catch {
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.sendFlareResponseError(error)
+                }
+            }
+            
+            dispatch_async(GCDModule.GlobalMainQueue) {
+                self.delegate.sendFlareResponseSuccess()
+            }
+        }
+    }
 }

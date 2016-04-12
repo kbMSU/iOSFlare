@@ -207,16 +207,13 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
             
-        } else {
-            let notification = UILocalNotification()
-            notification.alertBody = "The flare has been sent !"
-            notification.alertAction = "clear"
-            notification.fireDate = NSDate(timeIntervalSinceNow: 1.5)
-            notification.soundName = UILocalNotificationDefaultSoundName
-            notification.category = "Flare"
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            
-            navigationController?.popToRootViewControllerAnimated(true)
+        }
+        else {
+            let alert = UIAlertController(title: "Flare Sent", message: "The flares have been sent", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: {
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            })
         }
         
         result = nil

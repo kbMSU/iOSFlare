@@ -34,6 +34,9 @@
 		25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB5D1C77789900D90197 /* Flare.xcdatamodeld */; };
 		25C2DB611C77789900D90197 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C2DB601C77789900D90197 /* Assets.xcassets */; };
 		25C2DB6F1C77789A00D90197 /* FlareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB6E1C77789A00D90197 /* FlareTests.swift */; };
+		25C6DE8F1CBCFFB400F19B7E /* FlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */; };
+		25C6DE911CBD039200F19B7E /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C6DE901CBD039200F19B7E /* UIApplicationExtension.swift */; };
+		25C6DE931CBD68BC00F19B7E /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C6DE921CBD68BC00F19B7E /* NotificationInfo.swift */; };
 		25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */; };
 		25D6AB171C885EFA001A9C11 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */; };
 		25D6AB191C894DDB001A9C11 /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */; };
@@ -88,6 +91,9 @@
 		25C2DB6A1C77789A00D90197 /* FlareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2DB6E1C77789A00D90197 /* FlareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlareTests.swift; sourceTree = "<group>"; };
 		25C2DB701C77789A00D90197 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlareViewController.swift; sourceTree = "<group>"; };
+		25C6DE901CBD039200F19B7E /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		25C6DE921CBD68BC00F19B7E /* NotificationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationInfo.swift; sourceTree = "<group>"; };
 		25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerViewController.swift; sourceTree = "<group>"; };
 		25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
 		25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */,
+				25C6DE901CBD039200F19B7E /* UIApplicationExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 				257314361C806F64003381E8 /* Contact.swift */,
 				257314431C8095D5003381E8 /* ErrorTypes.swift */,
 				252F98181CA530E30083E240 /* SendFlareResult.swift */,
+				25C6DE921CBD68BC00F19B7E /* NotificationInfo.swift */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
 				25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */,
 				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
+				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -426,6 +435,7 @@
 				257314441C8095D5003381E8 /* ErrorTypes.swift in Sources */,
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */,
+				25C6DE931CBD68BC00F19B7E /* NotificationInfo.swift in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
 				25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */,
 				25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */,
@@ -436,11 +446,13 @@
 				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,
 				2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */,
 				25947C271CB28F6600F949C5 /* MainContainerViewController.swift in Sources */,
+				25C6DE911CBD039200F19B7E /* UIApplicationExtension.swift in Sources */,
 				257314321C806EE4003381E8 /* DataModule.swift in Sources */,
 				2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */,
 				25590F471C85CFEC00B4096E /* BackendModuleDelegate.swift in Sources */,
 				25D6AB1B1C899186001A9C11 /* RegistrationViewController.swift in Sources */,
 				253E5DD51C9B1532000895E9 /* AlternateFlareViewController.swift in Sources */,
+				25C6DE8F1CBCFFB400F19B7E /* FlareViewController.swift in Sources */,
 				25947C251CB22BA500F949C5 /* StartRegistrationViewController.swift in Sources */,
 				257314301C8054D6003381E8 /* ContactsModule.swift in Sources */,
 				2573143E1C8086A1003381E8 /* ContactModuleDelegate.swift in Sources */,

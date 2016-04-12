@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "user_male_circle.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Circled User Male-100.png",
       "scale" : "2x"
     },
     {

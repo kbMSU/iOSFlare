@@ -25,9 +25,13 @@ class DataModule {
         canFindFriendsWithFlare = defaults.boolForKey("canFindFriendsWithFlare")
         haveVerifiedPhoneNumber = defaults.boolForKey("haveVerifiedPhoneNumber")
         canSendCloudMessage = defaults.boolForKey("canSendCloudMessage")
+        defaultDeclineMessage = defaults.stringForKey("defaultDeclineMessage") ?? "Sorry, i can't make it"
+        defaultAcceptMessage = defaults.stringForKey("defaultAcceptMessage") ?? "I'm on my way"
     }
     
     static var contacts = [Contact]()
+    static var didLoadFromNotification = false
+    static var notificationInfo : NotificationInfo?
     
     static var myCountryCode : String = "" {
         didSet {
@@ -68,6 +72,18 @@ class DataModule {
     static var canSendCloudMessage : Bool = false {
         didSet {
             defaults.setBool(canSendCloudMessage, forKey: "canSendCloudMessage")
+        }
+    }
+    
+    static var defaultDeclineMessage : String = "" {
+        didSet {
+            defaults.setObject(defaultDeclineMessage, forKey: "defaultDeclineMessage")
+        }
+    }
+    
+    static var defaultAcceptMessage : String = "" {
+        didSet {
+            defaults.setObject(defaultAcceptMessage, forKey: "defaultAcceptMessage")
         }
     }
 }

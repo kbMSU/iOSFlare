@@ -16,8 +16,6 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DataModule.setup()
         
         backendModule = BackendModule(delegate: self)
         

@@ -19,6 +19,9 @@ protocol BackendModuleDelegate {
     func registrationError(error: ErrorType)
     
     func sendFlareResult(result : SendFlareResult)
+    
+    func sendFlareResponseSuccess()
+    func sendFlareResponseError(error : ErrorType)
 }
 
 /*
@@ -39,4 +42,7 @@ extension BackendModuleDelegate {
     func registrationError(error: ErrorType) {}
     
     func sendFlareResult(result : SendFlareResult) {}
+    
+    func sendFlareResponseSuccess() {}
+    func sendFlareResponseError(error : ErrorType) {}
 }
