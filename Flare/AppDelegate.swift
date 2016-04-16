@@ -29,12 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         if let notificationPayload = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
-            let type = notificationPayload["pushType"] as! String
-            let message = notificationPayload["alert"] as! String
-            let phone = notificationPayload["phone"] as! String
+            let type = notificationPayload["pushType"] as? String
+            let message = notificationPayload["text"] as? String
+            let phone = notificationPayload["phone"] as? String
             DataModule.didLoadFromNotification = true
-            DataModule.notificationInfo = NotificationInfo(phoneNumber: phone, message: message, type: type)
+            DataModule.notificationInfo = NotificationInfo(phoneNumber: phone!, message: message!, type: type!)
         }
+        
+        application.applicationIconBadgeNumber = 0
         
         return true
     }
@@ -47,28 +49,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        let _ = UIApplication.topViewController()
+        
         if let pushType = userInfo["pushType"], let topController = UIApplication.topViewController() {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
-            destinationViewController.type = pushType as! String
-            destinationViewController.phoneNumber = userInfo["phone"] as! String
-            destinationViewController.message = userInfo["alert"] as! String
+            let type = pushType as? String
+            let phone = userInfo["phone"] as? String
+            let text = userInfo["text"] as? String
+            let latitude = userInfo["latitude"] as? String
+            let longitude = userInfo["longitude"] as? String
             
-            let title = pushType as! String
-            var message : String
-            if title == "flare" {
-                message = "You received a flare, would you like to see it now ?"
+            if type == "flare" {
+                let message = "You received a flare, would you like to see it now ?"
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                
+                destinationViewController.type = type
+                destinationViewController.phoneNumber = phone
+                destinationViewController.message = text
+                destinationViewController.latitude = latitude
+                destinationViewController.longitude = longitude
+                
+                let okAction = UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction) -> Void in
+                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
+                })
+                let dismissAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                let alert = UIAlertController(title: "Flare", message: message, preferredStyle: .Alert)
+                alert.addAction(dismissAction)
+                alert.addAction(okAction)
+                topController.presentViewController(alert, animated: true, completion: nil)
+            } else if type == "response" {
+                for (key, value) in userInfo {
+                    print("userInfo: \(key) —> value = \(value)")
+                }
+                
+                var from = phone
+                let contactsModule = ContactsModule()
+                if contactsModule.isAuthorized() {
+                    contactsModule.getContacts()
+                }
+                if DataModule.contacts.count > 0 {
+                    for contact in DataModule.contacts {
+                        for phone in contact.phoneNumbers {
+                            if phone.digits.containsString(from!) {
+                                from = contact.firstName + " " + contact.lastName
+                                break
+                            }
+                        }
+                    }
+                }
+                
+                let notification = UILocalNotification()
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.alertTitle = from
+                notification.alertBody = text
+                notification.category = "response"
+                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
             } else {
-                message = "Someone responded to your flare, would you like to see it now ?"
+                PFPush.handlePush(userInfo)
             }
-            let okAction = UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction) -> Void in
-                topController.presentViewController(destinationViewController, animated: true, completion: nil)
-            })
-            let dismissAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            alert.addAction(dismissAction)
-            alert.addAction(okAction)
-            topController.presentViewController(alert, animated: true, completion: nil)
         }
     }
 

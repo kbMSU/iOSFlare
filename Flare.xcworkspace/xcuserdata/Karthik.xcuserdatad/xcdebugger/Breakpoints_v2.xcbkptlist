@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/MainContainerViewController.swift"
-            timestampString = "481656272.446826"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "leftEdgePan(_:)"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "checkContacts()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/MainContainerViewController.swift"
-            timestampString = "481656272.446826"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "leftEdgePan(_:)"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "checkContacts()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/MainContainerViewController.swift"
-            timestampString = "481561082.007392"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "leftEdgePan(_:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "checkContacts()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/MainContainerViewController.swift"
-            timestampString = "481559853.443309"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "checkContacts()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,44 +73,60 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/MainContainerViewController.swift"
-            timestampString = "481656272.446826"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "leftEdgePan(_:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "checkContacts()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "checkContacts()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Flare.MainContainerViewController.leftEdgePan (__ObjC.UIScreenEdgePanGestureRecognizer) -&gt; ()"
+                  symbolName = "Flare.FlareViewController.checkContacts () -&gt; ()"
                   moduleName = "Flare"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/MainContainerViewController.swift"
-                  timestampString = "481545383.344941"
+                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/FlareViewController.swift"
+                  timestampString = "482422776.726642"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "1004">
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1224">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Value Promoted from Box&gt; of Flare.MainContainerViewController.(leftEdgePan (__ObjC.UIScreenEdgePanGestureRecognizer) -&gt; ()).(closure #1)"
+                  symbolName = "Flare.FlareViewController.checkContacts () -&gt; ()"
                   moduleName = "Flare"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/MainContainerViewController.swift"
-                  timestampString = "481545383.345092"
+                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/FlareViewController.swift"
+                  timestampString = "482422776.726843"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "1256">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -121,12 +137,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/AppDelegate.swift"
-            timestampString = "482143559.25904"
+            filePath = "Flare/FlareViewController.swift"
+            timestampString = "482524870.87011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "respondAction(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flare/AppDelegate.swift"
+            timestampString = "482519423.773964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -137,12 +169,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/AppDelegate.swift"
-            timestampString = "482163521.869423"
+            filePath = "Flare/ContactsModule.swift"
+            timestampString = "482519648.360768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getContacts()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flare/ContactsModule.swift"
+            timestampString = "482519649.500841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "getContacts()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flare/AppDelegate.swift"
+            timestampString = "482519761.434277"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "application(_:didReceiveRemoteNotification:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Flare/AppDelegate.swift"
-            timestampString = "482163521.869423"
+            timestampString = "482519761.434277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "application(_:didReceiveRemoteNotification:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,93 +233,62 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/FlareViewController.swift"
-            timestampString = "482163521.869423"
+            filePath = "Flare/AppDelegate.swift"
+            timestampString = "482519761.434277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "application(_:didReceiveRemoteNotification:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Flare/FlareViewController.swift"
-            timestampString = "482152699.688332"
+            filePath = "Flare/AppDelegate.swift"
+            timestampString = "482523187.675988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "FlareViewController"
-            landmarkType = "3">
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Flare.FlareViewController.__deallocating_deinit"
+                  symbolName = "Flare.AppDelegate.application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__ObjC.NSObject, Swift.AnyObject&gt;&gt;) -&gt; Swift.Bool"
                   moduleName = "Flare"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/FlareViewController.swift"
-                  timestampString = "482152699.838483"
+                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/AppDelegate.swift"
+                  timestampString = "482524888.11688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "728">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Flare.FlareViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; Flare.FlareViewController"
+                  symbolName = "Flare.AppDelegate.application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__ObjC.NSObject, Swift.AnyObject&gt;&gt;) -&gt; Swift.Bool"
                   moduleName = "Flare"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/FlareViewController.swift"
-                  timestampString = "482152699.838757"
+                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/AppDelegate.swift"
+                  timestampString = "482524888.117027"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Flare.FlareViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Flare.FlareViewController&gt;"
-                  moduleName = "Flare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Karthik/Library/Mobile%20Documents/com~apple~CloudDocs/FlareRepo/iOSFlare/Flare/FlareViewController.swift"
-                  timestampString = "482152699.838919"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "132">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1152">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Flare/DataModule.swift"
-            timestampString = "482175260.736393"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "DataModule"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate {
+class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -43,6 +43,8 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         }
         selectedContacts.appendContentsOf(contacts)
         
+        messageTextField.delegate = self
+        
         backendModule = BackendModule(delegate: self)
         
         doneBeingBusy()
@@ -51,6 +53,18 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Text Field Delegate
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // MARK: Table View DataSource/Delegate
@@ -171,13 +185,16 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func sendClickAction(sender: UIButton) {
         isBusy()
         
-        let message = messageTextField.text ?? "Flare"
+        var message = messageTextField.text
+        if message == nil || message == "" {
+            message = DataModule.defaultFlareMessage
+        }
         var numbers = [PhoneNumber]()
         for contact in selectedContacts {
             numbers.append(contact.primaryPhone)
         }
         
-        backendModule?.sendFlare(numbers, message: message, location: location!, sender: self)
+        backendModule?.sendFlare(numbers, message: message!, location: location!, sender: self)
     }
     
     // MARK: Helper functions
@@ -209,11 +226,12 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
             
         }
         else {
-            let alert = UIAlertController(title: "Flare Sent", message: "The flares have been sent", preferredStyle: .Alert)
+            /*let alert = UIAlertController(title: "Flare Sent", message: "The flares have been sent", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: {
                 self.navigationController?.popToRootViewControllerAnimated(true)
-            })
+            })*/
+            navigationController?.popToRootViewControllerAnimated(true)
         }
         
         result = nil

@@ -15,11 +15,16 @@ class ContactsModule {
     private let contactsStore = CNContactStore()
     private let keys = [CNContactGivenNameKey,CNContactFamilyNameKey,CNContactPhoneNumbersKey,CNContactThumbnailImageDataKey,CNContactIdentifierKey]
     
-    private var delegate : ContactModuleDelegate
+    private var delegate : ContactModuleDelegate?
 
+    init() {
+        
+    }
+    
     init(delegate : ContactModuleDelegate) {
         self.delegate = delegate
-    }    
+    }
+    
     func isAuthorized() -> Bool {
         return CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized
     }
@@ -40,7 +45,7 @@ class ContactsModule {
         }
     }
     
-    private func getContacts() {
+    func getContacts() {
         do {
             let containers = try contactsStore.containersMatchingPredicate(nil)
             var contacts = [CNContact]()
@@ -63,8 +68,12 @@ class ContactsModule {
     }
     
     private func sendResponseToDelegate(response : ErrorTypes) {
+        if delegate == nil {
+            return
+        }
+        
         dispatch_async(GCDModule.GlobalMainQueue) {
-            self.delegate.retreiveResult(response)
+            self.delegate!.retreiveResult(response)
         }
     }
 }

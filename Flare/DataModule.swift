@@ -25,11 +25,17 @@ class DataModule {
         canFindFriendsWithFlare = defaults.boolForKey("canFindFriendsWithFlare")
         haveVerifiedPhoneNumber = defaults.boolForKey("haveVerifiedPhoneNumber")
         canSendCloudMessage = defaults.boolForKey("canSendCloudMessage")
+        defaultFlareMessage = defaults.stringForKey("defaultFlareMessage") ?? "Can you meet me here ?"
         defaultDeclineMessage = defaults.stringForKey("defaultDeclineMessage") ?? "Sorry, i can't make it"
         defaultAcceptMessage = defaults.stringForKey("defaultAcceptMessage") ?? "I'm on my way"
+        
+        if let savedGroups = NSKeyedUnarchiver.unarchiveObjectWithFile(Group.ArchiveURL.path!) as? [Group] {
+            groups += savedGroups
+        }
     }
     
     static var contacts = [Contact]()
+    static var groups = [Group]()
     static var didLoadFromNotification = false
     static var notificationInfo : NotificationInfo?
     
@@ -75,6 +81,12 @@ class DataModule {
         }
     }
     
+    static var defaultFlareMessage : String = "" {
+        didSet {
+            defaults.setObject(defaultFlareMessage, forKey: "defaultFlareMessage")
+        }
+    }
+    
     static var defaultDeclineMessage : String = "" {
         didSet {
             defaults.setObject(defaultDeclineMessage, forKey: "defaultDeclineMessage")
@@ -84,6 +96,25 @@ class DataModule {
     static var defaultAcceptMessage : String = "" {
         didSet {
             defaults.setObject(defaultAcceptMessage, forKey: "defaultAcceptMessage")
+        }
+    }
+    
+    static func addGroup(group : Group) {
+        groups.append(group)
+        NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
+    }
+    
+    static func removeGroup(group : Group) {
+        var index : Int = -1
+        for i in 1 ..< groups.count {
+            if groups[i].name == group.name {
+                index = i
+                break
+            }
+        }
+        if index != -1 {
+            groups.removeAtIndex(index)
+            NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
         }
     }
 }

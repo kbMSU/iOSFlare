@@ -218,6 +218,7 @@ class BackendModule {
                 var params = [String : String]()
                 params["to"] = to
                 params["text"] = message
+                params["from"] = DataModule.myPhoneNumber
                 try PFCloud.callFunction("AcceptFlare", withParameters: params)
             } catch {
                 dispatch_async(GCDModule.GlobalMainQueue) {
@@ -237,6 +238,7 @@ class BackendModule {
                 var params = [String : String]()
                 params["to"] = to
                 params["text"] = message
+                params["from"] = DataModule.myPhoneNumber
                 try PFCloud.callFunction("DeclineFlare", withParameters: params)
             } catch {
                 dispatch_async(GCDModule.GlobalMainQueue) {
