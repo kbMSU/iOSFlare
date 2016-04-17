@@ -49,64 +49,99 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        let _ = UIApplication.topViewController()
-        
-        if let pushType = userInfo["pushType"], let topController = UIApplication.topViewController() {
+        if let pushType = userInfo["pushType"]{
             let type = pushType as? String
             let phone = userInfo["phone"] as? String
             let text = userInfo["text"] as? String
-            let latitude = userInfo["latitude"] as? String
-            let longitude = userInfo["longitude"] as? String
             
-            if type == "flare" {
-                let message = "You received a flare, would you like to see it now ?"
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
-                
-                destinationViewController.type = type
-                destinationViewController.phoneNumber = phone
-                destinationViewController.message = text
-                destinationViewController.latitude = latitude
-                destinationViewController.longitude = longitude
-                
-                let okAction = UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction) -> Void in
-                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
-                })
-                let dismissAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
-                let alert = UIAlertController(title: "Flare", message: message, preferredStyle: .Alert)
-                alert.addAction(dismissAction)
-                alert.addAction(okAction)
-                topController.presentViewController(alert, animated: true, completion: nil)
-            } else if type == "response" {
-                for (key, value) in userInfo {
-                    print("userInfo: \(key) —> value = \(value)")
-                }
-                
-                var from = phone
-                let contactsModule = ContactsModule()
-                if contactsModule.isAuthorized() {
+            var from = phone
+            let contactsModule = ContactsModule()
+            DataModule.setup()
+            if contactsModule.isAuthorized() {
+                if DataModule.contacts.count == 0 {
                     contactsModule.getContacts()
                 }
-                if DataModule.contacts.count > 0 {
-                    for contact in DataModule.contacts {
-                        for phone in contact.phoneNumbers {
-                            if phone.digits.containsString(from!) {
-                                from = contact.firstName + " " + contact.lastName
-                                break
-                            }
+                for contact in DataModule.contacts {
+                    for phone in contact.phoneNumbers {
+                        if phone.digits.containsString(from!) {
+                            from = contact.firstName + " " + contact.lastName
+                            break
                         }
                     }
                 }
-                
-                let notification = UILocalNotification()
-                notification.soundName = UILocalNotificationDefaultSoundName
-                notification.alertTitle = from
-                notification.alertBody = text
-                notification.category = "response"
-                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-            } else {
-                PFPush.handlePush(userInfo)
             }
+            
+            let notification = UILocalNotification()
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.alertTitle = from
+            notification.alertBody = text
+            notification.hasAction = true
+            notification.alertAction = "View"
+            notification.userInfo = userInfo
+            notification.category = type
+            
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+        }
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        let state = application.applicationState
+        if state == UIApplicationState.Inactive || state == UIApplicationState.Background {
+            // Application is in background and is transition to active based on notification click
+            let userInfo = notification.userInfo
+            if userInfo == nil {
+                return
+            }
+            
+            let type = userInfo!["pushType"] as? String
+            
+            if type == nil {
+                return
+            }
+            
+            switch type! {
+            case "flare":
+                let phone = userInfo!["phone"] as? String
+                let text = userInfo!["text"] as? String
+                let latitude = userInfo!["latitude"] as? String
+                let longitude = userInfo!["longitude"] as? String
+                
+                let topController = UIApplication.topViewController()!
+                if let destinationViewController = topController as? FlareViewController {
+                    destinationViewController.type = type
+                    destinationViewController.phoneNumber = phone
+                    destinationViewController.message = text
+                    destinationViewController.latitude = latitude
+                    destinationViewController.longitude = longitude
+                    
+                    destinationViewController.reloadInputViews()
+                } else {
+                    let storyboard = topController.storyboard!
+                    let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                    
+                    destinationViewController.type = type
+                    destinationViewController.phoneNumber = phone
+                    destinationViewController.message = text
+                    destinationViewController.latitude = latitude
+                    destinationViewController.longitude = longitude
+                    
+                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
+                }
+            case "response":
+                let topController = UIApplication.topViewController()!
+                if topController is FlareHistoryViewController {
+                    return
+                }
+                let storyboard = topController.storyboard!
+                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                topController.presentViewController(destinationViewController, animated: true, completion: nil)
+            default:
+                break
+            }
+            
+        } else {
+            // Application is already active and the notification just arrived ( not yet clicked )
+            return
         }
     }
 

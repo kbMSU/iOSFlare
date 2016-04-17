@@ -54,6 +54,7 @@ class ContactsModule {
                 let containerResults = try contactsStore.unifiedContactsMatchingPredicate(fetchPredicate, keysToFetch: keys)
                 contacts.appendContentsOf(containerResults)
             }
+            DataModule.contacts.removeAll()
             for contact in contacts {
                 if contact.phoneNumbers.isEmpty {
                     continue

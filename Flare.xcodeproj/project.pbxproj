@@ -45,6 +45,7 @@
 		25EB93C71CBFAE9000A02C0E /* GroupsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB93C61CBFAE9000A02C0E /* GroupsListViewController.swift */; };
 		25EB93C91CBFB60400A02C0E /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB93C81CBFB60400A02C0E /* GroupTableViewCell.swift */; };
 		25EB93CB1CC0F4A400A02C0E /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB93CA1CC0F4A400A02C0E /* AddGroupViewController.swift */; };
+		25EB93CD1CC3A68600A02C0E /* FlareHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */; };
 		25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818D91C82D9EA00176587 /* ConstantsModule.swift */; };
 		25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */; };
 		25F818DE1C84743800176587 /* ConfirmFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */; };
@@ -106,6 +107,7 @@
 		25EB93C61CBFAE9000A02C0E /* GroupsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsListViewController.swift; sourceTree = "<group>"; };
 		25EB93C81CBFB60400A02C0E /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		25EB93CA1CC0F4A400A02C0E /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlareHistoryViewController.swift; sourceTree = "<group>"; };
 		25F818D91C82D9EA00176587 /* ConstantsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsModule.swift; sourceTree = "<group>"; };
 		25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmFlareViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
 				25EB93C61CBFAE9000A02C0E /* GroupsListViewController.swift */,
 				25EB93CA1CC0F4A400A02C0E /* AddGroupViewController.swift */,
+				25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				25F818DA1C82D9EA00176587 /* ConstantsModule.swift in Sources */,
 				25D6AB191C894DDB001A9C11 /* ConfirmCodeViewController.swift in Sources */,
 				25F818DC1C82F4CF00176587 /* ContactTableViewCell.swift in Sources */,
+				25EB93CD1CC3A68600A02C0E /* FlareHistoryViewController.swift in Sources */,
 				25EB93C91CBFB60400A02C0E /* GroupTableViewCell.swift in Sources */,
 				2592A30D1C7D5AB200563426 /* LoadingScreenViewController.swift in Sources */,
 				25EB93CB1CC0F4A400A02C0E /* AddGroupViewController.swift in Sources */,

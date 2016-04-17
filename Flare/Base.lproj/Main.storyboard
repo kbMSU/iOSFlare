@@ -168,7 +168,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="History" image="history"/>
+                                        <state key="normal" title="Flares" image="history"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUT-Bd-mQC">
                                         <rect key="frame" x="0.0" y="135" width="300" height="32"/>
@@ -239,6 +239,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fL-aG-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2043" y="2619"/>
+        </scene>
+        <!--Flare History View Controller-->
+        <scene sceneID="EnI-eF-bPn">
+            <objects>
+                <viewController storyboardIdentifier="FlareHistoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ea0-v5-weH" customClass="FlareHistoryViewController" customModule="Flare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fUs-6v-pDU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Zy-Bv-N2x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="okb-B8-ODN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQg-6u-QUm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2969" y="3443"/>
         </scene>
         <!--Select Contacts-->
         <scene sceneID="cXk-AV-BZD">
