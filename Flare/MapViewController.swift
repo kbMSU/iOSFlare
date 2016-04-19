@@ -68,11 +68,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidAppear(animated)
         
         if DataModule.didLoadFromNotification {
-            let destination = storyboard!.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
-            destination.type = DataModule.notificationInfo?.type
-            destination.phoneNumber = DataModule.notificationInfo?.phoneNumber
-            destination.message = DataModule.notificationInfo?.message
-            presentViewController(destination, animated: true, completion: nil)
+            let notification = DataModule.notificationInfo
+            
+            if let info = notification {
+                if info.type == "flare" {
+                    if let lat = info.latitude, let long = info.longitude {
+                        let destination = storyboard!.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                        destination.type = info.type
+                        destination.phoneNumber = info.phoneNumber
+                        destination.message = info.message
+                        destination.latitude = lat
+                        destination.longitude = long
+                        presentViewController(destination, animated: true, completion: nil)
+                    }
+                } else {
+                    let destination = storyboard!.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                    presentViewController(destination, animated: true, completion: nil)
+                }
+            }
             
             DataModule.didLoadFromNotification = false
             DataModule.notificationInfo = nil

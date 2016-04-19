@@ -28,12 +28,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
-        if let notificationPayload = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
-            let type = notificationPayload["pushType"] as? String
-            let message = notificationPayload["text"] as? String
-            let phone = notificationPayload["phone"] as? String
-            DataModule.didLoadFromNotification = true
-            DataModule.notificationInfo = NotificationInfo(phoneNumber: phone!, message: message!, type: type!)
+        if let options = launchOptions {
+            if let notification = options[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject] {
+                let typeInfo = notification["pushType"] as? String
+                let phoneInfo = notification["phone"] as? String
+                let textInfo = notification["text"] as? String
+                
+                if let type = typeInfo, let phone = phoneInfo, let text = textInfo {
+                    DataModule.didLoadFromNotification = true
+                    DataModule.notificationInfo = NotificationInfo(number: phone, text: text, pushType: type)
+                    
+                    //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if type == "flare" {
+                        let latInfo = notification["latitude"] as? String
+                        let longInfo = notification["longitude"] as? String
+                        
+                        DataModule.notificationInfo?.latitude = latInfo
+                        DataModule.notificationInfo?.longitude = longInfo
+                        
+                        /*if let lat = latInfo, let long = longInfo {
+                            let destination = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                            destination.type = type
+                            destination.phoneNumber = phone
+                            destination.message = text
+                            destination.latitude = lat
+                            destination.longitude = long
+                            window?.rootViewController = destination
+                        }*/
+                    } else {
+                        /*let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                        window?.rootViewController = destinationViewController*/
+                    }
+                }
+
+            }
         }
         
         application.applicationIconBadgeNumber = 0
@@ -71,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            let notification = UILocalNotification()
+            /*let notification = UILocalNotification()
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertTitle = from
             notification.alertBody = text
@@ -80,7 +108,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             notification.userInfo = userInfo
             notification.category = type
             
-            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)*/
+            
+            let topController = UIApplication.topViewController()!
+            let alert = UIAlertController(title: phone, message: text, preferredStyle: .ActionSheet)
+            let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+            alert.addAction(action)
+            if type == "flare" {
+                let lat = userInfo["latitude"] as? String
+                let long = userInfo["longitude"] as? String
+                
+                if lat == nil || long == nil {
+                    return
+                }
+                
+                let viewAction = UIAlertAction(title: "View", style: .Default, handler: {(action:UIAlertAction) -> Void in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destination = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                    destination.type = type
+                    destination.phoneNumber = phone
+                    destination.message = text
+                    destination.latitude = lat
+                    destination.longitude = long
+                    topController.presentViewController(destination, animated: true, completion: nil)
+                })
+                alert.addAction(viewAction)
+            }
+            topController.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
@@ -129,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             case "response":
                 let topController = UIApplication.topViewController()!
-                if topController is FlareHistoryViewController {
+                if let _ = topController as? FlareHistoryViewController {
                     return
                 }
                 let storyboard = topController.storyboard!

@@ -8,8 +8,17 @@
 
 import Foundation
 
-struct NotificationInfo {
+class NotificationInfo {
+    
     var phoneNumber : String
     var message : String
     var type : String
+    var latitude : String?
+    var longitude : String?
+    
+    init(number:String,text:String,pushType:String) {
+        phoneNumber = number
+        message = text
+        type = pushType
+    }
 }
