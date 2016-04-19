@@ -72,10 +72,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if let info = notification {
                 if info.type == "flare" {
+                    var from = info.phoneNumber
+                    if contactsModule!.isAuthorized() {
+                        if DataModule.contacts.count == 0 {
+                            contactsModule!.getContacts()
+                        }
+                        for contact in DataModule.contacts {
+                            for phone in contact.phoneNumbers {
+                                if phone.digits.containsString(from) {
+                                    from = contact.firstName + " " + contact.lastName
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    
                     if let lat = info.latitude, let long = info.longitude {
                         let destination = storyboard!.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
                         destination.type = info.type
-                        destination.phoneNumber = info.phoneNumber
+                        destination.phoneNumber = from
                         destination.message = info.message
                         destination.latitude = lat
                         destination.longitude = long

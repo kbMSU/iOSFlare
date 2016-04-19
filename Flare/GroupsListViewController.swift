@@ -33,10 +33,6 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
         updateGroupsCount()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,11 +73,6 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     // MARK: Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        // Transfer information to other vc
-    }
     
     @IBAction func unwindBackToGroupsList(sender : UIStoryboardSegue) {
         if DataModule.groups.count != groups.count {

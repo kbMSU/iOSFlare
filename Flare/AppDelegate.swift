@@ -45,19 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         DataModule.notificationInfo?.latitude = latInfo
                         DataModule.notificationInfo?.longitude = longInfo
-                        
-                        /*if let lat = latInfo, let long = longInfo {
-                            let destination = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
-                            destination.type = type
-                            destination.phoneNumber = phone
-                            destination.message = text
-                            destination.latitude = lat
-                            destination.longitude = long
-                            window?.rootViewController = destination
-                        }*/
-                    } else {
-                        /*let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
-                        window?.rootViewController = destinationViewController*/
                     }
                 }
 
@@ -99,19 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            /*let notification = UILocalNotification()
-            notification.soundName = UILocalNotificationDefaultSoundName
-            notification.alertTitle = from
-            notification.alertBody = text
-            notification.hasAction = true
-            notification.alertAction = "View"
-            notification.userInfo = userInfo
-            notification.category = type
-            
-            UIApplication.sharedApplication().presentLocalNotificationNow(notification)*/
-            
             let topController = UIApplication.topViewController()!
-            let alert = UIAlertController(title: phone, message: text, preferredStyle: .ActionSheet)
+            let alert = UIAlertController(title: from, message: text, preferredStyle: .ActionSheet)
             let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
             alert.addAction(action)
             if type == "flare" {
