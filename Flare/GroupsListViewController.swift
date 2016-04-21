@@ -29,6 +29,8 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 
         groups = DataModule.groups ?? [Group]()
+        groupsTableView.dataSource = self
+        groupsTableView.delegate = self
         
         updateGroupsCount()
     }

@@ -66,6 +66,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
         let message = "Your flare verification code is "+code!
         backendModule!.sendTwilioMessage(numbers, message: message)
     }
+    
     // MARK: BackendModule delegate
     
     func sendTwilioMessageSuccess() {

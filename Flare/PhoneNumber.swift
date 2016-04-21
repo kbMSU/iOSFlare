@@ -9,10 +9,22 @@
 import Foundation
 import Contacts
 
-class PhoneNumber {
+struct PhoneNumberKeys {
+    static let digitsKey = "digits"
+    static let hasFlareKey = "hasFlare"
+}
+
+class PhoneNumber: NSObject, NSCoding {
+    static let ArchiveURL = Constants.DocumentsDirectory.URLByAppendingPathComponent("phoneNumber")
+
     var digits : String
     //var countryCode : String?
     var hasFlare : Bool
+    
+    init(number:String,flare:Bool) {
+        digits = number
+        hasFlare = flare
+    }
     
     init(number: CNPhoneNumber) {
         hasFlare = false
@@ -23,5 +35,16 @@ class PhoneNumber {
                 digits.append(c)
             }
         }
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let number = aDecoder.decodeObjectForKey(PhoneNumberKeys.digitsKey) as! String
+        let flare = aDecoder.decodeBoolForKey(PhoneNumberKeys.hasFlareKey)
+        self.init(number: number,flare: flare)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(digits, forKey: PhoneNumberKeys.digitsKey)
+        aCoder.encodeBool(hasFlare, forKey: PhoneNumberKeys.hasFlareKey)
     }
 }

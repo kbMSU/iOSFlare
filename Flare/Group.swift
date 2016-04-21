@@ -15,7 +15,7 @@ struct GroupKeys {
 
 class Group: NSObject, NSCoding {
     
-    static let ArchiveURL = Constants.DocumentsDirectory.URLByAppendingPathComponent("meals")
+    static let ArchiveURL = Constants.DocumentsDirectory.URLByAppendingPathComponent("groups")
     
     var name : String
     var contacts : [Contact]

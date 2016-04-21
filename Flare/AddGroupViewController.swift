@@ -26,18 +26,28 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet var clearButton: UIBarButtonItem!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        searchContactsTextField.delegate = self
+        groupNameTextField.delegate = self
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        
+        searchContactsTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        groupNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        
+        loadContacts()
+        
+        updateSaveButton()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Text Field Delegate
@@ -68,11 +78,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
             }
             contactsTableView.reloadData()
         } else {
-            if let text = textField.text where text != "" {
-                saveButton.enabled = true
-            } else {
-                saveButton.enabled = false
-            }
+            updateSaveButton()
         }
     }
     
@@ -82,7 +88,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
             contacts.appendContentsOf(unfilteredContacts)
             contactsTableView.reloadData()
         } else {
-            saveButton.enabled = false
+            updateSaveButton()
         }
         return true
     }
@@ -169,18 +175,59 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SaveGroupSegue" {
+            let group = Group(name: groupNameTextField.text!, contacts: selectedContacts)
+            DataModule.addGroup(group)
+        }
+    }
+    
     // MARK: Actions
     
-    @IBAction func saveAction(sender: UIButton) {
+    @IBAction func clearAction(sender: UIBarButtonItem) {
+        for contact in selectedContacts {
+            contact.isSelected = false
+        }
+        selectedContacts.removeAll()
+        noContactsSelected()
+        contactsTableView.reloadData()
     }
     
     // MARK: Helper Methods
     
-    func contactsSelected() {
+    func loadContacts() {
+        for contact in DataModule.contacts where contact.isSelected {
+            contact.isSelected = false
+        }
         
+        unfilteredContacts.removeAll()
+        contacts.removeAll()
+        selectedContacts.removeAll()
+        
+        unfilteredContacts.appendContentsOf(DataModule.contacts.sort {
+            return $0.firstName + " " + $0.lastName < $1.firstName + " " + $1.lastName
+            })
+        contacts.appendContentsOf(unfilteredContacts)
+        
+        noContactsSelected()
+
+        contactsTableView.reloadData()
+    }
+    
+    func contactsSelected() {
+        clearButton.enabled = true
+        updateSaveButton()
     }
     
     func noContactsSelected() {
-        
+        clearButton.enabled = false
+        updateSaveButton()
+    }
+    
+    func updateSaveButton() {
+        let nameFilled = groupNameTextField.text != nil && groupNameTextField.text != ""
+        saveButton.enabled = nameFilled && !selectedContacts.isEmpty
     }
 }

@@ -194,11 +194,6 @@ class MainContainerViewController: UIViewController {
         )
     }
     
-    func closeSlideOut() {
-        mainView.frame.origin.x = 0
-        slideOutClosed()
-    }
-    
     func isSliding() {
         mainView.userInteractionEnabled = false
         slideOutView.userInteractionEnabled = false

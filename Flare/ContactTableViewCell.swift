@@ -25,6 +25,7 @@ class ContactTableViewCell: UITableViewCell {
         
         contactImageView.clipsToBounds = true
         contactImageView.layer.cornerRadius = contactImageView.frame.height/2
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

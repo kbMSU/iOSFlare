@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             var from = phone
             let contactsModule = ContactsModule()
-            DataModule.setup()
+            //DataModule.setup()
             if contactsModule.isAuthorized() {
                 if DataModule.contacts.count == 0 {
                     contactsModule.getContacts()
