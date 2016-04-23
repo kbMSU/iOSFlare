@@ -35,6 +35,14 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
         updateGroupsCount()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if DataModule.groups.count != groups.count {
+            groups = DataModule.groups
+            updateGroupsCount()
+            groupsTableView.reloadData()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,16 +80,6 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
         selectedGroup = groups[indexPath.row]
         
         // Group has been selected
-    }
-    
-    // MARK: Navigation
-    
-    @IBAction func unwindBackToGroupsList(sender : UIStoryboardSegue) {
-        if DataModule.groups.count != groups.count {
-            groups = DataModule.groups
-            updateGroupsCount()
-            groupsTableView.reloadData()
-        }
     }
     
     // MARK: Action

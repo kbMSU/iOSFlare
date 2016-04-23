@@ -1,45 +1,35 @@
 //
-//  AddGroupViewController.swift
+//  SaveGroupViewController.swift
 //  Flare
 //
-//  Created by Karthik Balasubramanian on 4/15/16.
+//  Created by Karthik Balasubramanian on 4/22/16.
 //  Copyright © 2016 Karthik Balasubramanian. All rights reserved.
 //
 
 import UIKit
 
-class AddGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-
-    // MARK: Constants
-
-    let cellIdentifier = "ContactTableViewCell"
-
-    // MARK: Variables
+class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var unfilteredContacts = [Contact]()
-    var contacts = [Contact]()
-    var selectedContacts = [Contact]()
+    // MARK: Constants
+    
+    let cellIdentifier = "ContactTableViewCell"
+    
+    // MARK: Properties
+    
+    var selectedContacts : [Contact]!
+    var isContactSelected = true
     
     // MARK: Outlets
-    
-    @IBOutlet weak var searchContactsTextField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var contactsTableView: UITableView!
-    @IBOutlet var clearButton: UIBarButtonItem!
+
+    @IBOutlet var groupNameTextField: UITextField!
+    @IBOutlet var saveGroupButton: UIButton!
+    @IBOutlet var contactsTableView: UITableView!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchContactsTextField.delegate = self
-        contactsTableView.delegate = self
-        contactsTableView.dataSource = self
-        
-        searchContactsTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
-        
-        loadContacts()
-        
+
         updateSaveButton()
     }
 
@@ -47,7 +37,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Text Field Delegate
+    // MARK: TextField Delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -55,50 +45,27 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func textFieldDidChange(textField: UITextField) {
-        if textField == searchContactsTextField {
-            contacts.removeAll()
-            if let text = textField.text where text != "" {
-                contacts.appendContentsOf(unfilteredContacts.filter({(current) -> Bool in
-                    let fullName = current.firstName + " " + current.lastName
-                    let matchesName = fullName.lowercaseString.containsString(text.lowercaseString)
-                    var matchesNumber = false
-                    for number in current.phoneNumbers {
-                        if number.digits.lowercaseString.containsString(text.lowercaseString) {
-                            matchesNumber = true
-                            break
-                        }
-                    }
-                    return matchesName || matchesNumber
-                }))
-            } else {
-                contacts.appendContentsOf(unfilteredContacts)
-            }
-            contactsTableView.reloadData()
-        }
+        updateSaveButton()
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        if textField == searchContactsTextField {
-            contacts.removeAll()
-            contacts.appendContentsOf(unfilteredContacts)
-            contactsTableView.reloadData()
-        }
+        updateSaveButton()
         return true
     }
     
-    // MARK: Table View Delegate/Data Source
+    // MARK: TableView Delegate/DataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return selectedContacts.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
-        let contactAtRow = contacts[indexPath.row]
+        let contactAtRow = selectedContacts[indexPath.row]
         
         cell.selectedSwitch.on = contactAtRow.isSelected
         cell.contactNameLabel.text = contactAtRow.firstName + " " + contactAtRow.lastName
@@ -121,7 +88,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
-        let contactAtRow = contacts[indexPath.row]
+        let contactAtRow = selectedContacts[indexPath.row]
         
         if contactAtRow.isSelected {
             let index = selectedContacts.indexOf({(selected) -> Bool in
@@ -167,50 +134,33 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
             contactsSelected()
         }
     }
-    
+
     // MARK: Actions
     
-    @IBAction func clearAction(sender: UIBarButtonItem) {
-        for contact in selectedContacts {
-            contact.isSelected = false
-        }
-        selectedContacts.removeAll()
-        noContactsSelected()
-        contactsTableView.reloadData()
+    @IBAction func saveGroupAction(sender: UIButton) {
+        let group = Group(name: groupNameTextField.text!, contacts: selectedContacts)
+        DataModule.addGroup(group)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    // MARK: Helper Methods
-    
-    func loadContacts() {
-        for contact in DataModule.contacts where contact.isSelected {
-            contact.isSelected = false
-        }
-        
-        unfilteredContacts.removeAll()
-        contacts.removeAll()
-        selectedContacts.removeAll()
-        
-        unfilteredContacts.appendContentsOf(DataModule.contacts.sort {
-            return $0.firstName + " " + $0.lastName < $1.firstName + " " + $1.lastName
-            })
-        contacts.appendContentsOf(unfilteredContacts)
-        
-        noContactsSelected()
-
-        contactsTableView.reloadData()
+    @IBAction func cancelAction(sender: UIBarButtonItem) {
+        navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    // MARK: Helper Functions
     
     func contactsSelected() {
-        clearButton.enabled = true
+        isContactSelected = true
         updateSaveButton()
     }
     
     func noContactsSelected() {
-        clearButton.enabled = false
+        isContactSelected = false
         updateSaveButton()
     }
     
     func updateSaveButton() {
-        saveButton.hidden = selectedContacts.isEmpty
+        let isNameEntered = groupNameTextField.text != nil && groupNameTextField.text != ""
+        saveGroupButton.hidden = !(isNameEntered && isContactSelected)
     }
 }
