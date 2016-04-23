@@ -29,6 +29,8 @@ class DataModule {
         defaultDeclineMessage = defaults.stringForKey("defaultDeclineMessage") ?? "Sorry, i can't make it"
         defaultAcceptMessage = defaults.stringForKey("defaultAcceptMessage") ?? "I'm on my way"
         
+        //NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
+        
         if let savedGroups = NSKeyedUnarchiver.unarchiveObjectWithFile(Group.ArchiveURL.path!) as? [Group] {
             groups += savedGroups
         }
@@ -106,8 +108,8 @@ class DataModule {
     
     static func removeGroup(group : Group) {
         var index : Int = -1
-        for i in 1 ..< groups.count {
-            if groups[i].name == group.name {
+        for i in 0 ..< groups.count {
+            if groups[i].id == group.id {
                 index = i
                 break
             }

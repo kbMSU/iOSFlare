@@ -16,7 +16,9 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     // MARK: Properties
     
-    var selectedContacts : [Contact]!
+    var contacts : [Contact]!
+    var selectedContacts = [Contact]()
+    
     var isContactSelected = true
     
     // MARK: Outlets
@@ -30,6 +32,13 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        selectedContacts.appendContentsOf(contacts)
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        
+        groupNameTextField.delegate = self
+        groupNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        
         updateSaveButton()
     }
 
@@ -60,12 +69,12 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedContacts.count
+        return contacts.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
-        let contactAtRow = selectedContacts[indexPath.row]
+        let contactAtRow = contacts[indexPath.row]
         
         cell.selectedSwitch.on = contactAtRow.isSelected
         cell.contactNameLabel.text = contactAtRow.firstName + " " + contactAtRow.lastName
@@ -88,7 +97,7 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
-        let contactAtRow = selectedContacts[indexPath.row]
+        let contactAtRow = contacts[indexPath.row]
         
         if contactAtRow.isSelected {
             let index = selectedContacts.indexOf({(selected) -> Bool in
@@ -138,7 +147,8 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     // MARK: Actions
     
     @IBAction func saveGroupAction(sender: UIButton) {
-        let group = Group(name: groupNameTextField.text!, contacts: selectedContacts)
+        let name = groupNameTextField.text!
+        let group = Group(name: name, contacts: selectedContacts)
         DataModule.addGroup(group)
         navigationController?.popToRootViewControllerAnimated(true)
     }

@@ -11,6 +11,7 @@ import UIKit
 class GroupsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Constants
+    
     let cellIdentifier = "GroupTableViewCell"
     
     // MARK: Variables
@@ -36,11 +37,11 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewDidAppear(animated: Bool) {
-        if DataModule.groups.count != groups.count {
+        //if DataModule.groups.count != groups.count {
             groups = DataModule.groups
             updateGroupsCount()
             groupsTableView.reloadData()
-        }
+        //}
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,6 +81,15 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
         selectedGroup = groups[indexPath.row]
         
         // Group has been selected
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let group = groups[indexPath.row]
+            DataModule.removeGroup(group)
+            groups.removeAtIndex(indexPath.row)
+            groupsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
     }
     
     // MARK: Action

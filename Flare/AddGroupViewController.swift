@@ -168,6 +168,16 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ConfirmGroupSegue" {
+            let destination = segue.destinationViewController as! SaveGroupViewController
+            destination.contacts = [Contact]()
+            destination.contacts.appendContentsOf(selectedContacts)
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func clearAction(sender: UIBarButtonItem) {

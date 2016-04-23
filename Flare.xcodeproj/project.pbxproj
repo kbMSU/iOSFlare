@@ -191,22 +191,12 @@
 			isa = PBXGroup;
 			children = (
 				2592A30C1C7D5AB200563426 /* LoadingScreenViewController.swift */,
-				25C2DB581C77789900D90197 /* MapViewController.swift */,
-				2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */,
-				25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */,
-				25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */,
-				25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */,
-				25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */,
-				25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */,
-				253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */,
-				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
-				25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */,
-				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
 				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
-				25EB93C61CBFAE9000A02C0E /* GroupsListViewController.swift */,
-				25EB93CA1CC0F4A400A02C0E /* AddGroupViewController.swift */,
-				25EB93CE1CCA6D5100A02C0E /* SaveGroupViewController.swift */,
-				25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */,
+				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
+				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
+				25EB93D01CCB7AED00A02C0E /* Registration Controllers */,
+				25EB93D11CCB7B6800A02C0E /* Flare Controllers */,
+				25EB93D21CCB7BF000A02C0E /* Groups Controllers */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -264,6 +254,7 @@
 				2596DE7E1C803B4200A7172C /* Controls */,
 				2592A3141C7DF05B00563426 /* Modules */,
 				2592A3131C7D681C00563426 /* ViewControllers */,
+				25EB93D31CCB7C0D00A02C0E /* Flare History Controller */,
 				2592A3121C7D680400563426 /* Storyboards */,
 				25C2DB561C77789900D90197 /* AppDelegate.swift */,
 				25C2DB601C77789900D90197 /* Assets.xcassets */,
@@ -281,6 +272,47 @@
 			);
 			path = FlareTests;
 			sourceTree = SOURCE_ROOT;
+		};
+		25EB93D01CCB7AED00A02C0E /* Registration Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25947C241CB22BA500F949C5 /* StartRegistrationViewController.swift */,
+				25D6AB141C885C94001A9C11 /* CountryPickerViewController.swift */,
+				25D6AB161C885EFA001A9C11 /* VerifyPhoneViewController.swift */,
+				25D6AB181C894DDB001A9C11 /* ConfirmCodeViewController.swift */,
+				25D6AB1A1C899186001A9C11 /* RegistrationViewController.swift */,
+				253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */,
+			);
+			name = "Registration Controllers";
+			sourceTree = "<group>";
+		};
+		25EB93D11CCB7B6800A02C0E /* Flare Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25C2DB581C77789900D90197 /* MapViewController.swift */,
+				2592A30A1C7CD0A700563426 /* SendFlareContactsViewController.swift */,
+				25F818DD1C84743800176587 /* ConfirmFlareViewController.swift */,
+			);
+			name = "Flare Controllers";
+			sourceTree = "<group>";
+		};
+		25EB93D21CCB7BF000A02C0E /* Groups Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25EB93C61CBFAE9000A02C0E /* GroupsListViewController.swift */,
+				25EB93CA1CC0F4A400A02C0E /* AddGroupViewController.swift */,
+				25EB93CE1CCA6D5100A02C0E /* SaveGroupViewController.swift */,
+			);
+			name = "Groups Controllers";
+			sourceTree = "<group>";
+		};
+		25EB93D31CCB7C0D00A02C0E /* Flare History Controller */ = {
+			isa = PBXGroup;
+			children = (
+				25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */,
+			);
+			name = "Flare History Controller";
+			sourceTree = "<group>";
 		};
 		BC449833C790EE905523486B /* Pods */ = {
 			isa = PBXGroup;

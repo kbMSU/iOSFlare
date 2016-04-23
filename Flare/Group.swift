@@ -11,6 +11,7 @@ import Foundation
 struct GroupKeys {
     static let nameKey = "name"
     static let contactsKey = "contacts"
+    static let idKey = "id"
 }
 
 class Group: NSObject, NSCoding {
@@ -19,20 +20,32 @@ class Group: NSObject, NSCoding {
     
     var name : String
     var contacts : [Contact]
+    var id : String
     
     init(name:String,contacts:[Contact]) {
         self.name = name
         self.contacts = contacts
+        
+        let currentDateTime = NSDate()
+        self.id = name+" : \(currentDateTime)"
+    }
+    
+    init(name:String,contacts:[Contact],id:String) {
+        self.name = name
+        self.contacts = contacts
+        self.id = id
     }
     
     required convenience init(coder aDecoder:NSCoder) {
         let name = aDecoder.decodeObjectForKey(GroupKeys.nameKey) as! String
         let contacts = aDecoder.decodeObjectForKey(GroupKeys.contactsKey) as! [Contact]
-        self.init(name: name,contacts: contacts)
+        let id = aDecoder.decodeObjectForKey(GroupKeys.idKey) as! String
+        self.init(name: name,contacts: contacts,id: id)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: GroupKeys.nameKey)
         aCoder.encodeObject(contacts, forKey: GroupKeys.contactsKey)
+        aCoder.encodeObject(id, forKey: GroupKeys.idKey)
     }
 }
