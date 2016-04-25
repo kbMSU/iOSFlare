@@ -140,7 +140,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !locations.isEmpty, let topLocation = locations.first {
-            userLocation = topLocation
+            setLocation(topLocation)
             centerMapOnUserLocation()
             updateAddress()
         } else {
@@ -159,7 +159,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centerCoordinate = mapView.centerCoordinate
         let centerLocation = CLLocation(coordinate: centerCoordinate, altitude: mapViewRadius, horizontalAccuracy: locationAccuracy, verticalAccuracy: locationAccuracy, timestamp: NSDate())
-        userLocation = centerLocation
+        setLocation(centerLocation)
         updateAddress()
     }
     
@@ -287,9 +287,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func updateLocation() {
-        userLocation = locationManager.location
+        setLocation(locationManager.location!)
         centerMapOnUserLocation()
         updateAddress()
+    }
+    
+    func setLocation(location : CLLocation) {
+        userLocation = location
+        DataModule.currentLocation = userLocation
     }
     
     func setInitialized() {

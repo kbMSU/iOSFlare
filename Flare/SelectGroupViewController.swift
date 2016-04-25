@@ -1,20 +1,23 @@
 //
-//  ConfirmFlareViewController.swift
+//  SelectGroupViewController.swift
 //  Flare
 //
-//  Created by Karthik Balasubramanian on 2/29/16.
+//  Created by Karthik Balasubramanian on 4/24/16.
 //  Copyright © 2016 Karthik Balasubramanian. All rights reserved.
 //
 
 import UIKit
 import MessageUI
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
-
+class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
+    
     // MARK: Constants
+    
     let cellIdentifier = "ContactTableViewCell"
     
     // MARK: Variables
+    
+    var group : Group!
     var contacts = [Contact]()
     var selectedContacts = [Contact]()
     var location : CLLocation?
@@ -22,40 +25,56 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     var result : SendFlareResult?
     
     // MARK: Outlets
-    @IBOutlet weak var contactTableView: UITableView!
-    @IBOutlet weak var messageTextField: UITextField!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet var topLevelView: UIView!
     
+    @IBOutlet var contactsTableView: UITableView!
+    @IBOutlet var messageTextField: UITextField!
+    @IBOutlet var sendFlareButton: UIButton!
+    @IBOutlet var titleItem: UINavigationItem!
+    @IBOutlet var overlayView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        contactTableView.dataSource = self
-        contactTableView.delegate = self
+        titleItem.title = group.name
+        contacts.appendContentsOf(group.contacts)
+        selectedContacts.appendContentsOf(contacts)
         
-        contacts.sortInPlace {
-            return $0.firstName + " " + $0.lastName < $1.firstName + " " + $1.lastName
-        }
         for contact in contacts {
             contact.isSelected = true
         }
-        selectedContacts.appendContentsOf(contacts)
-        
-        messageTextField.delegate = self
         
         backendModule = BackendModule(delegate: self)
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        messageTextField.delegate = self
+        
+        location = DataModule.currentLocation
         
         doneBeingBusy()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: Actions
+    
+    @IBAction func sendFlareAction(sender: UIButton) {
+        if location == nil {
+            displayError("We could not get your location")
+            return
+        }
+        
+        isBusy()
+        var message = messageTextField.text
+        if message == nil || message == "" {
+            message = DataModule.defaultFlareMessage
+        }
+        var numbers = [PhoneNumber]()
+        for contact in selectedContacts {
+            numbers.append(contact.primaryPhone)
+        }
+        
+        backendModule?.sendFlare(numbers, message: message!, location: location!, sender: self)
     }
     
-    // MARK: Text Field Delegate
+    // MARK: TextField Delegate
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -67,7 +86,37 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         return true
     }
     
-    // MARK: Table View DataSource/Delegate
+    // MARK: Backend Module delegate
+    
+    func sendFlareResult(result: SendFlareResult) {
+        self.result = result
+        
+        if result.numbersToIMessage.isEmpty {
+            finishedFlare()
+        } else {
+            let messageVc = MFMessageComposeViewController()
+            messageVc.messageComposeDelegate = self
+            messageVc.recipients = result.numbersToIMessage
+            messageVc.body = result.message
+            presentViewController(messageVc, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: Message Delegate
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        switch result {
+        case MessageComposeResultSent,MessageComposeResultCancelled:
+            finishedFlare()
+        case MessageComposeResultFailed:
+            self.result!.numbersFailedToSend.appendContentsOf(self.result!.numbersToIMessage)
+            finishedFlare()
+        default:
+            finishedFlare()
+        }
+    }
+    
+    // MARK: TableView Delegate/DataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -138,7 +187,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
                 cell.selectedSwitch.on = true
                 self.selectedContacts.append(contactAtRow)
             }
-
+            
         }
         
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
@@ -150,54 +199,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    // MARK: Backend Module delegate
-    
-    func sendFlareResult(result: SendFlareResult) {
-        self.result = result
-        
-        if result.numbersToIMessage.isEmpty {
-            finishedFlare()
-        } else {
-            let messageVc = MFMessageComposeViewController()
-            messageVc.messageComposeDelegate = self
-            messageVc.recipients = result.numbersToIMessage
-            messageVc.body = result.message
-            presentViewController(messageVc, animated: true, completion: nil)
-        }
-    }
-    
-    // MARK: Message Delegate
-    
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        switch result {
-        case MessageComposeResultSent,MessageComposeResultCancelled:
-            finishedFlare()
-        case MessageComposeResultFailed:
-            self.result!.numbersFailedToSend.appendContentsOf(self.result!.numbersToIMessage)
-            finishedFlare()
-        default:
-            finishedFlare()
-        }
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func sendClickAction(sender: UIButton) {
-        isBusy()
-        
-        var message = messageTextField.text
-        if message == nil || message == "" {
-            message = DataModule.defaultFlareMessage
-        }
-        var numbers = [PhoneNumber]()
-        for contact in selectedContacts {
-            numbers.append(contact.primaryPhone)
-        }
-        
-        backendModule?.sendFlare(numbers, message: message!, location: location!, sender: self)
-    }
-    
-    // MARK: Helper functions
+    // MARK: Helpers
     
     func finishedFlare() {
         doneBeingBusy()
@@ -218,7 +220,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
             for index in indexesToRemove {
                 contacts.removeAtIndex(index)
             }
-            contactTableView.reloadData()
+            contactsTableView.reloadData()
             
             let alert = UIAlertController(title: "Something went wrong", message: "We couldn't flare some of the people. The ones we could flare have been removed from your selection", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
@@ -232,25 +234,28 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         result = nil
     }
     
-    func isBusy() {
-        sendButton.enabled = false
-        cancelButton.enabled = false
-        overlayView.hidden = false
-    }
-    
-    func doneBeingBusy() {
-        sendButton.enabled = true
-        cancelButton.enabled = true
-        overlayView.hidden = true
-    }
-    
-    func noContactsSelected() {
-        sendButton.hidden = true
-        sendButton.enabled = false
+    func displayError(message : String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func contactsSelected() {
-        sendButton.hidden = false
-        sendButton.enabled = true
+        sendFlareButton.hidden = false
+    }
+    
+    func noContactsSelected() {
+        sendFlareButton.hidden = true
+    }
+    
+    func isBusy() {
+        overlayView.hidden = false
+        sendFlareButton.enabled = false
+    }
+    
+    func doneBeingBusy() {
+        overlayView.hidden = true
+        sendFlareButton.enabled = true
     }
 }

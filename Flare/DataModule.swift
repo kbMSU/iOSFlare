@@ -40,6 +40,7 @@ class DataModule {
     static var groups = [Group]()
     static var didLoadFromNotification = false
     static var notificationInfo : NotificationInfo?
+    static var currentLocation : CLLocation?
     
     static var myCountryCode : String = "" {
         didSet {
