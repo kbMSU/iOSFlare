@@ -10,7 +10,10 @@ import UIKit
 
 class SlideOutViewController: UIViewController {
     
+    // MARK: Variables
+    
     var leftSwipeRecognizer : UISwipeGestureRecognizer!
+    var menuStoryboard : UIStoryboard!
         
     // MARK: Outlets
     
@@ -25,6 +28,8 @@ class SlideOutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
+        
         let text = "+"+DataModule.myCountryCode+DataModule.myPhoneNumber
         profileButton.setTitle(text, forState: .Normal)
         
@@ -35,9 +40,21 @@ class SlideOutViewController: UIViewController {
         settingsButtonWidth.constant = maxWidth
         aboutButtonWidth.constant = maxWidth
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: Actions
+    
+    @IBAction func groupsAction(sender: UIButton) {
+        let groupsController = menuStoryboard.instantiateViewControllerWithIdentifier("GroupsViewController")
+        presentViewController(groupsController, animated: true, completion: nil)
+    }
+    
+    @IBAction func settingsAction(sender: UIButton) {
+        let groupsController = menuStoryboard.instantiateViewControllerWithIdentifier("SettingsViewController")
+        presentViewController(groupsController, animated: true, completion: nil)
     }
 }

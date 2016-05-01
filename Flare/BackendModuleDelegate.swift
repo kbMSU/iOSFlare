@@ -22,6 +22,9 @@ protocol BackendModuleDelegate {
     
     func sendFlareResponseSuccess()
     func sendFlareResponseError(error : ErrorType)
+    
+    func unregisterSuccess()
+    func unregisterError(error : ErrorType)
 }
 
 /*
@@ -45,4 +48,7 @@ extension BackendModuleDelegate {
     
     func sendFlareResponseSuccess() {}
     func sendFlareResponseError(error : ErrorType) {}
+    
+    func unregisterSuccess() {}
+    func unregisterError(error : ErrorType) {}
 }

@@ -48,7 +48,7 @@ class BackendModule {
                 try installation.save()
                 
                 // Is a device already saved for this phone number 
-                let query = PFQuery(className: "Device").whereKey("FullPhone", equalTo: DataModule.myCountryCode + DataModule.myPhoneNumber)
+                let query = PFQuery(className: "Device").whereKey("FullPhone", equalTo: fullPhone)
                 let results = try query.findObjects()
                 if results.isEmpty {
                     // If not, then we need to save this device
@@ -71,7 +71,30 @@ class BackendModule {
                     self.delegate.registrationSuccess()
                 }
             } catch {
-                self.delegate.registrationError(error)
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.registrationError(error)
+                }
+            }
+        }
+    }
+    
+    func unregister() {
+        dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
+            do {
+                let query = PFQuery(className: "Device").whereKey("FullPhone", equalTo: DataModule.myCountryCode + DataModule.myPhoneNumber)
+                let results = try query.findObjects()
+                if !results.isEmpty {
+                    for result in results {
+                        try result.delete()
+                    }
+                }
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.unregisterSuccess()
+                }
+            } catch {
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.unregisterError(error)
+                }
             }
         }
     }

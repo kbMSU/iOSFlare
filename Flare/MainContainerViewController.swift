@@ -32,7 +32,7 @@ class MainContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SlideOutModule.slideOutManager = self
+        SlideOutModule.setSlideOutManager(self)
         
         let maxX = UIScreen.mainScreen().bounds.width
         mainViewTranslation = maxX - remainingAfterAnimation
@@ -58,6 +58,10 @@ class MainContainerViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        slideOutClosed()
     }
 
     // MARK: Helper
@@ -192,6 +196,11 @@ class MainContainerViewController: UIViewController {
                 self.slideOutOpened()
             }
         )
+    }
+    
+    func closeSlideOut() {
+        self.mainView.frame.origin.x = 0
+        slideOutClosed()
     }
     
     func isSliding() {

@@ -13,7 +13,11 @@ class SlideOutModule {
     static let instance = SlideOutModule()
     private init() {}
     
-    static var slideOutManager : MainContainerViewController?
+    private static var slideOutManager : MainContainerViewController?
+    
+    static func setSlideOutManager(manager: MainContainerViewController) {
+        slideOutManager = manager
+    }
     
     static func slideOut() {
         slideOutManager!.slideOut()
