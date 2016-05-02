@@ -26,11 +26,11 @@ class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: Outlets
     
-    @IBOutlet var contactsTableView: UITableView!
-    @IBOutlet var messageTextField: UITextField!
-    @IBOutlet var sendFlareButton: UIButton!
-    @IBOutlet var titleItem: UINavigationItem!
-    @IBOutlet var overlayView: UIView!
+    @IBOutlet weak var contactsTableView: UITableView!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var sendFlareButton: UIButton!
+    @IBOutlet weak var titleItem: UINavigationItem!
+    @IBOutlet weak var overlayView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

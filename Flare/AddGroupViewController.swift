@@ -25,7 +25,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var searchContactsTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var contactsTableView: UITableView!
-    @IBOutlet var clearButton: UIBarButtonItem!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     
     // MARK: Lifecycle
     

@@ -24,9 +24,9 @@ class GroupsListViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var groupsTableView: UITableView!
     @IBOutlet weak var noGroupsTextView: UILabel!
-    @IBOutlet var editButton: UIBarButtonItem!
-    @IBOutlet var overlayView: UIView!
-    @IBOutlet var addGroupButton: UIButton!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var addGroupButton: UIButton!
     
     // MARK: Lifecycle
     

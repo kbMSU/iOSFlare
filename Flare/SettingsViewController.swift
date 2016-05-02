@@ -18,18 +18,18 @@ class SettingsViewController: UITableViewController, ContactModuleDelegate, Back
 
     // MARK: Outlets
     
-    @IBOutlet var cancelButton: UIBarButtonItem!
-    @IBOutlet var phoneNumberLabel: UILabel!
-    @IBOutlet var findFriendsSwitch: UISwitch!
-    @IBOutlet var allowFriendsToFindYouSwitch: UISwitch!
-    @IBOutlet var smsSwitch: UISwitch!
-    @IBOutlet var cloudMessageSwitch: UISwitch!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var findFriendsSwitch: UISwitch!
+    @IBOutlet weak var allowFriendsToFindYouSwitch: UISwitch!
+    @IBOutlet weak var smsSwitch: UISwitch!
+    @IBOutlet weak var cloudMessageSwitch: UISwitch!
     
-    @IBOutlet var findFriendsBusyIndicator: UIActivityIndicatorView!
-    @IBOutlet var friendsCanFindYouBusyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var findFriendsBusyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var friendsCanFindYouBusyIndicator: UIActivityIndicatorView!
     
-    @IBOutlet var phoneNumberCell: UITableViewCell!
-    @IBOutlet var defaultsCell: UITableViewCell!
+    @IBOutlet weak var phoneNumberCell: UITableViewCell!
+    @IBOutlet weak var defaultsCell: UITableViewCell!
     
     // MARK: Lifecycle
     

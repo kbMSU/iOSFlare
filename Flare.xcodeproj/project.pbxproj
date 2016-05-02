@@ -10,6 +10,7 @@
 		2503C9B61CB7F78200F19F20 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */; };
 		25106C521CD0DBAD00A82F9F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */; };
 		25106C541CD3598500A82F9F /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25106C531CD3598500A82F9F /* Menu.storyboard */; };
+		25106C571CD794B700A82F9F /* DefaultMessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */; };
 		252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6A1C85A6A100EC9191 /* libz.tbd */; };
 		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
 		252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F98181CA530E30083E240 /* SendFlareResult.swift */; };
@@ -71,6 +72,7 @@
 		2503C9B51CB7F78200F19F20 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
 		25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		25106C531CD3598500A82F9F /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultMessagesTableViewController.swift; sourceTree = "<group>"; };
 		252DFD6A1C85A6A100EC9191 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		252F98181CA530E30083E240 /* SendFlareResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareResult.swift; sourceTree = "<group>"; };
@@ -163,6 +165,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		25106C551CD7881F00A82F9F /* Settings View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */,
+				25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */,
+			);
+			name = "Settings View Controllers";
+			sourceTree = "<group>";
+		};
 		257314331C806F21003381E8 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +212,7 @@
 				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
 				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
 				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
-				25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */,
+				25106C551CD7881F00A82F9F /* Settings View Controllers */,
 				25EB93D31CCB7C0D00A02C0E /* Flare History Controller */,
 				25EB93D01CCB7AED00A02C0E /* Registration Controllers */,
 				25EB93D11CCB7B6800A02C0E /* Flare Controllers */,
@@ -528,6 +539,7 @@
 				25D6AB171C885EFA001A9C11 /* VerifyPhoneViewController.swift in Sources */,
 				2592A30B1C7CD0A700563426 /* SendFlareContactsViewController.swift in Sources */,
 				25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */,
+				25106C571CD794B700A82F9F /* DefaultMessagesTableViewController.swift in Sources */,
 				25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */,
 				257314461C80AB0E003381E8 /* GCDModule.swift in Sources */,
 				25947C291CB408AC00F949C5 /* SlideOutModule.swift in Sources */,

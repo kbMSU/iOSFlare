@@ -23,9 +23,9 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     // MARK: Outlets
 
-    @IBOutlet var groupNameTextField: UITextField!
-    @IBOutlet var saveGroupButton: UIButton!
-    @IBOutlet var contactsTableView: UITableView!
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var saveGroupButton: UIButton!
+    @IBOutlet weak var contactsTableView: UITableView!
     
     // MARK: Lifecycle
     
