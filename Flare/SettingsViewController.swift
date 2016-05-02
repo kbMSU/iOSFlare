@@ -40,10 +40,10 @@ class SettingsViewController: UITableViewController, ContactModuleDelegate, Back
         backendModule = BackendModule(delegate: self)
         
         phoneNumberLabel.text = DataModule.myCountryCode+DataModule.myPhoneNumber
-        findFriendsSwitch.enabled = DataModule.canFindFriendsWithFlare
-        allowFriendsToFindYouSwitch.enabled = DataModule.canAllowFriendsToFind
-        smsSwitch.enabled = !DataModule.canSendCloudMessage
-        cloudMessageSwitch.enabled = DataModule.canSendCloudMessage
+        findFriendsSwitch.on = DataModule.canFindFriendsWithFlare
+        allowFriendsToFindYouSwitch.on = DataModule.canAllowFriendsToFind
+        smsSwitch.on = !DataModule.canSendCloudMessage
+        cloudMessageSwitch.on = DataModule.canSendCloudMessage
         
         findFriendsBusyIndicator.hidden = true
         friendsCanFindYouBusyIndicator.hidden = true
@@ -77,6 +77,21 @@ class SettingsViewController: UITableViewController, ContactModuleDelegate, Back
     func unregisterSuccess() {
         doneBeingBusy()
         DataModule.canAllowFriendsToFind = false
+        
+        var found = false
+        for contact in DataModule.contacts {
+            for number in contact.phoneNumbers {
+                if number.digits.containsString(DataModule.myCountryCode+DataModule.myPhoneNumber) {
+                    number.hasFlare = false
+                    contact.hasFlare = false
+                    found = true
+                    break
+                }
+            }
+            if found {
+                break
+            }
+        }
     }
     
     func unregisterError(error: ErrorType) {
