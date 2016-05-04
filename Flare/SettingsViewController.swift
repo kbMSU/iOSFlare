@@ -54,6 +54,11 @@ class SettingsViewController: UITableViewController, ContactModuleDelegate, Back
         findFriendsSwitch.addTarget(self, action: #selector(findFriendsSwitchChanged), forControlEvents: .ValueChanged)
         allowFriendsToFindYouSwitch.addTarget(self, action: #selector(allowFriendsToFindSwitchChanged), forControlEvents: .ValueChanged)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // In case the phone number was updated
+        phoneNumberLabel.text = DataModule.myCountryCode+DataModule.myPhoneNumber
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

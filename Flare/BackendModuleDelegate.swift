@@ -10,45 +10,51 @@ import Foundation
 
 protocol BackendModuleDelegate {
     func findFriendsWithFlareSuccess()
-    func findFriendsWithFlareError(error: ErrorType)
+    func findFriendsWithFlareError(error: ErrorType?)
     
     func sendTwilioMessageSuccess()
-    func sendTwilioMessageError(error: ErrorType)
+    func sendTwilioMessageError(error: ErrorType?)
     
     func registrationSuccess()
-    func registrationError(error: ErrorType)
+    func registrationError(error: ErrorType?)
     
     func sendFlareResult(result : SendFlareResult)
     
     func sendFlareResponseSuccess()
-    func sendFlareResponseError(error : ErrorType)
+    func sendFlareResponseError(error : ErrorType?)
     
     func unregisterSuccess()
-    func unregisterError(error : ErrorType)
+    func unregisterError(error : ErrorType?)
+    
+    func updateRegistrationSuccess()
+    func updateRegistrationFailure(error : ErrorType?)
 }
 
 /*
 Currently Swift ( 2.1 ) does not support optional protocol methods without having the objc marker.
 But protocols with the tag cannot be used with classes that do not inherit from objc classes and 
 also cannot be used with structs. To overcome this we are going to extend the protocol and have 
-default implementations of the methods that are optional.
+default implementations of the methods.
 */
 
 extension BackendModuleDelegate {
     func findFriendsWithFlareSuccess() {}
-    func findFriendsWithFlareError(error: ErrorType) {}
+    func findFriendsWithFlareError(error: ErrorType?) {}
     
     func sendTwilioMessageSuccess() {}
-    func sendTwilioMessageError(error: ErrorType) {}
+    func sendTwilioMessageError(error: ErrorType?) {}
 
     func registrationSuccess() {}
-    func registrationError(error: ErrorType) {}
+    func registrationError(error: ErrorType?) {}
     
     func sendFlareResult(result : SendFlareResult) {}
     
     func sendFlareResponseSuccess() {}
-    func sendFlareResponseError(error : ErrorType) {}
+    func sendFlareResponseError(error : ErrorType?) {}
     
     func unregisterSuccess() {}
-    func unregisterError(error : ErrorType) {}
+    func unregisterError(error : ErrorType?) {}
+    
+    func updateRegistrationSuccess() {}
+    func updateRegistrationFailure(error : ErrorType?) {}
 }

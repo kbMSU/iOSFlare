@@ -52,8 +52,10 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     func textFieldDidChange(textField: UITextField) {
         if let phone = textField.text where phone != "" {
             verifyButton.enabled = true
+            verifyButton.tintColor = Constants.flareRedColor
         } else {
             verifyButton.enabled = false
+            verifyButton.tintColor = UIColor.grayColor()
         }
     }
     
@@ -89,6 +91,11 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
             destination.countryCode = selectedCountry!.1
             destination.phoneNumber = phoneNumberTextField.text
             destination.verificationCode = code
+        } else {
+            let destination = segue.destinationViewController as! EnterCodeViewController
+            destination.countryCode = selectedCountry!.1
+            destination.phoneNumber = phoneNumberTextField.text
+            destination.confirmationCode = code
         }
     }
     
@@ -111,6 +118,10 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     }
     
     func moveToEnterCodeScreen() {
-        performSegueWithIdentifier("SentCodeSegue", sender: nil)
+        if DataModule.haveVerifiedPhoneNumber {
+            performSegueWithIdentifier("ConfirmCodeSegue", sender: nil)
+        } else {
+            performSegueWithIdentifier("SentCodeSegue", sender: nil)
+        }
     }
 }

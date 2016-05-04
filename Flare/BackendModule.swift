@@ -78,6 +78,56 @@ class BackendModule {
         }
     }
     
+    func updateRegistration(newCountryCode : String, newPhoneNumber : String) {
+        dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
+            var installationUpdated = false
+            let installation = PFInstallation.currentInstallation()
+            let fullPhone = newCountryCode + newPhoneNumber
+            let oldPhone = DataModule.myCountryCode + DataModule.myPhoneNumber
+
+            do {
+                installation.setObject(newCountryCode, forKey: "CountryCode")
+                installation.setObject(newPhoneNumber, forKey: "Number")
+                installation.setObject(fullPhone, forKey: "FullPhone")
+                try installation.save()
+                
+                installationUpdated = true
+                
+                let query = PFQuery(className: "Device").whereKey("FullPhone", equalTo: oldPhone)
+                let results = try query.findObjects()
+                if results.isEmpty {
+                    installation.setObject(DataModule.myCountryCode, forKey: "CountryCode")
+                    installation.setObject(DataModule.myPhoneNumber, forKey: "Number")
+                    installation.setObject(oldPhone, forKey: "FullPhone")
+                    try installation.save()
+                    dispatch_async(GCDModule.GlobalMainQueue) {
+                        self.delegate.updateRegistrationFailure(nil)
+                    }
+                    return
+                } else {
+                    let device = results[0]
+                    device["CountryCode"] = newCountryCode
+                    device["Number"] = newPhoneNumber
+                    device["FullPhone"] = fullPhone
+                    try device.save()
+                }
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.updateRegistrationSuccess()
+                }
+            } catch {
+                installation.setObject(DataModule.myCountryCode, forKey: "CountryCode")
+                installation.setObject(DataModule.myPhoneNumber, forKey: "Number")
+                installation.setObject(oldPhone, forKey: "FullPhone")
+                if installationUpdated {
+                    installation.saveInBackground()
+                }
+                dispatch_async(GCDModule.GlobalMainQueue) {
+                    self.delegate.updateRegistrationFailure(error)
+                }
+            }
+        }
+    }
+    
     func unregister() {
         dispatch_async(GCDModule.GlobalUserInitiatedQueue) {
             do {

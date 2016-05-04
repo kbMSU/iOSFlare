@@ -11,6 +11,7 @@
 		25106C521CD0DBAD00A82F9F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */; };
 		25106C541CD3598500A82F9F /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25106C531CD3598500A82F9F /* Menu.storyboard */; };
 		25106C571CD794B700A82F9F /* DefaultMessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */; };
+		25106C5B1CD924E600A82F9F /* EnterCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25106C5A1CD924E600A82F9F /* EnterCodeViewController.swift */; };
 		252DFD6B1C85A6A100EC9191 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6A1C85A6A100EC9191 /* libz.tbd */; };
 		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
 		252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F98181CA530E30083E240 /* SendFlareResult.swift */; };
@@ -73,6 +74,7 @@
 		25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		25106C531CD3598500A82F9F /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultMessagesTableViewController.swift; sourceTree = "<group>"; };
+		25106C5A1CD924E600A82F9F /* EnterCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterCodeViewController.swift; sourceTree = "<group>"; };
 		252DFD6A1C85A6A100EC9191 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		252F98181CA530E30083E240 /* SendFlareResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareResult.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				25106C511CD0DBAD00A82F9F /* SettingsViewController.swift */,
 				25106C561CD794B700A82F9F /* DefaultMessagesTableViewController.swift */,
+				25106C5A1CD924E600A82F9F /* EnterCodeViewController.swift */,
 			);
 			name = "Settings View Controllers";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */,
 				25EB93CF1CCA6D5100A02C0E /* SaveGroupViewController.swift in Sources */,
+				25106C5B1CD924E600A82F9F /* EnterCodeViewController.swift in Sources */,
 				25C6DE931CBD68BC00F19B7E /* NotificationInfo.swift in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
 				25D6AB151C885C94001A9C11 /* CountryPickerViewController.swift in Sources */,

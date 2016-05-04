@@ -48,7 +48,7 @@ class ConfirmCodeViewController: UIViewController, UITextFieldDelegate {
             performSegueWithIdentifier("CodeConfirmedSegue", sender: nil)
         } else {
             let alert = UIAlertController(title: "Invalid", message: "The code you entered was incorrect", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .Destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         }
     }

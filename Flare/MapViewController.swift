@@ -55,7 +55,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         addressLabel.text = defaultLocationText
         
         locationMarker.hidden = true
-        locationMarker.frame.origin.y -= 12
         
         mapView.showsUserLocation = false
         
