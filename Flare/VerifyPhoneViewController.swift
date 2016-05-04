@@ -31,11 +31,10 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
         
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
         
-        verifyButton.enabled = false
-        
-        overlayView.hidden = true
-        
         backendModule = BackendModule(delegate: self)
+        
+        doneBeingBusy()
+        disableVerifyButton()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,12 +50,20 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     
     func textFieldDidChange(textField: UITextField) {
         if let phone = textField.text where phone != "" {
-            verifyButton.enabled = true
-            verifyButton.tintColor = Constants.flareRedColor
+            enableVerifyButton()
         } else {
-            verifyButton.enabled = false
-            verifyButton.tintColor = UIColor.grayColor()
+            disableVerifyButton()
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // MARK: Actions
@@ -110,11 +117,23 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate, BackendM
     func isBusy() {
         overlayView.hidden = false
         topLevelView.userInteractionEnabled = false
+        disableVerifyButton()
     }
     
     func doneBeingBusy() {
         overlayView.hidden = true
         topLevelView.userInteractionEnabled = true
+        enableVerifyButton()
+    }
+    
+    func disableVerifyButton() {
+        verifyButton.enabled = false
+        verifyButton.tintColor = UIColor.grayColor()
+    }
+    
+    func enableVerifyButton() {
+        verifyButton.enabled = true
+        verifyButton.tintColor = Constants.flareRedColor
     }
     
     func moveToEnterCodeScreen() {

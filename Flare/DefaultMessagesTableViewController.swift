@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DefaultMessagesTableViewController: UITableViewController {
+class DefaultMessagesTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: Outlets
     
@@ -31,6 +31,10 @@ class DefaultMessagesTableViewController: UITableViewController {
         acceptLabel.text = "\" \(DataModule.defaultAcceptMessage) \""
         declineLabel.text = "\" \(DataModule.defaultDeclineMessage) \""
         
+        flareMessageTextField.delegate = self
+        acceptTextField.delegate = self
+        declineTextField.delegate = self
+        
         flareUpdateButton.enabled = false
         flareUpdateButton.tintColor = UIColor.grayColor()
         
@@ -47,6 +51,18 @@ class DefaultMessagesTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: TextField Delegates
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     // MARK: Actions

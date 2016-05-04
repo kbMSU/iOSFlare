@@ -1450,7 +1450,7 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Flare" id="eF1-ZM-tBM">
-                                        <barButtonItem key="rightBarButtonItem" title="Dismiss" id="2AR-hu-yw1">
+                                        <barButtonItem key="leftBarButtonItem" title="Dismiss" id="2AR-hu-yw1">
                                             <color key="tintColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="dismissButtonAction:" destination="MwK-SC-y6A" id="nqh-F8-X3b"/>

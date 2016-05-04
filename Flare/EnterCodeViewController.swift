@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterCodeViewController: UIViewController, BackendModuleDelegate {
+class EnterCodeViewController: UIViewController, BackendModuleDelegate, UITextFieldDelegate {
     
     // MARK: Variables
     
@@ -33,7 +33,9 @@ class EnterCodeViewController: UIViewController, BackendModuleDelegate {
         backendModule = BackendModule(delegate: self)
         
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        codeTextField.delegate = self
         
+        doneBeingBusy()
         disableVerifyButton()
     }
 
@@ -45,18 +47,27 @@ class EnterCodeViewController: UIViewController, BackendModuleDelegate {
     
     func textFieldDidChange(textField: UITextField) {
         if let code = textField.text where code != "" {
-            disableVerifyButton()
-        } else {
             enableVerifyButton()
+        } else {
+            disableVerifyButton()
         }
     }
  
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     // MARK: Backend Module Delegate
     
     func updateRegistrationSuccess() {
         doneBeingBusy()
-        let alert = UIAlertController(title: "Success", message: "Your phone number has been successfully update", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Success", message: "Your phone number has been successfully updated", preferredStyle: .Alert)
         let action = UIAlertAction(title: "Dismiss", style: .Default, handler: { (action:UIAlertAction) -> Void in
             DataModule.myCountryCode = self.countryCode
             DataModule.myPhoneNumber = self.phoneNumber
