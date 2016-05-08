@@ -90,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let alert = UIAlertController(title: from, message: text, preferredStyle: .ActionSheet)
             let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
             alert.addAction(action)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if type == "flare" {
                 let lat = userInfo["latitude"] as? String
                 let long = userInfo["longitude"] as? String
@@ -99,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 let viewAction = UIAlertAction(title: "View", style: .Default, handler: {(action:UIAlertAction) -> Void in
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let destination = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
                     destination.type = type
                     destination.phoneNumber = phone
@@ -107,6 +107,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     destination.latitude = lat
                     destination.longitude = long
                     topController.presentViewController(destination, animated: true, completion: nil)
+                })
+                alert.addAction(viewAction)
+            } else if type == "response" {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                let viewAction = UIAlertAction(title: "View", style: .Default, handler: { (_:UIAlertAction) -> Void in
+                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
                 })
                 alert.addAction(viewAction)
             }

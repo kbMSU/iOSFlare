@@ -61,7 +61,7 @@ class MainContainerViewController: UIViewController {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        slideOutClosed()
+        closeSlideOut()
     }
 
     // MARK: Helper
@@ -199,8 +199,15 @@ class MainContainerViewController: UIViewController {
     }
     
     func closeSlideOut() {
-        self.mainView.frame.origin.x = 0
-        slideOutClosed()
+        isSliding()
+        
+        UIView.animateWithDuration(animationDuration, animations: {
+            self.mainView.frame.origin.x = 0
+            }, completion: { (result: Bool) in
+                self.showingSlideOut = false
+                self.slideOutClosed()
+            }
+        )
     }
     
     func isSliding() {

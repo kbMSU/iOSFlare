@@ -147,101 +147,127 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-dk-6y5">
-                                <rect key="frame" x="20" y="150" width="300" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-Vy-Ysq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-6M-N5n">
-                                        <rect key="frame" x="0.0" y="8" width="300" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-B4-ZfJ">
+                                        <rect key="frame" x="20" y="62" width="572" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="SeY-lI-oDA"/>
-                                            <constraint firstAttribute="width" constant="300" id="ofL-mh-jg9"/>
+                                            <constraint firstAttribute="height" constant="30" id="vmR-gs-4q8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Button" image="profileImage"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dig-Qr-I6k">
-                                        <rect key="frame" x="0.0" y="88" width="300" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="NOx-7I-ivT"/>
-                                            <constraint firstAttribute="width" constant="300" id="YTb-Qc-rgg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Flares" image="history"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUT-Bd-mQC">
-                                        <rect key="frame" x="0.0" y="135" width="300" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="FOI-eR-dZB"/>
-                                            <constraint firstAttribute="height" constant="32" id="hEn-2s-hYy"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Groups" image="groups"/>
-                                        <connections>
-                                            <action selector="groupsAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="as4-kT-DhX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgb-FZ-Mia">
-                                        <rect key="frame" x="0.0" y="182" width="300" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Cfn-A1-VaK"/>
-                                            <constraint firstAttribute="height" constant="32" id="inB-Ik-EfD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Settings" image="settings"/>
-                                        <connections>
-                                            <action selector="settingsAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="QaN-Pa-poB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-zJ-DPm">
-                                        <rect key="frame" x="0.0" y="229" width="300" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="Yjr-l7-Ijv"/>
-                                            <constraint firstAttribute="width" constant="300" id="dAv-F2-dPD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="About" image="about"/>
-                                    </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="dzM-zJ-DPm" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="1KZ-vF-XY5"/>
-                                    <constraint firstAttribute="height" constant="300" id="63A-Or-RPo"/>
-                                    <constraint firstAttribute="width" constant="300" id="AXU-r4-7KK"/>
-                                    <constraint firstItem="YUT-Bd-mQC" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="B9V-G3-WIt"/>
-                                    <constraint firstItem="k9u-6M-N5n" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="I5U-88-8eW"/>
-                                    <constraint firstItem="dig-Qr-I6k" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="TPN-jv-Deq"/>
-                                    <constraint firstItem="YUT-Bd-mQC" firstAttribute="top" secondItem="dig-Qr-I6k" secondAttribute="bottom" constant="15" id="aBC-DS-wQG"/>
-                                    <constraint firstItem="lgb-FZ-Mia" firstAttribute="top" secondItem="YUT-Bd-mQC" secondAttribute="bottom" constant="15" id="bxC-FP-XGK"/>
-                                    <constraint firstItem="lgb-FZ-Mia" firstAttribute="leading" secondItem="uOI-dk-6y5" secondAttribute="leading" id="ejL-Cc-FsD"/>
-                                    <constraint firstItem="dzM-zJ-DPm" firstAttribute="top" secondItem="lgb-FZ-Mia" secondAttribute="bottom" constant="15" id="faN-6b-rIv"/>
-                                    <constraint firstItem="dig-Qr-I6k" firstAttribute="top" secondItem="k9u-6M-N5n" secondAttribute="bottom" constant="30" id="hPc-Al-Uh1"/>
-                                    <constraint firstItem="k9u-6M-N5n" firstAttribute="top" secondItem="uOI-dk-6y5" secondAttribute="top" constant="8" id="kr5-eo-ORw"/>
+                                    <constraint firstAttribute="trailing" secondItem="hjv-B4-ZfJ" secondAttribute="trailing" constant="8" id="99e-2j-1am"/>
+                                    <constraint firstAttribute="height" constant="100" id="Sbu-wl-afd"/>
+                                    <constraint firstItem="hjv-B4-ZfJ" firstAttribute="leading" secondItem="tKv-Vy-Ysq" secondAttribute="leading" constant="20" id="WKz-Nn-QXH"/>
+                                    <constraint firstAttribute="bottom" secondItem="hjv-B4-ZfJ" secondAttribute="bottom" constant="8" id="bkp-FO-luJ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dig-Qr-I6k">
+                                <rect key="frame" x="20" y="108" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0gI-Ed-Iww"/>
+                                    <constraint firstAttribute="height" constant="44" id="64p-hS-SUA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Flares" image="history">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUT-Bd-mQC">
+                                <rect key="frame" x="20" y="160" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Tsp-uH-xb6"/>
+                                    <constraint firstAttribute="height" constant="44" id="zAq-yk-y8e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Groups" image="groups">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="groupsAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="as4-kT-DhX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9j-bh-sx2">
+                                <rect key="frame" x="20" y="212" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="OIU-bX-OZF"/>
+                                    <constraint firstAttribute="height" constant="44" id="nnh-kS-SHs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Feedback" image="feedback">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-zJ-DPm">
+                                <rect key="frame" x="20" y="316" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0p9-9Q-Ydo"/>
+                                    <constraint firstAttribute="height" constant="44" id="lMc-1E-eAe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="About" image="about">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="hio-Zd-A0E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgb-FZ-Mia">
+                                <rect key="frame" x="20" y="264" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="a68-gJ-hxV"/>
+                                    <constraint firstAttribute="width" constant="300" id="db9-HX-IM3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Settings" image="settings">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingsAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="QaN-Pa-poB"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="uOI-dk-6y5" firstAttribute="centerY" secondItem="Pel-qp-61d" secondAttribute="centerY" id="4o9-6U-Pcz"/>
-                            <constraint firstItem="uOI-dk-6y5" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="Q5M-vE-KqK"/>
+                            <constraint firstItem="dzM-zJ-DPm" firstAttribute="top" secondItem="lgb-FZ-Mia" secondAttribute="bottom" constant="8" id="0hZ-wy-38H"/>
+                            <constraint firstItem="q9j-bh-sx2" firstAttribute="top" secondItem="YUT-Bd-mQC" secondAttribute="bottom" constant="8" id="3Pb-lZ-jjO"/>
+                            <constraint firstItem="dig-Qr-I6k" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="CmC-sB-sAv"/>
+                            <constraint firstItem="YUT-Bd-mQC" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="EK1-tf-N29"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tKv-Vy-Ysq" secondAttribute="trailing" constant="-20" id="Hy0-YW-NiG"/>
+                            <constraint firstItem="tKv-Vy-Ysq" firstAttribute="top" secondItem="lxV-gR-Yrf" secondAttribute="bottom" id="JDb-S6-Eju"/>
+                            <constraint firstItem="lgb-FZ-Mia" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="Qx0-H4-CNl"/>
+                            <constraint firstItem="lgb-FZ-Mia" firstAttribute="top" secondItem="q9j-bh-sx2" secondAttribute="bottom" constant="8" id="UVs-m9-qIm"/>
+                            <constraint firstItem="tKv-Vy-Ysq" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" constant="-20" id="ZpP-Vf-O01"/>
+                            <constraint firstItem="q9j-bh-sx2" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="exF-tb-W5j"/>
+                            <constraint firstItem="dig-Qr-I6k" firstAttribute="top" secondItem="tKv-Vy-Ysq" secondAttribute="bottom" constant="8" id="f14-ae-Qfh"/>
+                            <constraint firstItem="YUT-Bd-mQC" firstAttribute="top" secondItem="dig-Qr-I6k" secondAttribute="bottom" constant="8" id="qt3-ly-GCQ"/>
+                            <constraint firstItem="dzM-zJ-DPm" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="zO8-lk-ag0"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="aboutButtonWidth" destination="dAv-F2-dPD" id="cuE-mx-ghL"/>
-                        <outlet property="groupsButtonWidth" destination="FOI-eR-dZB" id="uUc-xs-pkM"/>
-                        <outlet property="historyButtonWidth" destination="YTb-Qc-rgg" id="EBP-uv-Kmv"/>
-                        <outlet property="profileButton" destination="k9u-6M-N5n" id="zQc-LK-2Pa"/>
-                        <outlet property="profileButtonWidth" destination="ofL-mh-jg9" id="Fsj-Ne-dzr"/>
-                        <outlet property="settingsButtonWidth" destination="Cfn-A1-VaK" id="dOf-Oh-2ci"/>
+                        <outlet property="aboutButtonWidth" destination="0p9-9Q-Ydo" id="ICz-Bc-4a9"/>
+                        <outlet property="feedbackButtonWidth" destination="OIU-bX-OZF" id="RFV-qn-7oI"/>
+                        <outlet property="groupsButtonWidth" destination="Tsp-uH-xb6" id="gAQ-mU-CT3"/>
+                        <outlet property="historyButtonWidth" destination="0gI-Ed-Iww" id="fpd-cK-P6M"/>
+                        <outlet property="numberLabel" destination="hjv-B4-ZfJ" id="FNG-7d-Bf1"/>
+                        <outlet property="settingsButtonWidth" destination="db9-HX-IM3" id="xgN-8l-loP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fL-aG-Ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2043" y="2619"/>
+            <point key="canvasLocation" x="2043" y="3102"/>
         </scene>
         <!--Flare History View Controller-->
         <scene sceneID="EnI-eF-bPn">
@@ -1565,7 +1591,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="080-MX-tD9" userLabel="Slide Out View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
-                                    <segue destination="GDD-kc-aG2" kind="embed" identifier="SlideOutEmbedSegue" id="dj8-QM-UU3"/>
+                                    <segue destination="GDD-kc-aG2" kind="embed" id="Irt-cs-7tS"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cU-S6-peb" userLabel="Map Scene View">
@@ -1617,19 +1643,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="about" width="32" height="32"/>
+        <image name="about" width="30" height="30"/>
+        <image name="feedback" width="30" height="30"/>
         <image name="fireIcon" width="16" height="16"/>
         <image name="fireRedIcon" width="32" height="32"/>
-        <image name="groups" width="32" height="32"/>
-        <image name="history" width="32" height="32"/>
+        <image name="groups" width="30" height="30"/>
+        <image name="history" width="30" height="30"/>
         <image name="loadingScreen" width="512" height="250"/>
         <image name="locationMarker" width="24" height="62"/>
         <image name="menu" width="25" height="25"/>
-        <image name="profileImage" width="50" height="50"/>
         <image name="reply" width="25" height="25"/>
         <image name="selectedContacts" width="16" height="16"/>
         <image name="sendFlare" width="16" height="16"/>
-        <image name="settings" width="32" height="32"/>
+        <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FiG-dG-RZq"/>

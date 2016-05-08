@@ -17,13 +17,15 @@ class SlideOutViewController: UIViewController {
         
     // MARK: Outlets
     
-    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var numberLabel: UILabel!
     
-    @IBOutlet weak var profileButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var historyButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var groupsButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var settingsButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var aboutButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var feedbackButtonWidth: NSLayoutConstraint!
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,10 @@ class SlideOutViewController: UIViewController {
         menuStoryboard = UIStoryboard(name: "Menu", bundle: nil)
         
         let text = "+"+DataModule.myCountryCode+DataModule.myPhoneNumber
-        profileButton.setTitle(text, forState: .Normal)
+        numberLabel.text = text
         
         let maxWidth = UIScreen.mainScreen().bounds.width - 120
-        profileButtonWidth.constant = maxWidth
+        feedbackButtonWidth.constant = maxWidth
         historyButtonWidth.constant = maxWidth
         groupsButtonWidth.constant = maxWidth
         settingsButtonWidth.constant = maxWidth
@@ -56,5 +58,10 @@ class SlideOutViewController: UIViewController {
     @IBAction func settingsAction(sender: UIButton) {
         let groupsController = menuStoryboard.instantiateViewControllerWithIdentifier("SettingsViewController")
         presentViewController(groupsController, animated: true, completion: nil)
+    }
+    
+    @IBAction func aboutAction(sender: UIButton) {
+        let aboutController = menuStoryboard.instantiateViewControllerWithIdentifier("AboutViewController")
+        presentViewController(aboutController, animated: true, completion: nil)
     }
 }

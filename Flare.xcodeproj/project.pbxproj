@@ -32,6 +32,7 @@
 		25947C271CB28F6600F949C5 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C261CB28F6600F949C5 /* MainContainerViewController.swift */; };
 		25947C291CB408AC00F949C5 /* SlideOutModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C281CB408AC00F949C5 /* SlideOutModule.swift */; };
 		2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */; };
+		25B70A9D1CDF91A100FACED5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B70A9C1CDF91A100FACED5 /* AboutViewController.swift */; };
 		25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB561C77789900D90197 /* AppDelegate.swift */; };
 		25C2DB591C77789900D90197 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2DB581C77789900D90197 /* MapViewController.swift */; };
 		25C2DB5C1C77789900D90197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C2DB5A1C77789900D90197 /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		25947C281CB408AC00F949C5 /* SlideOutModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutModule.swift; sourceTree = "<group>"; };
 		2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
 		25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flare-Bridging-Header.h"; sourceTree = "<group>"; };
+		25B70A9C1CDF91A100FACED5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		25C2DB531C77789900D90197 /* Flare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2DB561C77789900D90197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25C2DB581C77789900D90197 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -215,8 +217,7 @@
 				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
 				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
 				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
-				25106C551CD7881F00A82F9F /* Settings View Controllers */,
-				25EB93D31CCB7C0D00A02C0E /* Flare History Controller */,
+				25B70A9B1CDF913700FACED5 /* Menu View Controllers */,
 				25EB93D01CCB7AED00A02C0E /* Registration Controllers */,
 				25EB93D11CCB7B6800A02C0E /* Flare Controllers */,
 				25EB93D21CCB7BF000A02C0E /* Groups Controllers */,
@@ -245,6 +246,16 @@
 				25EB93C81CBFB60400A02C0E /* GroupTableViewCell.swift */,
 			);
 			name = Controls;
+			sourceTree = "<group>";
+		};
+		25B70A9B1CDF913700FACED5 /* Menu View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */,
+				25B70A9C1CDF91A100FACED5 /* AboutViewController.swift */,
+				25106C551CD7881F00A82F9F /* Settings View Controllers */,
+			);
+			name = "Menu View Controllers";
 			sourceTree = "<group>";
 		};
 		25C2DB4A1C77789900D90197 = {
@@ -327,14 +338,6 @@
 				25EB93D41CCD2C4D00A02C0E /* SelectGroupViewController.swift */,
 			);
 			name = "Groups Controllers";
-			sourceTree = "<group>";
-		};
-		25EB93D31CCB7C0D00A02C0E /* Flare History Controller */ = {
-			isa = PBXGroup;
-			children = (
-				25EB93CC1CC3A68600A02C0E /* FlareHistoryViewController.swift */,
-			);
-			name = "Flare History Controller";
 			sourceTree = "<group>";
 		};
 		BC449833C790EE905523486B /* Pods */ = {
@@ -542,6 +545,7 @@
 				25590F451C85CF7700B4096E /* BackendModule.swift in Sources */,
 				25D6AB171C885EFA001A9C11 /* VerifyPhoneViewController.swift in Sources */,
 				2592A30B1C7CD0A700563426 /* SendFlareContactsViewController.swift in Sources */,
+				25B70A9D1CDF91A100FACED5 /* AboutViewController.swift in Sources */,
 				25947C231CB14AC000F949C5 /* SlideOutViewController.swift in Sources */,
 				25106C571CD794B700A82F9F /* DefaultMessagesTableViewController.swift in Sources */,
 				25C2DB571C77789900D90197 /* AppDelegate.swift in Sources */,
