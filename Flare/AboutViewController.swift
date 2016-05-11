@@ -20,7 +20,6 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        appImageView.image = UIImage(named: "AppIcon")
         if let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
             versionLabel.text = "Version \(version)"
         } else {
