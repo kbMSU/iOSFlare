@@ -27,7 +27,7 @@
                                         <gestureRecognizers/>
                                     </mapView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="11" placeholderIntrinsicHeight="25" image="locationMarker" translatesAutoresizingMaskIntoConstraints="NO" id="AhO-sG-zjN" userLabel="LocationMarker">
-                                        <rect key="frame" x="275" y="266" width="11" height="25"/>
+                                        <rect key="frame" x="275" y="252.5" width="11" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="11" id="Hex-dM-l01"/>
                                             <constraint firstAttribute="height" constant="25" id="Rhf-sP-PCD"/>
@@ -36,7 +36,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="AhO-sG-zjN" firstAttribute="centerY" secondItem="DNo-Wx-Ut4" secondAttribute="centerY" id="5BO-vF-Asd"/>
+                                    <constraint firstItem="AhO-sG-zjN" firstAttribute="centerY" secondItem="DNo-Wx-Ut4" secondAttribute="centerY" constant="-13" id="5BO-vF-Asd"/>
                                     <constraint firstItem="AhO-sG-zjN" firstAttribute="centerY" secondItem="DNo-Wx-Ut4" secondAttribute="centerY" id="UcC-jD-3jk"/>
                                     <constraint firstItem="Nts-VU-0ey" firstAttribute="leading" secondItem="DNo-Wx-Ut4" secondAttribute="leading" id="WtZ-lL-kGp"/>
                                     <constraint firstItem="Nts-VU-0ey" firstAttribute="top" secondItem="DNo-Wx-Ut4" secondAttribute="top" id="dz6-6l-REv"/>
@@ -1448,14 +1448,14 @@
                                 <color key="textColor" red="1" green="0.27450980390000002" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiJ-y7-GNN">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiJ-y7-GNN" userLabel="Map Area View">
                                 <rect key="frame" x="20" y="334" width="560" height="208"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDc-3D-2md">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="208"/>
                                     </mapView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationMarker" translatesAutoresizingMaskIntoConstraints="NO" id="NTl-4t-MtI">
-                                        <rect key="frame" x="275" y="91" width="11" height="25"/>
+                                        <rect key="frame" x="275" y="78.5" width="11" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="11" id="Ro1-yQ-hHB"/>
                                             <constraint firstAttribute="height" constant="25" id="iey-bc-t6H"/>
@@ -1465,7 +1465,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="KDc-3D-2md" firstAttribute="leading" secondItem="XiJ-y7-GNN" secondAttribute="leading" id="17I-Fx-0W9"/>
-                                    <constraint firstItem="NTl-4t-MtI" firstAttribute="centerY" secondItem="XiJ-y7-GNN" secondAttribute="centerY" id="9yO-5h-3Ns"/>
+                                    <constraint firstItem="NTl-4t-MtI" firstAttribute="centerY" secondItem="XiJ-y7-GNN" secondAttribute="centerY" constant="-13" id="9yO-5h-3Ns"/>
                                     <constraint firstItem="KDc-3D-2md" firstAttribute="top" secondItem="XiJ-y7-GNN" secondAttribute="top" id="Tv6-Ph-B0J"/>
                                     <constraint firstAttribute="bottom" secondItem="KDc-3D-2md" secondAttribute="bottom" id="Zbm-JI-NuD"/>
                                     <constraint firstItem="NTl-4t-MtI" firstAttribute="centerX" secondItem="XiJ-y7-GNN" secondAttribute="centerX" id="eFQ-C1-sEq"/>
