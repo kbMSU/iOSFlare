@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SlideOutViewController: UIViewController {
+class SlideOutViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: Variables
     
@@ -47,6 +48,12 @@ class SlideOutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Mail Composer Delegate
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     // MARK: Actions
     
@@ -63,5 +70,21 @@ class SlideOutViewController: UIViewController {
     @IBAction func aboutAction(sender: UIButton) {
         let aboutController = menuStoryboard.instantiateViewControllerWithIdentifier("AboutViewController")
         presentViewController(aboutController, animated: true, completion: nil)
+    }
+    
+    @IBAction func feedbackAction(sender: UIButton) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["support@shoresideapps.com"])
+            mail.setSubject("Feedback")
+            mail.setMessageBody("I have some feedback on the flare iOS app", isHTML: false)
+            presentViewController(mail, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Setup Required", message: "This device is not set up to send emails", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }
