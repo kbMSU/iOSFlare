@@ -22,7 +22,7 @@ class AboutViewController: UIViewController {
 
         appImageView.image = UIImage(named: "AppIcon")
         if let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionLabel.text = version
+            versionLabel.text = "Version \(version)"
         } else {
             versionLabel.text = "Version Unknown"
         }
