@@ -34,10 +34,15 @@ class DataModule {
         if let savedGroups = NSKeyedUnarchiver.unarchiveObjectWithFile(Group.ArchiveURL.path!) as? [Group] {
             groups += savedGroups
         }
+        
+        if let savedFlares = NSKeyedUnarchiver.unarchiveObjectWithFile(Flare.ArchiveURL.path!) as? [Flare] {
+            flares += savedFlares
+        }
     }
     
     static var contacts = [Contact]()
     static var groups = [Group]()
+    static var flares = [Flare]()
     static var didLoadFromNotification = false
     static var notificationInfo : NotificationInfo?
     static var currentLocation : CLLocation?
@@ -119,5 +124,10 @@ class DataModule {
             groups.removeAtIndex(index)
             NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
         }
+    }
+    
+    static func addFlare(flare : Flare) {
+        flares.append(flare)
+        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
     }
 }

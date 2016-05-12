@@ -87,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     }
                     
                     if let lat = info.latitude, let long = info.longitude {
-                        let destination = storyboard!.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                        let destination = storyboard!.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
                         destination.type = info.type
                         destination.phoneNumber = from
                         destination.message = info.message
@@ -96,7 +96,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         presentViewController(destination, animated: true, completion: nil)
                     }
                 } else {
-                    let destination = storyboard!.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                    let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
                     presentViewController(destination, animated: true, completion: nil)
                 }
             }

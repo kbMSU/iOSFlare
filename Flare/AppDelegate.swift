@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 let viewAction = UIAlertAction(title: "View", style: .Default, handler: {(action:UIAlertAction) -> Void in
-                    let destination = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
+                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
                     destination.type = type
                     destination.phoneNumber = phone
                     destination.message = text
@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
                 alert.addAction(viewAction)
             } else if type == "response" {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "Menu", bundle: nil)
                 let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
                 let viewAction = UIAlertAction(title: "View", style: .Default, handler: { (_:UIAlertAction) -> Void in
                     topController.presentViewController(destinationViewController, animated: true, completion: nil)
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        let state = application.applicationState
+        /*let state = application.applicationState
         if state == UIApplicationState.Inactive || state == UIApplicationState.Background {
             // Application is in background and is transition to active based on notification click
             let userInfo = notification.userInfo
@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // Application is already active and the notification just arrived ( not yet clicked )
             return
-        }
+        }*/
     }
 
     func applicationWillResignActive(application: UIApplication) {
