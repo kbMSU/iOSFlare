@@ -10,10 +10,10 @@ import Foundation
 
 struct FlareKeys {
     static let nameKey = "name"
-    static let imageKey = "image"
     static let typeKey = "type"
     static let messageKey = "message"
     static let timeStampKey = "timeStamp"
+    static let contactIdKey = "contactId"
 }
 
 class Flare: NSObject, NSCoding {
@@ -26,30 +26,44 @@ class Flare: NSObject, NSCoding {
     var message : String
     var timeStamp : NSDate
     
-    init(name:String,image:UIImage,type:FlareType,message:String,timeStamp:NSDate) {
+    var contactId : String?
+    
+    init(name:String,type:FlareType,message:String,timeStamp:NSDate,contactId:String?=nil,image:UIImage? = nil) {
         self.name = name
-        self.image = image
         self.type = type
         self.message = message
         self.timeStamp = timeStamp
+        self.contactId = contactId
+        
+        self.image = image ?? UIImage(named: "defaultContactImage")!
+    }
+    
+    func loadImage() {
+        if contactId == nil {
+            return
+        }
+        
+        for contact in DataModule.contacts where contact.id == contactId! {
+            image = contact.image!
+        }
     }
     
     required convenience init(coder aDecoder : NSCoder) {
         let name = aDecoder.decodeObjectForKey(FlareKeys.nameKey) as! String
-        let image = aDecoder.decodeObjectForKey(FlareKeys.imageKey) as! UIImage
         let type = aDecoder.decodeIntForKey(FlareKeys.typeKey)
         let message = aDecoder.decodeObjectForKey(FlareKeys.messageKey) as! String
         let timeStamp = aDecoder.decodeObjectForKey(FlareKeys.timeStampKey) as! NSDate
+        let contactId = aDecoder.decodeObjectForKey(FlareKeys.contactIdKey) as? String
         
         let flareType = FlareType(rawValue: type)!
-        self.init(name:name,image:image,type:flareType,message:message,timeStamp:timeStamp)
+        self.init(name:name,type:flareType,message:message,timeStamp:timeStamp,contactId:contactId)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: FlareKeys.nameKey)
-        aCoder.encodeObject(image, forKey: FlareKeys.imageKey)
         aCoder.encodeInt(type.rawValue, forKey: FlareKeys.typeKey)
         aCoder.encodeObject(message, forKey: FlareKeys.messageKey)
         aCoder.encodeObject(timeStamp, forKey: FlareKeys.timeStampKey)
+        aCoder.encodeObject(contactId, forKey: FlareKeys.contactIdKey)
     }
 }

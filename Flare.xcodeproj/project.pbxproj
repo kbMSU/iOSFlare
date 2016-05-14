@@ -16,6 +16,10 @@
 		252DFD6D1C85A6AE00EC9191 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */; };
 		252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252F98181CA530E30083E240 /* SendFlareResult.swift */; };
 		253E5DD51C9B1532000895E9 /* AlternateFlareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */; };
+		254F593F1CE6E64600554005 /* Popover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254F593E1CE6E64600554005 /* Popover.storyboard */; };
+		254F59411CE6EFC500554005 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F59401CE6EFC500554005 /* PhoneNumberTableViewCell.swift */; };
+		254F59431CE6F43600554005 /* PhoneNumberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F59421CE6F43600554005 /* PhoneNumberSelectionViewController.swift */; };
+		254F59451CE781D200554005 /* PhoneNumberPopoverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F59441CE781D200554005 /* PhoneNumberPopoverDelegate.swift */; };
 		25590F451C85CF7700B4096E /* BackendModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25590F441C85CF7700B4096E /* BackendModule.swift */; };
 		25590F471C85CFEC00B4096E /* BackendModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25590F461C85CFEC00B4096E /* BackendModuleDelegate.swift */; };
 		257314301C8054D6003381E8 /* ContactsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2573142F1C8054D6003381E8 /* ContactsModule.swift */; };
@@ -82,6 +86,10 @@
 		252DFD6C1C85A6AE00EC9191 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		252F98181CA530E30083E240 /* SendFlareResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendFlareResult.swift; sourceTree = "<group>"; };
 		253E5DD41C9B1532000895E9 /* AlternateFlareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternateFlareViewController.swift; sourceTree = "<group>"; };
+		254F593E1CE6E64600554005 /* Popover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popover.storyboard; sourceTree = "<group>"; };
+		254F59401CE6EFC500554005 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
+		254F59421CE6F43600554005 /* PhoneNumberSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberSelectionViewController.swift; sourceTree = "<group>"; };
+		254F59441CE781D200554005 /* PhoneNumberPopoverDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopoverDelegate.swift; sourceTree = "<group>"; };
 		25590F441C85CF7700B4096E /* BackendModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendModule.swift; sourceTree = "<group>"; };
 		25590F461C85CFEC00B4096E /* BackendModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendModuleDelegate.swift; sourceTree = "<group>"; };
 		2573142F1C8054D6003381E8 /* ContactsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsModule.swift; sourceTree = "<group>"; };
@@ -203,6 +211,7 @@
 			children = (
 				2573143D1C8086A1003381E8 /* ContactModuleDelegate.swift */,
 				25590F461C85CFEC00B4096E /* BackendModuleDelegate.swift */,
+				254F59441CE781D200554005 /* PhoneNumberPopoverDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 			children = (
 				25C2DB5A1C77789900D90197 /* Main.storyboard */,
 				25106C531CD3598500A82F9F /* Menu.storyboard */,
+				254F593E1CE6E64600554005 /* Popover.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -223,6 +233,7 @@
 				25C6DE8E1CBCFFB400F19B7E /* FlareViewController.swift */,
 				25947C221CB14AC000F949C5 /* SlideOutViewController.swift */,
 				25947C261CB28F6600F949C5 /* MainContainerViewController.swift */,
+				254F59421CE6F43600554005 /* PhoneNumberSelectionViewController.swift */,
 				25B70A9B1CDF913700FACED5 /* Menu View Controllers */,
 				25EB93D01CCB7AED00A02C0E /* Registration Controllers */,
 				25EB93D11CCB7B6800A02C0E /* Flare Controllers */,
@@ -250,6 +261,7 @@
 				2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */,
 				25F818DB1C82F4CF00176587 /* ContactTableViewCell.swift */,
 				25EB93C81CBFB60400A02C0E /* GroupTableViewCell.swift */,
+				254F59401CE6EFC500554005 /* PhoneNumberTableViewCell.swift */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -446,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				254F593F1CE6E64600554005 /* Popover.storyboard in Resources */,
 				25C2DB611C77789900D90197 /* Assets.xcassets in Resources */,
 				25C2DB5C1C77789900D90197 /* Main.storyboard in Resources */,
 				25106C541CD3598500A82F9F /* Menu.storyboard in Resources */,
@@ -519,8 +532,10 @@
 				257314441C8095D5003381E8 /* ErrorTypes.swift in Sources */,
 				25C2DB5F1C77789900D90197 /* Flare.xcdatamodeld in Sources */,
 				25B70AA11CE4C33D00FACED5 /* FlareType.swift in Sources */,
+				254F59431CE6F43600554005 /* PhoneNumberSelectionViewController.swift in Sources */,
 				252F98191CA530E30083E240 /* SendFlareResult.swift in Sources */,
 				25EB93CF1CCA6D5100A02C0E /* SaveGroupViewController.swift in Sources */,
+				254F59451CE781D200554005 /* PhoneNumberPopoverDelegate.swift in Sources */,
 				25106C5B1CD924E600A82F9F /* EnterCodeViewController.swift in Sources */,
 				25C6DE931CBD68BC00F19B7E /* NotificationInfo.swift in Sources */,
 				257314371C806F64003381E8 /* Contact.swift in Sources */,
@@ -549,6 +564,7 @@
 				257314301C8054D6003381E8 /* ContactsModule.swift in Sources */,
 				2573143E1C8086A1003381E8 /* ContactModuleDelegate.swift in Sources */,
 				25EB93C71CBFAE9000A02C0E /* GroupsListViewController.swift in Sources */,
+				254F59411CE6EFC500554005 /* PhoneNumberTableViewCell.swift in Sources */,
 				25590F451C85CF7700B4096E /* BackendModule.swift in Sources */,
 				25D6AB171C885EFA001A9C11 /* VerifyPhoneViewController.swift in Sources */,
 				2592A30B1C7CD0A700563426 /* SendFlareContactsViewController.swift in Sources */,

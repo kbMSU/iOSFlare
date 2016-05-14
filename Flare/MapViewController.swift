@@ -70,22 +70,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let notification = DataModule.notificationInfo
             
             if let info = notification {
-                if info.type == "flare" {
-                    var from = info.phoneNumber
-                    if contactsModule!.isAuthorized() {
-                        if DataModule.contacts.count == 0 {
-                            contactsModule!.getContacts()
-                        }
-                        for contact in DataModule.contacts {
-                            for phone in contact.phoneNumbers {
-                                if phone.digits.containsString(from) {
-                                    from = contact.firstName + " " + contact.lastName
-                                    break
-                                }
+                var from = info.phoneNumber
+                
+                if contactsModule!.isAuthorized() {
+                    if DataModule.contacts.count == 0 {
+                        contactsModule!.getContacts()
+                    }
+                    for contact in DataModule.contacts {
+                        for phone in contact.phoneNumbers {
+                            if phone.digits.containsString(from) {
+                                from = contact.firstName + " " + contact.lastName
+                                break
                             }
                         }
                     }
-                    
+                }
+                if info.type == "flare" {
                     if let lat = info.latitude, let long = info.longitude {
                         let destination = storyboard!.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
                         destination.type = info.type
@@ -97,7 +97,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     }
                 } else {
                     let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController")
                     presentViewController(destination, animated: true, completion: nil)
                 }
             }

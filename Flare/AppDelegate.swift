@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         DataModule.setup()
         
@@ -38,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     DataModule.didLoadFromNotification = true
                     DataModule.notificationInfo = NotificationInfo(number: phone, text: text, pushType: type)
                     
-                    //let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if type == "flare" {
                         let latInfo = notification["latitude"] as? String
                         let longInfo = notification["longitude"] as? String
@@ -68,10 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let type = pushType as? String
             let phone = userInfo["phone"] as? String
             let text = userInfo["text"] as? String
-            
+                        
             var from = phone
             let contactsModule = ContactsModule()
-            //DataModule.setup()
             if contactsModule.isAuthorized() {
                 if DataModule.contacts.count == 0 {
                     contactsModule.getContacts()
@@ -90,7 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let alert = UIAlertController(title: from, message: text, preferredStyle: .ActionSheet)
             let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
             alert.addAction(action)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if type == "flare" {
                 let lat = userInfo["latitude"] as? String
                 let long = userInfo["longitude"] as? String
@@ -100,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 let viewAction = UIAlertAction(title: "View", style: .Default, handler: {(action:UIAlertAction) -> Void in
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let destination = storyboard.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
                     destination.type = type
                     destination.phoneNumber = phone
@@ -111,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 alert.addAction(viewAction)
             } else if type == "response" {
                 let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
+                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController")
                 let viewAction = UIAlertAction(title: "View", style: .Default, handler: { (_:UIAlertAction) -> Void in
                     topController.presentViewController(destinationViewController, animated: true, completion: nil)
                 })
@@ -119,67 +116,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             topController.presentViewController(alert, animated: true, completion: nil)
         }
-    }
-    
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        /*let state = application.applicationState
-        if state == UIApplicationState.Inactive || state == UIApplicationState.Background {
-            // Application is in background and is transition to active based on notification click
-            let userInfo = notification.userInfo
-            if userInfo == nil {
-                return
-            }
-            
-            let type = userInfo!["pushType"] as? String
-            
-            if type == nil {
-                return
-            }
-            
-            switch type! {
-            case "flare":
-                let phone = userInfo!["phone"] as? String
-                let text = userInfo!["text"] as? String
-                let latitude = userInfo!["latitude"] as? String
-                let longitude = userInfo!["longitude"] as? String
-                
-                let topController = UIApplication.topViewController()!
-                if let destinationViewController = topController as? FlareViewController {
-                    destinationViewController.type = type
-                    destinationViewController.phoneNumber = phone
-                    destinationViewController.message = text
-                    destinationViewController.latitude = latitude
-                    destinationViewController.longitude = longitude
-                    
-                    destinationViewController.reloadInputViews()
-                } else {
-                    let storyboard = topController.storyboard!
-                    let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("flareViewController") as! FlareViewController
-                    
-                    destinationViewController.type = type
-                    destinationViewController.phoneNumber = phone
-                    destinationViewController.message = text
-                    destinationViewController.latitude = latitude
-                    destinationViewController.longitude = longitude
-                    
-                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
-                }
-            case "response":
-                let topController = UIApplication.topViewController()!
-                if let _ = topController as? FlareHistoryViewController {
-                    return
-                }
-                let storyboard = topController.storyboard!
-                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController") as! FlareHistoryViewController
-                topController.presentViewController(destinationViewController, animated: true, completion: nil)
-            default:
-                break
-            }
-            
-        } else {
-            // Application is already active and the notification just arrived ( not yet clicked )
-            return
-        }*/
     }
 
     func applicationWillResignActive(application: UIApplication) {
