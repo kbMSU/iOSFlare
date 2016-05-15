@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
+class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
 
     // MARK: Constants
     
@@ -62,16 +62,10 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: Popover presentation controller delegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
-    }
-    
+        
     // MARK: Phone number popover delegate
     
-    func phoneNumberSelected(number: PhoneNumber) {
+    override func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

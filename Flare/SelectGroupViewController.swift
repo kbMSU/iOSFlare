@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
+class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
     
     // MARK: Constants
     
@@ -57,16 +57,10 @@ class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableV
         
         doneBeingBusy()
     }
-    
-    // MARK: Popover presentation controller delegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
-    }
-    
+        
     // MARK: Phone number popover delegate
     
-    func phoneNumberSelected(number: PhoneNumber) {
+    override func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, BackendModuleDelegate, UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
+class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, BackendModuleDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -60,15 +60,9 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Popover presentation controller delegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
-    }
-    
     // MARK: Phone number popover delegate
     
-    func phoneNumberSelected(number: PhoneNumber) {
+    override func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

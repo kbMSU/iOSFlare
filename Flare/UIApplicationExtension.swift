@@ -19,7 +19,14 @@ extension UIApplication {
             }
         }
         if let presented = base?.presentedViewController {
-            return topViewController(presented)
+            // If it has a presented view controller then it could either be a modal full screen or a popup or an alert
+            if let _ = presented as? PopupViewController {
+                return base
+            } else if let _ = presented as? UIAlertController {
+                return base
+            } else {
+                return topViewController(presented)
+            }
         }
         return base
     }

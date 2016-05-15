@@ -13,11 +13,13 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
     
     // MARK: Variables
     
-    var phoneNumber : String!
+    /*var phoneNumber : String!
     var message : String!
     var type : String!
     var latitude : String!
-    var longitude : String!
+    var longitude : String!*/
+    
+    var flare : Flare!
     var contactModule : ContactsModule!
     var backendModule : BackendModule!
     
@@ -40,10 +42,10 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
         super.viewDidLoad()
 
         // Set outlets
-        contactName.text = phoneNumber
-        contactImage.image = UIImage(named: "defaultContactImage")
-        flareMessage.text = message
-        if type == "flare" {
+        contactName.text = flare.name
+        contactImage.image = flare.image
+        flareMessage.text = flare.message
+        if flare.type == .IncomingFlare || flare.type == .OutgoingFlare {
             flareTypeMessage.text = "has flared you"
         } else {
             respondButton.hidden = true
@@ -53,7 +55,7 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
         contactImage.clipsToBounds = true
         contactImage.layer.cornerRadius = contactImage.frame.height/2
         
-        let location = CLLocationCoordinate2DMake(Double(latitude)!, Double(longitude)!)
+        let location = CLLocationCoordinate2DMake(Double(flare.latitude!)!, Double(flare.longitude!)!)
         let region = MKCoordinateRegionMakeWithDistance(location,1000,1000)
         mapView.setRegion(region, animated: false)
         mapLocationMarker.frame.origin.y -= 12
@@ -71,7 +73,7 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
             presentViewController(alert, animated: false, completion: nil)
         } else {
             doneBeingBusy()
-            checkContacts()
+            //checkContacts()
         }
         
         backendModule = BackendModule(delegate: self)
@@ -98,7 +100,7 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
         if response {
             doneBeingBusy()
             let regionDistance:CLLocationDistance = 10000
-            let location = CLLocationCoordinate2DMake(Double(latitude)!, Double(longitude)!)
+            let location = CLLocationCoordinate2DMake(Double(flare.latitude!)!, Double(flare.longitude!)!)
             let region = MKCoordinateRegionMakeWithDistance(location, regionDistance, regionDistance)
             let options = [
                 MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate: region.center),
@@ -106,7 +108,7 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
             ]
             let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = contactFullName ?? phoneNumber
+            mapItem.name = contactFullName ?? flare.name
             mapItem.openInMapsWithLaunchOptions(options)
             dismissViewControllerAnimated(true, completion: nil)
             return
@@ -135,12 +137,12 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
         let alert = UIAlertController(title: "Response", message: "Are you going to your friends flare ?", preferredStyle: .Alert)
         let noAction = UIAlertAction(title: "No", style: .Default, handler: {(action:UIAlertAction) -> Void in
             self.isBusy()
-            self.backendModule!.declineFlare(self.phoneNumber!, message: DataModule.defaultDeclineMessage)
+            self.backendModule!.declineFlare(self.flare.phoneNumber, message: DataModule.defaultDeclineMessage)
         })
         let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: {(action:UIAlertAction) -> Void in
             self.isBusy()
             self.response = true
-            self.backendModule!.acceptFlare(self.phoneNumber!, message: DataModule.defaultAcceptMessage)
+            self.backendModule!.acceptFlare(self.flare.phoneNumber, message: DataModule.defaultAcceptMessage)
         })
         alert.addAction(noAction)
         alert.addAction(yesAction)
@@ -150,13 +152,14 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
     @IBAction func dismissButtonAction(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     // MARK: Helper Methods
     
     func checkContacts() {
         var matchingContact : Contact? = nil
         for contact in DataModule.contacts where contact.hasFlare {
             for phone in contact.phoneNumbers where phone.hasFlare {
-                if phone.digits.containsString(phoneNumber) {
+                if phone.digits.containsString(flare.phoneNumber) {
                     matchingContact = contact
                     break
                 }

@@ -68,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let text = userInfo["text"] as? String
                         
             var from = phone
+            var image : UIImage?
+            var contactId : String?
             let contactsModule = ContactsModule()
             if contactsModule.isAuthorized() {
                 if DataModule.contacts.count == 0 {
@@ -77,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     for phone in contact.phoneNumbers {
                         if phone.digits.containsString(from!) {
                             from = contact.firstName + " " + contact.lastName
+                            image = contact.image
+                            contactId = contact.id
                             break
                         }
                     }
@@ -84,9 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             let topController = UIApplication.topViewController()!
-            let alert = UIAlertController(title: from, message: text, preferredStyle: .ActionSheet)
-            let action = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
-            alert.addAction(action)
+            let flare = Flare(phoneNumber: phone!, name: from!, type: .IncomingFlare, message: text!, timeStamp: NSDate(), contactId: contactId, image: image)
+            
             if type == "flare" {
                 let lat = userInfo["latitude"] as? String
                 let long = userInfo["longitude"] as? String
@@ -95,26 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return
                 }
                 
-                let viewAction = UIAlertAction(title: "View", style: .Default, handler: {(action:UIAlertAction) -> Void in
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
-                    destination.type = type
-                    destination.phoneNumber = phone
-                    destination.message = text
-                    destination.latitude = lat
-                    destination.longitude = long
-                    topController.presentViewController(destination, animated: true, completion: nil)
-                })
-                alert.addAction(viewAction)
+                flare.latitude = lat!
+                flare.longitude = long!
             } else if type == "response" {
-                let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-                let destinationViewController = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController")
-                let viewAction = UIAlertAction(title: "View", style: .Default, handler: { (_:UIAlertAction) -> Void in
-                    topController.presentViewController(destinationViewController, animated: true, completion: nil)
-                })
-                alert.addAction(viewAction)
+                flare.type = .IncomingResponse
             }
-            topController.presentViewController(alert, animated: true, completion: nil)
+            
+            topController.showFlarePopup(flare)
         }
     }
 

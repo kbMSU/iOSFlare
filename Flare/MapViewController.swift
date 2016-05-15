@@ -71,6 +71,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if let info = notification {
                 var from = info.phoneNumber
+                var contactId : String?
+                var image : UIImage?
                 
                 if contactsModule!.isAuthorized() {
                     if DataModule.contacts.count == 0 {
@@ -80,26 +82,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         for phone in contact.phoneNumbers {
                             if phone.digits.containsString(from) {
                                 from = contact.firstName + " " + contact.lastName
+                                contactId = contact.id
+                                image = contact.image
                                 break
                             }
                         }
                     }
                 }
+                
+                let flare = Flare(phoneNumber: info.phoneNumber, name: from, type: .IncomingFlare, message: info.message, timeStamp: NSDate(), contactId: contactId, image: image)
+                
                 if info.type == "flare" {
                     if let lat = info.latitude, let long = info.longitude {
-                        let destination = storyboard!.instantiateViewControllerWithIdentifier("FlareViewController") as! FlareViewController
-                        destination.type = info.type
-                        destination.phoneNumber = from
-                        destination.message = info.message
-                        destination.latitude = lat
-                        destination.longitude = long
-                        presentViewController(destination, animated: true, completion: nil)
+                        flare.latitude = lat
+                        flare.longitude = long
                     }
                 } else {
-                    let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-                    let destination = storyboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController")
-                    presentViewController(destination, animated: true, completion: nil)
+                    flare.type = .IncomingResponse
                 }
+                
+                showFlarePopup(flare)
             }
             
             DataModule.didLoadFromNotification = false

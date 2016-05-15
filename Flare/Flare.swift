@@ -16,29 +16,34 @@ struct FlareKeys {
     static let contactIdKey = "contactId"
 }
 
-class Flare: NSObject, NSCoding {
+class Flare /*: NSObject, NSCoding*/ {
     
     static let ArchiveURL = Constants.DocumentsDirectory.URLByAppendingPathComponent("flares")
     
+    var phoneNumber : String
     var name : String
     var image : UIImage
     var type : FlareType
     var message : String
     var timeStamp : NSDate
-    
     var contactId : String?
+    var latitude : String?
+    var longitude : String?
     
-    init(name:String,type:FlareType,message:String,timeStamp:NSDate,contactId:String?=nil,image:UIImage? = nil) {
+    init(phoneNumber:String,name:String,type:FlareType,message:String,timeStamp:NSDate,contactId:String?=nil,image:UIImage?=nil,latitude:String?=nil,longitude:String?=nil) {
+        self.phoneNumber = phoneNumber
         self.name = name
         self.type = type
         self.message = message
         self.timeStamp = timeStamp
         self.contactId = contactId
+        self.latitude = latitude
+        self.longitude = longitude
         
         self.image = image ?? UIImage(named: "defaultContactImage")!
     }
     
-    func loadImage() {
+    /*func loadImage() {
         if contactId == nil {
             return
         }
@@ -65,5 +70,5 @@ class Flare: NSObject, NSCoding {
         aCoder.encodeObject(message, forKey: FlareKeys.messageKey)
         aCoder.encodeObject(timeStamp, forKey: FlareKeys.timeStampKey)
         aCoder.encodeObject(contactId, forKey: FlareKeys.contactIdKey)
-    }
+    }*/
 }

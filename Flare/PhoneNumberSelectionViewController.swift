@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhoneNumberSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PhoneNumberSelectionViewController: PopupViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
@@ -31,9 +31,6 @@ class PhoneNumberSelectionViewController: UIViewController, UITableViewDelegate,
         
         phoneNumberTableView.delegate = self
         phoneNumberTableView.dataSource = self
-        
-        view.layer.borderColor = UIColor.lightGrayColor().CGColor
-        view.layer.borderWidth = 0.3
     }
 
     override func didReceiveMemoryWarning() {

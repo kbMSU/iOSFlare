@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
+class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Constants
     
@@ -48,16 +48,10 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    // MARK: Popover presentation controller delegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
-    }
-    
+        
     // MARK: Phone number popover delegate
     
-    func phoneNumberSelected(number: PhoneNumber) {
+    override func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)
