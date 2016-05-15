@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
     
     // MARK: Constants
     
@@ -18,6 +18,9 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
     
     var contacts : [Contact]!
     var selectedContacts = [Contact]()
+    var currentContact : Contact?
+    var currentIndexPath : NSIndexPath?
+    var popoverStoryboard = UIStoryboard(name: "Popover", bundle: nil)
     
     var isContactSelected = true
     
@@ -44,6 +47,21 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Popover presentation controller delegate
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
+    
+    // MARK: Phone number popover delegate
+    
+    func phoneNumberSelected(number: PhoneNumber) {
+        currentContact!.primaryPhone = number
+        currentContact!.isSelected = true
+        selectedContacts.append(currentContact!)
+        contactsTableView.reloadRowsAtIndexPaths([currentIndexPath!], withRowAnimation: .None)
     }
     
     // MARK: TextField Delegate
@@ -99,6 +117,9 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
         let contactAtRow = contacts[indexPath.row]
         
+        currentContact = nil
+        currentIndexPath = nil
+        
         if contactAtRow.isSelected {
             let index = selectedContacts.indexOf({(selected) -> Bool in
                 return selected.id == contactAtRow.id
@@ -109,25 +130,23 @@ class SaveGroupViewController: UIViewController, UITextFieldDelegate, UITableVie
             cell.selectedSwitch.on = false
         } else {
             if contactAtRow.phoneNumbers.count > 1 {
-                let alert = UIAlertController(title: "Choose number", message: "This contact has multiple phone numbers, please choose a number", preferredStyle: .ActionSheet)
-                let image = UIImage(named: "fireRedIcon")
-                for number in contactAtRow.phoneNumbers {
-                    let action = UIAlertAction(title: number.digits, style: .Default, handler: {(action) -> Void in
-                        contactAtRow.primaryPhone = number
-                        contactAtRow.isSelected = true
-                        cell.selectedSwitch.on = true
-                        self.selectedContacts.append(contactAtRow)
-                        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-                        self.contactsSelected()
-                    })
-                    if number.hasFlare {
-                        action.setValue(image, forKey: "image")
-                    }
-                    alert.addAction(action)
-                }
-                alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
-                alert.view.tintColor = Constants.flareRedColor
-                presentViewController(alert, animated: true, completion: nil)
+                currentContact = contactAtRow
+                currentIndexPath = indexPath
+                
+                let phoneNumberViewController = popoverStoryboard.instantiateViewControllerWithIdentifier("ChooseNumberViewController") as! PhoneNumberSelectionViewController
+                phoneNumberViewController.phoneNumbers = contactAtRow.phoneNumbers
+                phoneNumberViewController.modalPresentationStyle = .Popover
+                phoneNumberViewController.preferredContentSize = CGSizeMake(200, 170)
+                phoneNumberViewController.delegate = self
+                
+                let popoverController = phoneNumberViewController.popoverPresentationController
+                popoverController?.permittedArrowDirections = .Any
+                popoverController?.delegate = self
+                popoverController?.sourceView = cell.contentView
+                popoverController?.sourceRect = CGRectMake(cell.contentView.frame.midX, cell.contentView.frame.midY, 0, 0)
+                
+                presentViewController(phoneNumberViewController, animated: true, completion: nil)
+
             } else {
                 contactAtRow.isSelected = true
                 cell.selectedSwitch.on = true
