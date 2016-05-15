@@ -76,6 +76,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)
         contactTableView.reloadRowsAtIndexPaths([currentIndexPath!], withRowAnimation: .None)
+        contactsSelected()
     }
     
     // MARK: Text Field Delegate

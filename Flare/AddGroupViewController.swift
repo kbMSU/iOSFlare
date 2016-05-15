@@ -63,6 +63,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)
         contactsTableView.reloadRowsAtIndexPaths([currentIndexPath!], withRowAnimation: .None)
+        contactsSelected()
     }
     
     // MARK: Text Field Delegate
