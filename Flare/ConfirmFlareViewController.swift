@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate {
+class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BackendModuleDelegate, MFMessageComposeViewControllerDelegate, UITextFieldDelegate, PhoneNumberPopoverDelegate {
 
     // MARK: Constants
     
@@ -65,7 +65,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
         
     // MARK: Phone number popover delegate
     
-    override func phoneNumberSelected(number: PhoneNumber) {
+    func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

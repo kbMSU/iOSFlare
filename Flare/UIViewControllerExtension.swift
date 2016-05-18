@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension UIViewController : UIPopoverPresentationControllerDelegate, PhoneNumberPopoverDelegate {
+extension UIViewController : UIPopoverPresentationControllerDelegate {
     func showFlare(flare : Flare) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -33,10 +33,6 @@ extension UIViewController : UIPopoverPresentationControllerDelegate, PhoneNumbe
         popoverPresentationController?.sourceRect = CGRectMake(view.frame.midX, view.frame.midY, 0, 0)
         
         presentViewController(flarePopup, animated: true, completion: nil)
-    }
-    
-    func phoneNumberSelected(number: PhoneNumber) {
-        
     }
     
     public func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

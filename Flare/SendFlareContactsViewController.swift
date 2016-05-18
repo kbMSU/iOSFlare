@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, BackendModuleDelegate {
+class SendFlareContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, BackendModuleDelegate, PhoneNumberPopoverDelegate {
 
     // MARK: Constants
     let cellIdentifier = "ContactTableViewCell"
@@ -62,7 +62,7 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
     
     // MARK: Phone number popover delegate
     
-    override func phoneNumberSelected(number: PhoneNumber) {
+    func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

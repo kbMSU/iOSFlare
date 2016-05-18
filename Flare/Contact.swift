@@ -15,7 +15,7 @@ struct ContactKeys {
     static let lastNameKey = "lastName"
     static let hasFlareKey = "hasFlare"
     static let phoneNumbersKey = "phoneNumbers"
-    static let imageKey = "image"
+    //static let imageKey = "image"
     static let primaryPhoneKey = "primaryPhone"
     static let isSelectedKey = "isSelected"
     static let idKey = "id"

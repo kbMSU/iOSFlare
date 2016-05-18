@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AddGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, PhoneNumberPopoverDelegate {
 
     // MARK: Constants
 
@@ -52,7 +52,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         
     // MARK: Phone number popover delegate
     
-    override func phoneNumberSelected(number: PhoneNumber) {
+    func phoneNumberSelected(number: PhoneNumber) {
         currentContact!.primaryPhone = number
         currentContact!.isSelected = true
         selectedContacts.append(currentContact!)

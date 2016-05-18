@@ -79,6 +79,7 @@ class Flare : NSObject, NSCoding {
         let longitude = aDecoder.decodeObjectForKey(FlareKeys.longitudeKey) as? String
         
         let flareType = FlareType(rawValue: type)!
+        
         self.init(phoneNumber:number,name:name,type:flareType,message:message,timeStamp:timeStamp,contactId:contactId,image:nil,latitude:latitude,longitude:longitude)
     }
     
