@@ -36,6 +36,12 @@ class Group: NSObject, NSCoding {
         self.id = id
     }
     
+    func loadFromContacts() {
+        for contact in contacts {
+            contact.loadFromContact()
+        }
+    }
+    
     required convenience init(coder aDecoder:NSCoder) {
         let name = aDecoder.decodeObjectForKey(GroupKeys.nameKey) as! String
         let contacts = aDecoder.decodeObjectForKey(GroupKeys.contactsKey) as! [Contact]

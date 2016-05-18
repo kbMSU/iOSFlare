@@ -224,12 +224,12 @@ class BackendModule {
     func sendFlare(numbers : [PhoneNumber], message : String, location : CLLocation, sender : UIViewController) {
         let result = SendFlareResult()
         
-        var numbersWithFlare = [String]()
+        var numbersWithFlare = [PhoneNumber]()
         var numbersWithoutFlare = [String]()
         
         for number in numbers {
             if number.hasFlare {
-                numbersWithFlare.append(number.digits)
+                numbersWithFlare.append(number)
             } else {
                 numbersWithoutFlare.append(number.digits)
             }
@@ -249,11 +249,15 @@ class BackendModule {
                         params["phone"] = DataModule.myPhoneNumber
                         params["latitude"] = latitude
                         params["longitude"] = longitude
-                        params["to"] = number
+                        params["to"] = number.digits
                         try PFCloud.callFunction("SendFlare", withParameters: params)
+                        
+                        let flare = Flare(phoneNumber: number.digits, name: number.digits, type: .OutgoingFlare, message: message, timeStamp: NSDate(), contactId: nil, image: nil, latitude: latitude, longitude: longitude)
+                        flare.loadFromContact()
+                        DataModule.addFlare(flare)
                     } catch {
                         result.failed = true
-                        result.numbersFailedToSend.append(number)
+                        result.numbersFailedToSend.append(number.digits)
                         continue
                     }
                 }
@@ -293,6 +297,10 @@ class BackendModule {
                 params["text"] = message
                 params["from"] = DataModule.myPhoneNumber
                 try PFCloud.callFunction("AcceptFlare", withParameters: params)
+                
+                let flare = Flare(phoneNumber: to, name: to, type: .OutgoingResponse, message: message, timeStamp: NSDate())
+                flare.loadFromContact()
+                DataModule.addFlare(flare)
             } catch {
                 dispatch_async(GCDModule.GlobalMainQueue) {
                     self.delegate.sendFlareResponseError(error)
@@ -313,6 +321,10 @@ class BackendModule {
                 params["text"] = message
                 params["from"] = DataModule.myPhoneNumber
                 try PFCloud.callFunction("DeclineFlare", withParameters: params)
+                
+                let flare = Flare(phoneNumber: to, name: to, type: .OutgoingResponse, message: message, timeStamp: NSDate())
+                flare.loadFromContact()
+                DataModule.addFlare(flare)
             } catch {
                 dispatch_async(GCDModule.GlobalMainQueue) {
                     self.delegate.sendFlareResponseError(error)

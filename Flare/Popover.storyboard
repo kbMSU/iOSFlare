@@ -140,7 +140,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="D7I-bh-bS3">
-                                <rect key="frame" x="0.0" y="98" width="600" height="459"/>
+                                <rect key="frame" x="20" y="98" width="560" height="459"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -148,11 +148,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D7I-bh-bS3" firstAttribute="leading" secondItem="7hH-Ve-qFX" secondAttribute="leadingMargin" constant="-20" id="8Rx-Uq-rpg"/>
+                            <constraint firstItem="D7I-bh-bS3" firstAttribute="leading" secondItem="7hH-Ve-qFX" secondAttribute="leadingMargin" id="8Rx-Uq-rpg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jom-9t-uqi" secondAttribute="trailing" constant="-20" id="AGG-SR-IMs"/>
                             <constraint firstItem="RiN-B9-LCs" firstAttribute="centerX" secondItem="7hH-Ve-qFX" secondAttribute="centerX" id="DkW-61-hEU"/>
                             <constraint firstItem="RiN-B9-LCs" firstAttribute="top" secondItem="m44-Pn-fsZ" secondAttribute="bottom" constant="20" id="SDD-YV-Ew7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D7I-bh-bS3" secondAttribute="trailing" constant="-20" id="dS7-LF-pj6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="D7I-bh-bS3" secondAttribute="trailing" id="dS7-LF-pj6"/>
                             <constraint firstItem="jom-9t-uqi" firstAttribute="top" secondItem="D7I-bh-bS3" secondAttribute="bottom" constant="8" id="iim-Ir-sa7"/>
                             <constraint firstItem="D7I-bh-bS3" firstAttribute="top" secondItem="RiN-B9-LCs" secondAttribute="bottom" constant="8" id="l8z-vP-Xr7"/>
                             <constraint firstItem="4xb-Jy-qhc" firstAttribute="top" secondItem="jom-9t-uqi" secondAttribute="bottom" id="lep-Py-ekQ"/>

@@ -61,6 +61,10 @@ class ContactsModule {
                 }
                 DataModule.contacts.append(Contact(contact: contact))
             }
+            
+            DataModule.loadGroupDetailsFromContacts()
+            DataModule.loadFlareDetailsFromContacts()
+            
             sendResponseToDelegate(ErrorTypes.None)
         } catch {
             print(error)

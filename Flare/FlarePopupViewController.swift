@@ -27,10 +27,20 @@ class FlarePopupViewController: PopupViewController {
         super.viewDidLoad()
 
         contactImageView.image = flare.image
-        if flare.type == .IncomingFlare || flare.type == .OutgoingFlare {
+        
+        switch flare.type {
+        case .IncomingFlare:
             messageLabel.text = "\(flare.name) has sent you a flare"
-        } else {
+        case .OutgoingFlare:
+            messageLabel.text = "You sent \(flare.name) a flare"
+            viewButton.hidden = true
+            viewButtonHeight.constant = 0
+        case .IncomingResponse:
             messageLabel.text = "\(flare.name) says \"\(flare.message)\""
+            viewButton.hidden = true
+            viewButtonHeight.constant = 0
+        case .OutgoingResponse:
+            messageLabel.text = "You told \(flare.name) that \"\(flare.message)\""
             viewButton.hidden = true
             viewButtonHeight.constant = 0
         }

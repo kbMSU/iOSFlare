@@ -13,12 +13,6 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
     
     // MARK: Variables
     
-    /*var phoneNumber : String!
-    var message : String!
-    var type : String!
-    var latitude : String!
-    var longitude : String!*/
-    
     var flare : Flare!
     var contactModule : ContactsModule!
     var backendModule : BackendModule!
@@ -41,24 +35,35 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set outlets
         contactName.text = flare.name
         contactImage.image = flare.image
         flareMessage.text = flare.message
-        if flare.type == .IncomingFlare || flare.type == .OutgoingFlare {
+        
+        switch flare.type {
+        case .IncomingFlare:
             flareTypeMessage.text = "has flared you"
-        } else {
+        case .OutgoingFlare:
+            flareTypeMessage.text = "You sent a flare"
             respondButton.hidden = true
+        case .IncomingResponse:
             flareTypeMessage.text = "has responded to your flare"
+            respondButton.hidden = true
+        case .OutgoingResponse:
+            flareTypeMessage.text = "You responded to a flare"
+            respondButton.hidden = true
         }
         
         contactImage.clipsToBounds = true
         contactImage.layer.cornerRadius = contactImage.frame.height/2
         
-        let location = CLLocationCoordinate2DMake(Double(flare.latitude!)!, Double(flare.longitude!)!)
-        let region = MKCoordinateRegionMakeWithDistance(location,1000,1000)
-        mapView.setRegion(region, animated: false)
-        mapLocationMarker.frame.origin.y -= 12
+        if let latitude = flare.latitude, let longitude = flare.longitude {
+            let location = CLLocationCoordinate2DMake(Double(latitude)!, Double(longitude)!)
+            let region = MKCoordinateRegionMakeWithDistance(location,1000,1000)
+            mapView.setRegion(region, animated: false)
+        } else {
+            mapView.hidden = true
+            mapLocationMarker.hidden = true
+        }
         
         contactModule = ContactsModule(delegate: self)
         if !contactModule!.isAuthorized() {
@@ -73,7 +78,6 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
             presentViewController(alert, animated: false, completion: nil)
         } else {
             doneBeingBusy()
-            //checkContacts()
         }
         
         backendModule = BackendModule(delegate: self)
@@ -115,12 +119,7 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
         }
         
         doneBeingBusy()
-        let alert = UIAlertController(title: "Success", message: "The message has been sent", preferredStyle: .Alert)
-        let action = UIAlertAction(title: "Ok", style: .Default, handler: {(action:UIAlertAction) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
-        alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func sendFlareResponseError(error: ErrorType) {
@@ -166,7 +165,6 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
             }
         }
         
-        // Update the outlets
         if let contact = matchingContact {
             contactImage.image = contact.image
             contactFullName = contact.firstName+" "+contact.lastName
@@ -177,12 +175,16 @@ class FlareViewController: UIViewController, ContactModuleDelegate, BackendModul
     func isBusy() {
         overlayView.hidden = false
         respondButton.enabled = false
-        dissmissBarButton.enabled = false
+        if let button = dissmissBarButton {
+            button.enabled = false
+        }
     }
     
     func doneBeingBusy() {
         overlayView.hidden = true
         respondButton.enabled = true
-        dissmissBarButton.enabled = true
+        if let button = dissmissBarButton {
+            button.enabled = true
+        }
     }
 }

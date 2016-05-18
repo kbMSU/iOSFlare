@@ -57,6 +57,11 @@ class SlideOutViewController: UIViewController, MFMailComposeViewControllerDeleg
 
     // MARK: Actions
     
+    @IBAction func flareHistoryAction(sender: UIButton) {
+        let flareHistoryController = menuStoryboard.instantiateViewControllerWithIdentifier("FlareHistoryViewController")
+        presentViewController(flareHistoryController, animated: true, completion: nil)
+    }
+    
     @IBAction func groupsAction(sender: UIButton) {
         let groupsController = menuStoryboard.instantiateViewControllerWithIdentifier("GroupsViewController")
         presentViewController(groupsController, animated: true, completion: nil)

@@ -18,7 +18,6 @@ class PhoneNumber: NSObject, NSCoding {
     static let ArchiveURL = Constants.DocumentsDirectory.URLByAppendingPathComponent("phoneNumber")
 
     var digits : String
-    //var countryCode : String?
     var hasFlare : Bool
     
     init(number:String,flare:Bool) {

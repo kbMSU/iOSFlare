@@ -66,6 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let type = pushType as? String
             let phone = userInfo["phone"] as? String
             let text = userInfo["text"] as? String
+            
+            let notification = UILocalNotification()
+            notification.alertTitle = "Flare"
+            notification.alertBody = text
+            notification.hasAction = false
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.fireDate = NSDate().dateByAddingTimeInterval(10)
+            notification.userInfo = userInfo
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         
             var from = phone
             var image : UIImage?
@@ -104,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 flare.type = .IncomingResponse
             }
             
+            DataModule.addFlare(flare)
             topController.showFlarePopup(flare)
         }
     }
@@ -120,10 +130,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(application: UIApplication) {

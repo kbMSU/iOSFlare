@@ -126,8 +126,57 @@ class DataModule {
         }
     }
     
+    static func loadGroupDetailsFromContacts() {
+        for group in groups {
+            group.loadFromContacts()
+        }
+    }
+    
     static func addFlare(flare : Flare) {
         flares.append(flare)
         NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+    }
+    
+    static func removeFlare(flare : Flare) {
+        var index : Int = -1
+        for i in 0 ..< flares.count {
+            if flares[i].id == flare.id {
+                index = i
+                break
+            }
+        }
+        if index != -1 {
+            flares.removeAtIndex(index)
+            NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+        }
+    }
+    
+    static func removeAllFlares() {
+        flares = [Flare]()
+        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+    }
+    
+    static func loadFlareDetailsFromContacts() {
+        for flare in flares {
+            flare.loadFromContact()
+        }
+    }
+    
+    static func findContactForNumber(number : String) -> Contact? {
+        for contact in contacts {
+            for phoneNumber in contact.phoneNumbers {
+                if phoneNumber.digits.containsString(number) {
+                    return contact
+                }
+            }
+        }
+        return nil
+    }
+    
+    static func findContactForId(id : String) -> Contact? {
+        for contact in contacts where contact.id == id {
+            return contact
+        }
+        return nil
     }
 }

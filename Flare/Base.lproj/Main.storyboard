@@ -188,6 +188,9 @@
                                 <state key="normal" title="Flares" image="history">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="flareHistoryAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="qWY-3O-l0l"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUT-Bd-mQC">
                                 <rect key="frame" x="30" y="130" width="300" height="44"/>
@@ -294,13 +297,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search contacts" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="elM-Xx-J20">
-                                <rect key="frame" x="40" y="69" width="520" height="30"/>
+                                <rect key="frame" x="40" y="76" width="520" height="30"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w3z-aX-lRe">
-                                <rect key="frame" x="20" y="107" width="560" height="493"/>
+                                <rect key="frame" x="20" y="114" width="560" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactTableViewCell" id="MLc-3F-g3h" customClass="ContactTableViewCell" customModule="Flare" customModuleProvider="target">
@@ -413,7 +416,7 @@
                             <constraint firstItem="elM-Xx-J20" firstAttribute="trailing" secondItem="RQR-H4-jH9" secondAttribute="trailingMargin" constant="-20" id="7hw-Fh-pjp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KOz-25-jc3" secondAttribute="trailing" constant="-20" id="7vx-tY-gwR"/>
                             <constraint firstItem="w3z-aX-lRe" firstAttribute="top" secondItem="elM-Xx-J20" secondAttribute="bottom" constant="8" id="9e9-ur-Kll"/>
-                            <constraint firstItem="elM-Xx-J20" firstAttribute="top" secondItem="ZJ3-c0-jPp" secondAttribute="bottom" constant="25" id="Dui-Xz-B3G"/>
+                            <constraint firstItem="elM-Xx-J20" firstAttribute="top" secondItem="ZJ3-c0-jPp" secondAttribute="bottom" constant="32" id="Dui-Xz-B3G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w3z-aX-lRe" secondAttribute="trailing" id="LBl-t2-deM"/>
                             <constraint firstItem="wkK-Lo-hb1" firstAttribute="top" secondItem="w3z-aX-lRe" secondAttribute="bottom" id="OXt-bu-sgR"/>
                             <constraint firstItem="vdE-C1-aJc" firstAttribute="leading" secondItem="RQR-H4-jH9" secondAttribute="leadingMargin" constant="-20" id="U9I-UV-PeD"/>

@@ -101,6 +101,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     flare.type = .IncomingResponse
                 }
                 
+                DataModule.addFlare(flare)
                 showFlarePopup(flare)
             }
             

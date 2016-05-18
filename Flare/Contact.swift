@@ -52,15 +52,23 @@ class Contact: NSObject, NSCoding {
         id = contact.identifier
     }
     
+    func loadFromContact() {
+        if let contact = DataModule.findContactForId(id) {
+            image = contact.image
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         firstName = aDecoder.decodeObjectForKey(ContactKeys.firstNameKey) as! String
         lastName = aDecoder.decodeObjectForKey(ContactKeys.lastNameKey) as! String
         hasFlare = aDecoder.decodeBoolForKey(ContactKeys.hasFlareKey)
         phoneNumbers = aDecoder.decodeObjectForKey(ContactKeys.phoneNumbersKey) as! [PhoneNumber]
-        image = aDecoder.decodeObjectForKey(ContactKeys.imageKey) as? UIImage
+        //image = aDecoder.decodeObjectForKey(ContactKeys.imageKey) as? UIImage
         primaryPhone = aDecoder.decodeObjectForKey(ContactKeys.primaryPhoneKey) as! PhoneNumber
         isSelected = aDecoder.decodeBoolForKey(ContactKeys.isSelectedKey)
         id = aDecoder.decodeObjectForKey(ContactKeys.idKey) as! String
+        
+        image = UIImage(named: "defaultContactImage")
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
@@ -68,7 +76,7 @@ class Contact: NSObject, NSCoding {
         aCoder.encodeObject(lastName, forKey: ContactKeys.lastNameKey)
         aCoder.encodeBool(hasFlare, forKey: ContactKeys.hasFlareKey)
         aCoder.encodeObject(phoneNumbers, forKey: ContactKeys.phoneNumbersKey)
-        aCoder.encodeObject(image, forKey: ContactKeys.imageKey)
+        //aCoder.encodeObject(image, forKey: ContactKeys.imageKey)
         aCoder.encodeObject(primaryPhone, forKey: ContactKeys.primaryPhoneKey)
         aCoder.encodeBool(isSelected, forKey: ContactKeys.isSelectedKey)
         aCoder.encodeObject(id, forKey: ContactKeys.idKey)
