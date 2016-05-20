@@ -40,6 +40,16 @@ class ConfirmCodeViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func confirmClickAction(sender: UIButton) {
         if let code = enterCodeTextField.text where code == verificationCode {
             DataModule.haveVerifiedPhoneNumber = true

@@ -48,11 +48,12 @@ class SendFlareContactsViewController: UIViewController, UITableViewDataSource, 
         backendModule = BackendModule(delegate: self)
         
         initialized = true
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if !DataModule.haveAskedToFindFriendsWithFlare {
-            timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(askToFindFriendsWithFlare), userInfo: nil, repeats: false)
+            askToFindFriendsWithFlare()
         }
-
     }
 
     override func didReceiveMemoryWarning() {
