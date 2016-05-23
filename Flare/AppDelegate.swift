@@ -48,8 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
-                
+        
         application.applicationIconBadgeNumber = 0
+        
+        //NSThread.sleepForTimeInterval(2)
         
         return true
     }

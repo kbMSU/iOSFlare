@@ -25,6 +25,7 @@ class SlideOutViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var settingsButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var aboutButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var feedbackButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var privacyLabelWidth: NSLayoutConstraint!
     
     // MARK: Lifecycle
     
@@ -42,6 +43,7 @@ class SlideOutViewController: UIViewController, MFMailComposeViewControllerDeleg
         groupsButtonWidth.constant = maxWidth
         settingsButtonWidth.constant = maxWidth
         aboutButtonWidth.constant = maxWidth
+        privacyLabelWidth.constant = maxWidth
     }
     
     override func didReceiveMemoryWarning() {

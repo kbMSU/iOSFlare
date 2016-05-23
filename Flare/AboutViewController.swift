@@ -36,4 +36,8 @@ class AboutViewController: UIViewController {
     @IBAction func DismissAction(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func privacyPolicyAction(sender: UIButton) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://flare.shoresideapps.com/privacy/")!)
+    }
 }

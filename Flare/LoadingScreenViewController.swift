@@ -20,7 +20,6 @@ class LoadingScreenViewController: UIViewController, ContactModuleDelegate, Back
         backendModule = BackendModule(delegate: self)
         
         contactsModule = ContactsModule(delegate: self)
-        
     }
     
     override func viewDidAppear(animated: Bool) {

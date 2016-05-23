@@ -40,6 +40,7 @@
 		25947C271CB28F6600F949C5 /* MainContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C261CB28F6600F949C5 /* MainContainerViewController.swift */; };
 		25947C291CB408AC00F949C5 /* SlideOutModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25947C281CB408AC00F949C5 /* SlideOutModule.swift */; };
 		2596DE801C803B5E00A7172C /* PaddedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */; };
+		259781541CEF4B27007C412E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 259781531CEF4B27007C412E /* Launch Screen.storyboard */; };
 		25B70A9D1CDF91A100FACED5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B70A9C1CDF91A100FACED5 /* AboutViewController.swift */; };
 		25B70A9F1CE4C2D900FACED5 /* Flare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B70A9E1CE4C2D900FACED5 /* Flare.swift */; };
 		25B70AA11CE4C33D00FACED5 /* FlareType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B70AA01CE4C33D00FACED5 /* FlareType.swift */; };
@@ -114,6 +115,7 @@
 		25947C261CB28F6600F949C5 /* MainContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerViewController.swift; sourceTree = "<group>"; };
 		25947C281CB408AC00F949C5 /* SlideOutModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutModule.swift; sourceTree = "<group>"; };
 		2596DE7F1C803B5E00A7172C /* PaddedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedUILabel.swift; sourceTree = "<group>"; };
+		259781531CEF4B27007C412E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		25A92D721C85B9C500ED32E5 /* Flare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flare-Bridging-Header.h"; sourceTree = "<group>"; };
 		25B70A9C1CDF91A100FACED5 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		25B70A9E1CE4C2D900FACED5 /* Flare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flare.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				25C2DB5A1C77789900D90197 /* Main.storyboard */,
 				25106C531CD3598500A82F9F /* Menu.storyboard */,
 				254F593E1CE6E64600554005 /* Popover.storyboard */,
+				259781531CEF4B27007C412E /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				254F593F1CE6E64600554005 /* Popover.storyboard in Resources */,
 				25C2DB611C77789900D90197 /* Assets.xcassets in Resources */,
 				25C2DB5C1C77789900D90197 /* Main.storyboard in Resources */,
+				259781541CEF4B27007C412E /* Launch Screen.storyboard in Resources */,
 				25106C541CD3598500A82F9F /* Menu.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,7 +672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -706,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -719,7 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Flare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -737,7 +741,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Flare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

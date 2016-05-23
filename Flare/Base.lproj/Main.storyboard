@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gHx-Gk-LYr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gHx-Gk-LYr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -251,6 +251,16 @@
                                     <action selector="settingsAction:" destination="GDD-kc-aG2" eventType="touchUpInside" id="QaN-Pa-poB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Because your privacy matters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-pD-XSw">
+                                <rect key="frame" x="20" y="571" width="300" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="DJ7-Gi-YuU"/>
+                                    <constraint firstAttribute="width" constant="300" id="s77-IN-VOS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -264,8 +274,10 @@
                             <constraint firstItem="lgb-FZ-Mia" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" constant="10" id="Qx0-H4-CNl"/>
                             <constraint firstItem="lgb-FZ-Mia" firstAttribute="top" secondItem="q9j-bh-sx2" secondAttribute="bottom" constant="8" id="UVs-m9-qIm"/>
                             <constraint firstItem="tKv-Vy-Ysq" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" constant="-20" id="ZpP-Vf-O01"/>
+                            <constraint firstItem="eGj-av-PZ0" firstAttribute="top" secondItem="PN2-pD-XSw" secondAttribute="bottom" constant="8" id="bLt-dc-T9F"/>
                             <constraint firstItem="q9j-bh-sx2" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" constant="10" id="exF-tb-W5j"/>
                             <constraint firstItem="dig-Qr-I6k" firstAttribute="top" secondItem="tKv-Vy-Ysq" secondAttribute="bottom" constant="8" id="f14-ae-Qfh"/>
+                            <constraint firstItem="PN2-pD-XSw" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" id="hCa-Fp-hJs"/>
                             <constraint firstItem="YUT-Bd-mQC" firstAttribute="top" secondItem="dig-Qr-I6k" secondAttribute="bottom" constant="8" id="qt3-ly-GCQ"/>
                             <constraint firstItem="dzM-zJ-DPm" firstAttribute="leading" secondItem="Pel-qp-61d" secondAttribute="leadingMargin" constant="10" id="zO8-lk-ag0"/>
                         </constraints>
@@ -276,6 +288,7 @@
                         <outlet property="groupsButtonWidth" destination="Tsp-uH-xb6" id="gAQ-mU-CT3"/>
                         <outlet property="historyButtonWidth" destination="0gI-Ed-Iww" id="fpd-cK-P6M"/>
                         <outlet property="numberLabel" destination="hjv-B4-ZfJ" id="FNG-7d-Bf1"/>
+                        <outlet property="privacyLabelWidth" destination="s77-IN-VOS" id="LRJ-mw-god"/>
                         <outlet property="settingsButtonWidth" destination="db9-HX-IM3" id="xgN-8l-loP"/>
                     </connections>
                 </viewController>
@@ -1647,7 +1660,7 @@
         <image name="groups" width="30" height="30"/>
         <image name="history" width="30" height="30"/>
         <image name="loadingScreen" width="512" height="250"/>
-        <image name="locationMarker" width="24" height="62"/>
+        <image name="locationMarker" width="48" height="125"/>
         <image name="menu" width="25" height="25"/>
         <image name="reply" width="25" height="25"/>
         <image name="selectedContacts" width="16" height="16"/>
