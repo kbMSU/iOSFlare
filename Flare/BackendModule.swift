@@ -24,23 +24,6 @@ class BackendModule {
                 let fullPhone = DataModule.myCountryCode + DataModule.myPhoneNumber
                 let installation = PFInstallation.currentInstallation()
                 
-                /*
-                 
-                 Can't do this on clients, edit server code after finishing app
-                 
-                // Are there already installations with this phone number
-                let oldInstallations = try PFInstallation.query()!.whereKey("FullPhone", equalTo: fullPhone).findObjects()
-                if !oldInstallations.isEmpty {
-                    let old = oldInstallations[0]
-                    // Is this installation a different object than this phone's installation ?
-                    if installation.objectId != old.objectId {
-                        // If it is, that means either we moved this phone number to a different phone or 
-                        // we reinstalled on this phone. Either way, we have to delete the old installation
-                        try old.delete()
-                    }
-                }
-                 */
-                
                 // Save this installation
                 installation.setObject(DataModule.myCountryCode, forKey: "CountryCode")
                 installation.setObject(DataModule.myPhoneNumber, forKey: "Number")
