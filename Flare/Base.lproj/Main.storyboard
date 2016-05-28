@@ -1655,7 +1655,7 @@
         <image name="about" width="30" height="30"/>
         <image name="defaultContactImage" width="50" height="50"/>
         <image name="feedback" width="30" height="30"/>
-        <image name="fireIcon" width="16" height="16"/>
+        <image name="fireIcon" width="25" height="25"/>
         <image name="fireRedIcon" width="32" height="32"/>
         <image name="groups" width="30" height="30"/>
         <image name="history" width="30" height="30"/>
@@ -1663,8 +1663,8 @@
         <image name="locationMarker" width="48" height="125"/>
         <image name="menu" width="25" height="25"/>
         <image name="reply" width="25" height="25"/>
-        <image name="selectedContacts" width="16" height="16"/>
-        <image name="sendFlare" width="16" height="16"/>
+        <image name="selectedContacts" width="25" height="25"/>
+        <image name="sendFlare" width="25" height="25"/>
         <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
