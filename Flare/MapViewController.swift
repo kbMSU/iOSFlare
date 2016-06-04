@@ -59,8 +59,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.showsUserLocation = false
         
         navigationController!.navigationBar.tintColor = Constants.flareRedColor
-        
-        isBusy()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,6 +108,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         if initialized {
+            return
+        }
+        
+        isBusy()
+        
+        if !CLLocationManager.locationServicesEnabled() {
+            doneBeingBusy()
+            displayError("You must have enabled location services enabled")
+            addressLabel.text = "Location not enabled"
             return
         }
         
