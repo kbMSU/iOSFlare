@@ -31,11 +31,11 @@ class DataModule {
         
         //NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
         
-        if let savedGroups = NSKeyedUnarchiver.unarchiveObjectWithFile(Group.ArchiveURL.path!) as? [Group] {
+        if let savedGroups = NSKeyedUnarchiver.unarchiveObjectWithFile(Group.ArchiveURL!.path!) as? [Group] {
             groups += savedGroups
         }
         
-        if let savedFlares = NSKeyedUnarchiver.unarchiveObjectWithFile(Flare.ArchiveURL.path!) as? [Flare] {
+        if let savedFlares = NSKeyedUnarchiver.unarchiveObjectWithFile(Flare.ArchiveURL!.path!) as? [Flare] {
             flares += savedFlares
         }
     }
@@ -109,7 +109,7 @@ class DataModule {
     
     static func addGroup(group : Group) {
         groups.append(group)
-        NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
+        NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL!.path!)
     }
     
     static func removeGroup(group : Group) {
@@ -122,7 +122,7 @@ class DataModule {
         }
         if index != -1 {
             groups.removeAtIndex(index)
-            NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL.path!)
+            NSKeyedArchiver.archiveRootObject(groups, toFile: Group.ArchiveURL!.path!)
         }
     }
     
@@ -134,7 +134,7 @@ class DataModule {
     
     static func addFlare(flare : Flare) {
         flares.append(flare)
-        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL!.path!)
     }
     
     static func removeFlare(flare : Flare) {
@@ -147,13 +147,13 @@ class DataModule {
         }
         if index != -1 {
             flares.removeAtIndex(index)
-            NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+            NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL!.path!)
         }
     }
     
     static func removeAllFlares() {
         flares = [Flare]()
-        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL.path!)
+        NSKeyedArchiver.archiveRootObject(flares, toFile: Flare.ArchiveURL!.path!)
     }
     
     static func loadFlareDetailsFromContacts() {

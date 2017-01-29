@@ -187,7 +187,7 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: Message Delegate
     
     func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        switch result {
+        /*switch result {
         case MessageComposeResultSent,MessageComposeResultCancelled:
             finishedFlare()
         case MessageComposeResultFailed:
@@ -195,7 +195,8 @@ class ConfirmFlareViewController: UIViewController, UITableViewDataSource, UITab
             finishedFlare()
         default:
             finishedFlare()
-        }
+        }*/
+        finishedFlare()
     }
     
     // MARK: Actions

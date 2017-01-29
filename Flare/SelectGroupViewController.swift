@@ -120,7 +120,7 @@ class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: Message Delegate
     
     func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        switch result {
+        /*switch result {
         case MessageComposeResultSent,MessageComposeResultCancelled:
             finishedFlare()
         case MessageComposeResultFailed:
@@ -128,7 +128,8 @@ class SelectGroupViewController: UIViewController, UITableViewDelegate, UITableV
             finishedFlare()
         default:
             finishedFlare()
-        }
+        }*/
+        finishedFlare()
     }
     
     // MARK: TableView Delegate/DataSource
