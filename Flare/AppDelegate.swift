@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         DataModule.setup()
         
+        FIRApp.configure()
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion({(user,error) in
+            // ...
+        })
+        
+        /*
         Parse.enableLocalDatastore()
         Parse.setApplicationId("INoehKZFskuQ6nJ383gzDshdhFHSre9lv5MQrZ7g", clientKey: "9y6Dx6hqc28c4uyULtzOWrwb0Pmfi0Up3GXDzjpA")
         PFInstallation.currentInstallation().saveInBackground()
-        
+        */
+ 
         let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
         application.registerUserNotificationSettings(settings)
